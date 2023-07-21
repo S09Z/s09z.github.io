@@ -51,7 +51,7 @@ const nextConfig = {
   
   trailingSlash: true,
   reactStrictMode: true,
-  assetPrefix: isProd ? 's09z.github.io.git' : '',
+  assetPrefix: isProd ? 'https://s09z.github.io.git' : '',
   swcMinify: false,
 }
 
