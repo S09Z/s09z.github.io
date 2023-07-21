@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "src",
     "target": "es6",
     "lib": [
       "dom",
@@ -32,9 +33,13 @@
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    // "next-env.d.ts",
+    // "**/*.ts",
+    // "**/*.tsx",
+    // ".next/types/**/*.ts"
+    "src",
+    "declaration.d.ts",
+    ".pnp.cjs",
     ".next/types/**/*.ts"
   ],
   "exclude": [

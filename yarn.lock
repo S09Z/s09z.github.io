@@ -6340,11 +6340,13 @@ __metadata:
     eslint-plugin-react: latest
     next: 13.4.10
     postcss: 8.4.26
+    react: 18.1.0
     react-beautiful-dnd: 13.1.0
     react-chartjs-2: ^5.2.0
     react-color: ^2.19.3
     react-credit-cards: 0.8.3
     react-datepicker: 4.5.0
+    react-dom: 18.1.0
     react-draft-wysiwyg: 1.14.7
     react-draggable: ^4.4.5
     react-dropzone: 14.2.0
@@ -6367,9 +6369,6 @@ __metadata:
     redux-saga: ^1.2.2
     tailwindcss: latest
     typescript: next
-  dependenciesMeta:
-    next@13.4.10:
-      unplugged: true
   languageName: unknown
   linkType: soft
 
@@ -6537,6 +6536,18 @@ __metadata:
     react: ^16.9.0 || ^17
     react-dom: ^16.9.0 || ^17
   checksum: a1e810707911f48a0c95bacf99d5d012606f1d31fd728ece933d5784ad09d88b4e71e87a91761cc935537f18b8667d0d4365935581e7439ca2746a65441925d2
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:18.1.0":
+  version: 18.1.0
+  resolution: "react-dom@npm:18.1.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: ^0.22.0
+  peerDependencies:
+    react: ^18.1.0
+  checksum: bb0d48eeb0b297c79c2a03978baa29f5b3ff7ba3d070b21e34c9af1a6e7fdf0ca8b8d73e41f9214d91ad40eeb6d1f3559f884cbbc338713374a51320637c23df
   languageName: node
   linkType: hard
 
@@ -6912,6 +6923,15 @@ __metadata:
     react: ">=15.0.0"
     react-dom: ">=15.0.0"
   checksum: d8c9e50aabdc2cfc324e5cdb0ad1c6eecb02e1c0cd007b26d5b30ccf49015e900683dd489348c71fba4055858308d9ba7019e0d37d0e8d37bd46ed098788f670
+  languageName: node
+  linkType: hard
+
+"react@npm:18.1.0":
+  version: 18.1.0
+  resolution: "react@npm:18.1.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 5bb296b561b43ef2220395da4faac86c14a087c8c80e1a7598a5740f01ee605c11eaf249985c1e2000971c4cd32ccb46d40f00479bbd9fb6b1c7cf857393b7d4
   languageName: node
   linkType: hard
 
@@ -7304,6 +7324,15 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.22.0":
+  version: 0.22.0
+  resolution: "scheduler@npm:0.22.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: a8ef5cab769c020cd6382ad9ecc3f72dbde56a50a36639b3a42ad9c11f7724f03700bcad373044059b8067d4a6365154dc7c0ca8027ef20ff4900cf58a0fc2c5
   languageName: node
   linkType: hard
 

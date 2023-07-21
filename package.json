@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@types/node": "20.4.2",
@@ -15,11 +16,13 @@
     "autoprefixer": "10.4.14",
     "next": "13.4.10",
     "postcss": "8.4.26",
+    "react": "18.1.0",
     "react-beautiful-dnd": "13.1.0",
     "react-chartjs-2": "^5.2.0",
     "react-color": "^2.19.3",
     "react-credit-cards": "0.8.3",
     "react-datepicker": "4.5.0",
+    "react-dom": "18.1.0",
     "react-draft-wysiwyg": "1.14.7",
     "react-draggable": "^4.4.5",
     "react-dropzone": "14.2.0",
@@ -70,10 +73,5 @@
     "tailwindcss": "latest",
     "typescript": "next"
   },
-  "packageManager": "yarn@3.6.1",
-  "dependenciesMeta": {
-    "next@13.4.10": {
-      "unplugged": true
-    }
-  }
+  "packageManager": "yarn@3.6.1"
 }

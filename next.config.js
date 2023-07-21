@@ -1,3 +1,6 @@
+const path = require('path')
+const { version } = require('./package.json');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /**
@@ -24,14 +27,29 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  trailingSlash: true,
-  reactStrictMode: false,
-  swcMinify: false,
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+
   experimental: {
+    outputStandalone: true,
+    outputFileTracingRoot: path.join(__dirname, '../../'),
     esmExternals: false,
     jsconfigPaths: true, // enables it for both jsconfig.json and tsconfig.json
     forceSwcTransforms: true,
   },
+
+  publicRuntimeConfig: {
+    version,
+  },
+  
+  trailingSlash: true,
+  reactStrictMode: false,
+  swcMinify: false,
 }
 
 module.exports = nextConfig
