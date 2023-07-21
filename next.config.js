@@ -1,6 +1,8 @@
 const path = require('path')
 const { version } = require('./package.json');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /**
@@ -48,7 +50,8 @@ const nextConfig = {
   },
   
   trailingSlash: true,
-  reactStrictMode: false,
+  reactStrictMode: true,
+  assetPrefix: isProd ? 's09z.github.io.git' : '',
   swcMinify: false,
 }
 
