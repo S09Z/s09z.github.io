@@ -2,7 +2,7 @@
 import { ReactNode, useEffect } from 'react'
 
 // ** Layout Import
-import BlankLayout from './layouts/BlankLayout'
+import BlankLayout from '../layouts/BlankLayout'
 
 // ** Next Imports
 import { useRouter } from 'next/router'

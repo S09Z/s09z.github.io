@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "baseUrl": ".",
     "rootDir": "src",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -19,17 +20,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
-    "./src/**/*"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
-  ],
-  "types": [
-    "pnpapi",
-    "next",
-    "next/types/global"
   ]
 }
