@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": "src",
     "target": "es6",
+    "rootDir": "src",
     "lib": [
       "dom",
       "dom.iterable",
@@ -10,7 +9,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
@@ -20,29 +19,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./src/app/*"
-      ]
-    }
+    "incremental": true
   },
   "include": [
-    // "next-env.d.ts",
-    // "**/*.ts",
-    // "**/*.tsx",
-    // ".next/types/**/*.ts"
-    "src",
-    "declaration.d.ts",
-    ".pnp.cjs",
-    ".next/types/**/*.ts"
+    "./src/**/*"
   ],
   "exclude": [
     "node_modules"
+  ],
+  "types": [
+    "pnpapi",
+    "next",
+    "next/types/global"
   ]
 }

@@ -17,7 +17,7 @@ const nextConfig = {
    *
    * @see https://nextjs.org/docs/app/api-reference/next-config-js/basePath
    */
-  basePath: "/nextjs-github-pages",
+  // basePath: "/nextjs-github-pages",
 
   /**
    * Disable server-based image optimization. Next.js does not support
@@ -38,21 +38,16 @@ const nextConfig = {
   },
 
   experimental: {
-    outputStandalone: true,
     outputFileTracingRoot: path.join(__dirname, '../../'),
-    esmExternals: false,
     jsconfigPaths: true, // enables it for both jsconfig.json and tsconfig.json
-    forceSwcTransforms: true,
   },
 
   publicRuntimeConfig: {
     version,
   },
   
-  trailingSlash: true,
   reactStrictMode: true,
   assetPrefix: isProd ? 'https://s09z.github.io.git' : '',
-  swcMinify: false,
 }
 
 module.exports = nextConfig

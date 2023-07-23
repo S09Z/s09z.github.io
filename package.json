@@ -1,15 +1,27 @@
 {
   "name": "profile-web",
   "version": "0.1.0",
+  "author": "ittichai b",
+  "description": "A personal profile web application",
   "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "yarn": ">=2.22.0",
+    "npm": "please-use-yarn"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.1",
+    "@mui/styled-engine-sc": "^5.12.0",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
@@ -43,6 +55,7 @@
     "recharts": "2.1.6",
     "redux": "^4.2.0",
     "redux-saga": "^1.2.2",
+    "styled-components": "^6.0.5",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   },
@@ -73,5 +86,7 @@
     "tailwindcss": "latest",
     "typescript": "next"
   },
-  "packageManager": "yarn@3.6.1"
+  "resolutions": {
+    "webpack": "^5"
+  }
 }
