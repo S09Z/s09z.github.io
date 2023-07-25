@@ -1,20 +1,21 @@
-import Image from 'next/image';
+// eslint-disable-next-line @next/next/no-img-element
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BlankLayout from 'src/layouts/BlankLayout';
 import { NextPageWithLayout } from './page';
+
+const assetPrefix = '/s09z.github.io';
 
 const Home: NextPageWithLayout = () => {
   const { locale } = useRouter();
 
   return (
     <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
-      <Image
-        src="/Google.png"
+      <img
+        src={`${assetPrefix}/Google.png`}
         alt="Google Logo"
         width={272}
         height={92}
-        priority
       />
       <p>
         Google offered in:{' '}

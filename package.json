@@ -16,7 +16,8 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "deploy": "gh-pages -b main -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -85,6 +86,7 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "latest",
+    "gh-pages": "^5.0.0",
     "tailwindcss": "latest",
     "typescript": "next"
   },
