@@ -4,26 +4,35 @@ import { useRouter } from 'next/router';
 import BlankLayout from 'src/layouts/BlankLayout';
 import { NextPageWithLayout } from './page';
 
-const assetPrefix = '/s09z.github.io';
+import {
+  Grid,
+  Avatar
+} from '@mui/material'
+
+const assetPrefix = '.';
 
 const Home: NextPageWithLayout = () => {
   const { locale } = useRouter();
 
   return (
-    <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
-      <img
-        src={`${assetPrefix}/Google.png`}
-        alt="Google Logo"
-        width={272}
-        height={92}
-      />
-      <p>
-        Google offered in:{' '}
-        <Link href="/" locale={locale === 'en' ? 'fr' : 'en'}>
-          {'Français'}
-        </Link>
-      </p>
-    </section>
+    <Grid container className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
+      <Grid item xs={12}>
+        <img
+          src={`${assetPrefix}/next.svg`}
+          alt="NextJS Logo"
+          width={272}
+          height={92}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <p>
+          Google offered in:{' '}
+          <Link href="/" locale={locale === 'en' ? 'fr' : 'en'}>
+            {'Français'}
+          </Link>
+        </p>
+      </Grid>
+    </Grid>
   );
 };
 
