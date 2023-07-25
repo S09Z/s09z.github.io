@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2  # Use actions/setup-node@v2 instead of @v1
+        uses: actions/setup-node@v3  # Use actions/setup-node@v2 instead of @v1
         with:
           node-version: ${{ matrix.node-version }}
           
@@ -37,5 +37,5 @@ jobs:
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.ACTIONS_SECRET_KEY }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./out
