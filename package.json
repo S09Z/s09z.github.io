@@ -20,11 +20,13 @@
     "deploy": "gh-pages -b main -d build"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.1",
     "@mui/styled-engine-sc": "^5.12.0",
+    "@tanstack/react-query": "^4.32.0",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
@@ -32,6 +34,7 @@
     "autoprefixer": "10.4.14",
     "gsap": "^3.12.2",
     "next": "13.4.10",
+    "nprogress": "^0.2.0",
     "postcss": "8.4.26",
     "react": "18.1.0",
     "react-beautiful-dnd": "13.1.0",
