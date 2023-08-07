@@ -1,12 +1,13 @@
 // ** React Imports
-import { Typography, Box, Grid } from "@mui/material";
+import { Typography, Box, Grid, Avatar } from "@mui/material";
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
+import * as _ from "lodash";
 
 // ** Layout Import
 import AnimateSignature from "src/@core/components/AnimateSignature";
-import HackedTextTitle from 'src/@core/components/HackedTextTitle'
+import HackedTextTitle from "src/@core/components/HackedTextTitle";
 
 /**
  *  Set Home URL based on User Roles
@@ -27,14 +28,14 @@ const Home = () => {
   const numStars = 300;
 
   const createStar = (frag) => {
-    if (!refStar.current || !refBanner.current){
+    if (!refStar.current || !refBanner.current) {
       throw new Error("refStar.current is null");
     }
 
     const starElement = refStar.current.cloneNode(true) as HTMLElement;
 
-    const bannerWidth = refBanner.current.offsetWidth
-    const bannerHeight = refBanner.current.offsetHeight
+    const bannerWidth = refBanner.current.offsetWidth;
+    const bannerHeight = refBanner.current.offsetHeight;
 
     frag.appendChild(starElement);
 
@@ -165,9 +166,31 @@ const Home = () => {
   return (
     <Grid container id="banner" ref={refBanner}>
       <Box id="star" ref={refStar}></Box>
-      <HackedTextTitle />
-      <Typography>{"Welcome To my Profile"}</Typography>
-      <AnimateSignature />
+      <Grid item xs={12} className="flex justify-center items-center">
+        <Grid
+          container
+          maxWidth="md"
+          className="m-auto bgNeonGithub h-auto absolute"
+        ></Grid>
+        <Grid
+          container
+          maxWidth="md"
+          className="neon m-auto h-auto absolute z-10 bg-transparent"
+        >
+          {/* <Grid item xs={12} className="bgNeonGithub"></Grid> */}
+          <Grid item xs={12} className="relative h-full">
+            <HackedTextTitle />
+            <Typography>{"Welcome To my Profile"}</Typography>
+            {_.range(4).map((tag) => {
+              <Avatar variant="rounded">
+                <Typography>{"Welcome To my Profile"}</Typography>
+              </Avatar>;
+            })}
+            <img src="./images/neon-signature.png" />
+          </Grid>
+        </Grid>
+      </Grid>
+      {/* <AnimateSignature /> */}
     </Grid>
   );
 };
