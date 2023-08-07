@@ -1,7 +1,7 @@
-const path = require('path')
-const { version } = require('./package.json');
+const path = require("path");
+const { version } = require("./package.json");
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === "production";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -38,16 +38,16 @@ const nextConfig = {
   },
 
   experimental: {
-    outputFileTracingRoot: path.join(__dirname, '../../'),
+    outputFileTracingRoot: path.join(__dirname, "../../"),
     jsconfigPaths: true, // enables it for both jsconfig.json and tsconfig.json
   },
 
   publicRuntimeConfig: {
     version,
   },
-  
-  reactStrictMode: true,
-  assetPrefix: isProd ? 'https://s09z.github.io.git' : '',
-}
 
-module.exports = nextConfig
+  reactStrictMode: true,
+  assetPrefix: ".",
+};
+
+module.exports = nextConfig;

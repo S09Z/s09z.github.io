@@ -1,11 +1,11 @@
 // ** React Imports
-import { ReactNode } from 'react'
+import { ReactNode } from "react";
 
 // ** Next Imports
-import Head from 'next/head'
-import { Router } from 'next/router'
-import type { NextPage } from 'next'
-import type { AppProps } from 'next/app'
+import Head from "next/head";
+import { Router } from "next/router";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
 
 // ** Third Party Import
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -14,7 +14,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import DefaultLayout from "src/@core/layouts/DefaultLayout";
 
 // ** Utils Imports
-import { createEmotionCache } from 'src/@core/utils/create-emotion-cache'
+import { createEmotionCache } from "src/@core/utils/create-emotion-cache";
 
 // ** Emotion Imports
 import { CacheProvider } from "@emotion/react";
@@ -28,7 +28,7 @@ import { Provider } from "react-redux";
 import { store } from "src/store";
 
 // ** Global css styles
-import "../../styles/globals.css";
+import "./../styles/globals.css";
 
 interface LayoutProps {
   getLayout?: (page: ReactNode) => ReactNode;
@@ -39,18 +39,18 @@ type NextPageWithLayout = NextPage & LayoutProps;
 type ExtendedAppProps = AppProps & {
   Component: NextPageWithLayout;
   emotionCache: EmotionCache;
-}
+};
 
 const queryClient = new QueryClient();
 
-const clientSideEmotionCache = createEmotionCache()
+const clientSideEmotionCache = createEmotionCache();
 
 function MyApp(props: ExtendedAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   // Variables
   const getLayout =
-    Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>)
+    Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
     <CacheProvider value={emotionCache}>
