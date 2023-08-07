@@ -5,7 +5,8 @@ import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
 
 // ** Layout Import
-import AnimateSignature from "src/@core/layouts/components/AnimateSignature";
+import AnimateSignature from "src/@core/components/AnimateSignature";
+import HackedTextTitle from 'src/@core/components/HackedTextTitle'
 
 /**
  *  Set Home URL based on User Roles
@@ -164,6 +165,7 @@ const Home = () => {
   return (
     <Grid container id="banner" ref={refBanner}>
       <Box id="star" ref={refStar}></Box>
+      <HackedTextTitle />
       <Typography>{"Welcome To my Profile"}</Typography>
       <AnimateSignature />
     </Grid>
