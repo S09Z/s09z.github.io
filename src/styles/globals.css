@@ -108,8 +108,6 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
-  background: url("./../../public/images/neon-github-workspace.png") no-repeat
-    center;
   opacity: 0.125;
   height: 500px;
   z-index: 1;
