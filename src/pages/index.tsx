@@ -1,13 +1,16 @@
 // ** React Imports
-import { Typography, Box, Grid, Avatar } from "@mui/material";
+import { Typography, Box, Grid, Avatar, Stack, Chip } from "@mui/material";
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
+import Image from "next/image";
 import * as _ from "lodash";
 
 // ** Layout Import
 import AnimateSignature from "src/@core/components/AnimateSignature";
 import HackedTextTitle from "src/@core/components/HackedTextTitle";
+
+import bgNeonGithub from "public/images/neon-github-workspace.png";
 
 /**
  *  Set Home URL based on User Roles
@@ -171,26 +174,42 @@ const Home = () => {
           container
           maxWidth="md"
           className="m-auto bgNeonGithub h-auto absolute"
+          sx={{
+            background: `url(${bgNeonGithub.src}) no-repeat center`,
+          }}
         ></Grid>
         <Grid
           container
           maxWidth="md"
           className="neon m-auto h-auto absolute z-10 bg-transparent"
         >
-          {/* <Grid item xs={12} className="bgNeonGithub"></Grid> */}
           <Grid item xs={12} className="relative h-full">
             <HackedTextTitle />
-            <Typography>{"Welcome To my Profile"}</Typography>
-            {_.range(4).map((tag) => {
-              <Avatar variant="rounded">
-                <Typography>{"Welcome To my Profile"}</Typography>
-              </Avatar>;
-            })}
-            <img src="./images/neon-signature.png" />
+            <Typography>{"Full Stack Developer"}</Typography>
+            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+              {_.range(20).map((tag: number) => (
+                <Chip
+                  label={`Label ${tag}`}
+                  color="primary"
+                  variant="outlined"
+                  key={tag}
+                />
+              ))}
+            </Stack>
+            <Grid
+              sx={{ width: "100%", height: "150px", position: "relative" }}
+              className="m-auto"
+            >
+              <Image
+                src="./images/neon-signature.png"
+                alt="neonSignature"
+                layout="fill"
+                objectFit="contain"
+              />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-      {/* <AnimateSignature /> */}
     </Grid>
   );
 };
