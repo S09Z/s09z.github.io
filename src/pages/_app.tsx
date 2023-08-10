@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 
 // ** Next Imports
 import Head from "next/head";
-import { Router } from "next/router";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 // ** Third Party Import
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 // ** Component Imports
@@ -45,6 +45,12 @@ const queryClient = new QueryClient();
 
 const clientSideEmotionCache = createEmotionCache();
 
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Roboto Mono", sans-serif',
+  },
+});
+
 function MyApp(props: ExtendedAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
@@ -65,9 +71,11 @@ function MyApp(props: ExtendedAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          {getLayout(<Component {...pageProps} />)}
-        </QueryClientProvider>
+        <ThemeProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            {getLayout(<Component {...pageProps} />)}
+          </QueryClientProvider>
+        </ThemeProvider>
       </Provider>
     </CacheProvider>
   );

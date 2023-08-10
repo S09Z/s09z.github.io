@@ -143,6 +143,9 @@ const Home = () => {
     return min + (max - min) * Math.random();
   };
 
+  const text = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.\n
+  \nPhasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,`;
+
   const handleUpdate = (x: number, y: number) => {
     document.documentElement.style.setProperty("--cursorX", `${x}px`);
     document.documentElement.style.setProperty("--cursorY", `${y}px`);
@@ -181,9 +184,14 @@ const Home = () => {
         <Grid
           container
           maxWidth="md"
-          className="neon m-auto h-auto absolute z-10 bg-transparent"
+          className="neon m-auto h-full absolute z-10 bg-transparent overflow-hidden overflow-y-scroll p-2"
         >
-          <Grid item xs={12} className="relative h-full">
+          <Grid
+            item
+            xs={12}
+            className="relative h-auto flex gap-4"
+            sx={{ flexDirection: "column" }}
+          >
             <HackedTextTitle />
             <Typography>{"Full Stack Developer"}</Typography>
             <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
@@ -196,17 +204,48 @@ const Home = () => {
                 />
               ))}
             </Stack>
-            <Grid
-              sx={{ width: "100%", height: "150px", position: "relative" }}
-              className="m-auto"
-            >
-              <Image
-                src="./images/neon-signature.png"
-                alt="neonSignature"
-                layout="fill"
-                objectFit="contain"
-              />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            className="relative h-full flex gap-4 overflow-hidden overflow-y-scroll"
+            sx={{ flexDirection: "column" }}
+          >
+            <Grid className="mx-auto">
+              <Typography variant="body1">{"Summary Text"}</Typography>
             </Grid>
+            <Grid className="mx-auto">
+              <Typography>
+                {text.split("\n").map((line) => `${line}<br />`)}
+              </Typography>
+            </Grid>
+
+            <Grid className="mx-auto">
+              <Typography variant="body1">{"Summary Text"}</Typography>
+            </Grid>
+            <Grid className="mx-auto">
+              <Typography>
+                {text.split("\n").map((line) => `${line}<br />`)}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            className="relative h-full flex gap-4"
+            sx={{
+              flexDirection: "column",
+              height: "150px",
+              position: "relative",
+              width: "100%",
+            }}
+          >
+            <Image
+              src="./images/neon-signature.png"
+              alt="neonSignature"
+              layout="fill"
+              objectFit="contain"
+            />
           </Grid>
         </Grid>
       </Grid>
