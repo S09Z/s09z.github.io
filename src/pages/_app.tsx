@@ -7,7 +7,7 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 // ** Third Party Import
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 // ** Component Imports
@@ -47,7 +47,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 const theme = createTheme({
   typography: {
-    fontFamily: '"Roboto Mono", sans-serif',
+    fontFamily: '"Roboto Mono", monospace',
   },
 });
 
