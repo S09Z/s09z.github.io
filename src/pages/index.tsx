@@ -1,5 +1,5 @@
 // ** React Imports
-import { Typography, Box, Grid, Avatar, Stack, Chip } from "@mui/material";
+import { Typography, Box, Grid, Container, Stack, Chip } from "@mui/material";
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
@@ -27,8 +27,8 @@ const Home = () => {
   // const [eases, setEases] = useState<typeof RoughEase[]>([])
   const [eases, setEases] = useState<string[]>([]);
 
-  const numAnimations = 50;
-  const numStars = 300;
+  const numAnimations = 100;
+  const numStars = 200;
 
   const createStar = (frag) => {
     if (!refStar.current || !refBanner.current) {
@@ -61,9 +61,9 @@ const Home = () => {
       const scale = random(0.15, 0.4);
 
       const appear = "+=" + random(0.3, 0.8);
-      const delay = "+=" + random(2, 6);
-      const duration1 = random(0.3, 1);
-      const duration2 = random(0.3, 1);
+      const delay = "+=" + random(5, 12);
+      const duration1 = random(1, 2);
+      const duration2 = random(1, 2);
 
       tl.to(
         starElement,
@@ -170,86 +170,105 @@ const Home = () => {
   }, []);
 
   return (
-    <Grid container id="banner" ref={refBanner}>
-      <Box id="star" ref={refStar}></Box>
-      <Grid item xs={12} className="flex justify-center items-center">
+    <Box
+      className="relative flex h-auto"
+      ref={refBanner}
+      sx={{
+        flexDirection: "column",
+        justifyContent: "start",
+        alignItems: "start",
+      }}
+    >
+      <Grid
+        container
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="center"
+        maxWidth="lg"
+        className="mx-auto py-28 relative"
+        sx={{
+          top: "calc(50% - 250px)",
+        }}
+      >
         <Grid
-          container
-          maxWidth="md"
-          className="m-auto bgNeonGithub h-auto absolute"
+          item
+          xs={12}
+          className="m-auto bgNeonGithub h-auto absolute w-full"
           sx={{
             background: `url(${bgNeonGithub.src}) no-repeat center`,
           }}
         ></Grid>
-        <Grid
-          container
-          maxWidth="md"
-          className="neon m-auto h-full absolute z-10 bg-transparent overflow-hidden overflow-y-scroll p-2"
-        >
+        <Grid item xs={12}>
           <Grid
-            item
-            xs={12}
-            className="relative h-auto flex gap-4"
-            sx={{ flexDirection: "column" }}
+            container
+            className="neon m-auto h-auto z-10 bg-transparent p-2"
           >
-            <HackedTextTitle />
-            <Typography>{"Full Stack Developer"}</Typography>
-            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-              {_.range(20).map((tag: number) => (
-                <Chip
-                  label={`Label ${tag}`}
-                  color="primary"
-                  variant="outlined"
-                  key={tag}
-                />
-              ))}
-            </Stack>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            className="relative h-full flex gap-4 overflow-hidden overflow-y-scroll"
-            sx={{ flexDirection: "column" }}
-          >
-            <Grid className="mx-auto">
-              <Typography variant="body1">{"Summary Text"}</Typography>
+            <Grid
+              item
+              xs={12}
+              className="relative h-auto flex gap-4"
+              sx={{ flexDirection: "column" }}
+            >
+              <HackedTextTitle />
+              <Typography>{"Full Stack Developer"}</Typography>
+              <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                {_.range(20).map((tag: number) => (
+                  <Chip
+                    label={`Label ${tag}`}
+                    color="primary"
+                    variant="outlined"
+                    key={tag}
+                  />
+                ))}
+              </Stack>
             </Grid>
-            <Grid className="mx-auto">
-              <Typography>
-                {text.split("\n").map((line) => `${line}<br />`)}
-              </Typography>
-            </Grid>
+            <Grid
+              item
+              xs={12}
+              className="relative h-full flex gap-4"
+              sx={{ flexDirection: "column" }}
+            >
+              <Grid className="mx-auto">
+                <Typography variant="body1">{"Summary Text"}</Typography>
+              </Grid>
+              <Grid className="mx-auto">
+                <Typography>
+                  {text.split("\n").map((line) => `${line}<br />`)}
+                </Typography>
+              </Grid>
 
-            <Grid className="mx-auto">
-              <Typography variant="body1">{"Summary Text"}</Typography>
+              <Grid className="mx-auto">
+                <Typography variant="body1">{"Summary Text"}</Typography>
+              </Grid>
+              <Grid className="mx-auto">
+                <Typography>
+                  {text.split("\n").map((line) => `${line}<br />`)}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid className="mx-auto">
-              <Typography>
-                {text.split("\n").map((line) => `${line}<br />`)}
-              </Typography>
+            <Grid
+              item
+              xs={12}
+              className="relative h-full flex gap-4"
+              sx={{
+                flexDirection: "column",
+                height: "150px",
+                position: "relative",
+                width: "100%",
+              }}
+            >
+              <Image
+                src="./images/neon-signature.png"
+                alt="neonSignature"
+                layout="fill"
+                objectFit="contain"
+              />
             </Grid>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            className="relative h-full flex gap-4"
-            sx={{
-              flexDirection: "column",
-              height: "150px",
-              position: "relative",
-              width: "100%",
-            }}
-          >
-            <Image
-              src="./images/neon-signature.png"
-              alt="neonSignature"
-              layout="fill"
-              objectFit="contain"
-            />
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+      <Box id="star" ref={refStar}></Box>
+    </Box>
   );
 };
 
