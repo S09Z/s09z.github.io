@@ -210,8 +210,8 @@ const Home = () => {
               <Typography variant="body1" align="center">{"Full Stack Developer"}</Typography>
             </Grid>
             <Grid item xs={12}>
-              {["devicon-linkedin-plain", "devicon-github-original-wordmark"].map((icon) => (
-                <IconButton aria-label="delete" color="success">
+              {["devicon-linkedin-plain", "devicon-github-original-wordmark"].map((icon, index) => (
+                <IconButton aria-label="delete" color="success" key={index}>
                   <i className={`${icon}`}></i>
                 </IconButton>
               ))}
