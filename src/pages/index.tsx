@@ -1,5 +1,5 @@
 // ** React Imports
-import { Typography, Box, Grid, Container, Stack, Chip } from "@mui/material";
+import { Typography, Box, Grid, Divider, Stack, Chip, IconButton } from "@mui/material";
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
@@ -29,6 +29,22 @@ const Home = () => {
 
   const numAnimations = 100;
   const numStars = 200;
+  const technologyList = [
+    { name: "NextJS" },
+    { name: "VueJS" },
+    { name: "NuxtJS" },
+    { name: "ReactJS" },
+    { name: "Express" },
+    { name: "NodeJS" },
+    { name: "HTML/CSS" },
+    { name: "TailwindCSS" },
+    { name: "Bootstrap" },
+    { name: "PHP" },
+    { name: "Laravel" },
+    { name: "Docker" },
+    { name: "CI/CD" },
+    { name: "Cypress" },
+  ]
 
   const createStar = (frag) => {
     if (!refStar.current || !refBanner.current) {
@@ -88,22 +104,6 @@ const Home = () => {
 
   useEffect(() => {
     const frag = document.createDocumentFragment();
-    // for (let i = 0; i < numAnimations; i++) {
-    //   const ease = gsap.registerEase("", () => ({
-    //     name: `roughEase${i}`,
-    //     ease: "none",
-    //     roughEase: {
-    //       strength: random(1, 3),
-    //       points: Math.floor(random(50, 200)),
-    //       taper: "both",
-    //       randomize: true,
-    //       clamp: true,
-    //     },
-    //   }));
-
-    //   eases.push(ease);
-    // }
-
     const newEases: string[] = [];
 
     for (let i = 0; i < numAnimations; i++) {
@@ -186,9 +186,6 @@ const Home = () => {
         alignItems="center"
         maxWidth="lg"
         className="mx-auto py-28 relative"
-        sx={{
-          top: "calc(50% - 250px)",
-        }}
       >
         <Grid
           item
@@ -202,7 +199,23 @@ const Home = () => {
           <Grid
             container
             className="neon m-auto h-auto z-10 bg-transparent p-2"
+            spacing={4}
           >
+            <Grid
+              item 
+              xs={12}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography variant="body1" align="center">{"Full Stack Developer"}</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              {["devicon-linkedin-plain", "devicon-github-original-wordmark"].map((icon) => (
+                <IconButton aria-label="delete" color="success">
+                  <i className={`${icon}`}></i>
+                </IconButton>
+              ))}
+            </Grid>
             <Grid
               item
               xs={12}
@@ -210,40 +223,67 @@ const Home = () => {
               sx={{ flexDirection: "column" }}
             >
               <HackedTextTitle />
-              <Typography>{"Full Stack Developer"}</Typography>
               <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-                {_.range(20).map((tag: number) => (
+                {technologyList.map((tag, index) => (
                   <Chip
-                    label={`Label ${tag}`}
+                    label={`Label ${tag.name}`}
                     color="primary"
                     variant="outlined"
-                    key={tag}
+                    key={index}
                   />
                 ))}
               </Stack>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              className="relative h-full flex gap-4"
-              sx={{ flexDirection: "column" }}
-            >
-              <Grid className="mx-auto">
-                <Typography variant="body1">{"Summary Text"}</Typography>
+            <Grid item xs={12} className="relative">
+              <Grid display="flex" flexDirection="row" gap="1rem">
+                <Grid className="relative flex-none">
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    style={{ minHeight: "100%", background: "white", width: "8px", borderRadius: ".25rem" }}
+                  />
+                  <Typography variant="body1" 
+                    sx={{
+                      position: "absolute",
+                      top: "5.5rem",
+                      left: "-7.25rem",
+                      textAlign: "right",
+                      width: "200px",
+                      transform: "rotate(-90deg)"
+                    }}
+                  >{"Summary Overview"}</Typography>
+                </Grid>
+                <Grid className="relative flex-1">
+                  <Typography>
+                    {text.split("\n").map((line) => `${line}<br />`)}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid className="mx-auto">
-                <Typography>
-                  {text.split("\n").map((line) => `${line}<br />`)}
-                </Typography>
-              </Grid>
-
-              <Grid className="mx-auto">
-                <Typography variant="body1">{"Summary Text"}</Typography>
-              </Grid>
-              <Grid className="mx-auto">
-                <Typography>
-                  {text.split("\n").map((line) => `${line}<br />`)}
-                </Typography>
+            </Grid>
+            <Grid item xs={12} className="relative">
+              <Grid display="flex" flexDirection="row" gap="1rem">
+                <Grid className="relative flex-none">
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    style={{ minHeight: "100%", background: "white", width: "8px", borderRadius: ".25rem" }}
+                  />
+                  <Typography variant="body1" 
+                    sx={{
+                      position: "absolute",
+                      top: "5.5rem",
+                      left: "-7.25rem",
+                      textAlign: "right",
+                      width: "200px",
+                      transform: "rotate(-90deg)"
+                    }}
+                  >{"Summary Overview"}</Typography>
+                </Grid>
+                <Grid className="relative flex-1">
+                  <Typography>
+                    {text.split("\n").map((line) => `${line}<br />`)}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
             <Grid

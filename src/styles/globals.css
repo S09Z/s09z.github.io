@@ -11,7 +11,7 @@ body {
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
-  color: #fff;
+  color: #f9f9f9;
   text-align: left;
   /* background-color: #000; */
 }
@@ -41,7 +41,7 @@ body {
 
 /* body {
   background: rgb(255,255,255);
-  color: #fff;
+  color: #f9f9f9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@ body {
   opacity: 0;
 }
 
-/* @media (hover: hover) {
+@media (hover: hover) {
   :root {
     --flashlightCursorX: 50vw;
     --flashlightCursorY: 50vh;
@@ -88,21 +88,21 @@ body {
     pointer-events: none;
     background: var(--flashlightBg);
   }
-} */
+}
 
 .neon {
   padding: 4rem;
-  border: 0.125rem solid #fff;
+  border: 0.125rem solid #f9f9f9;
   border-radius: 2rem;
-  color: #fff;
-  box-shadow: 0 0 0.5rem #fff, inset 0 0 0.25rem #fff, 0 0 1rem #fff,
-    inset 0 0 0.5rem #fff, 0 0 2rem #fff, inset 0 0 1rem #fff;
+  color: #f9f9f9;
+  box-shadow: 0 0 0.5rem #f9f9f9, inset 0 0 0.25rem #f9f9f9, 0 0 1rem #f9f9f9,
+    inset 0 0 0.5rem #f9f9f9, 0 0 2rem #f9f9f9, inset 0 0 1rem #f9f9f9;
 }
 .neon::-moz-selection {
-  background-color: #fff;
+  background-color: #f9f9f9;
 }
 .neon::selection {
-  background-color: #fff;
+  background-color: #f9f9f9;
 }
 .neon:focus {
   outline: none;
@@ -115,4 +115,5 @@ body {
   opacity: 0.125;
   height: 500px;
   z-index: 1;
+  top: calc(50% - 250px)
 }
