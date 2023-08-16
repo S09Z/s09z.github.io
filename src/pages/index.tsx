@@ -1,5 +1,6 @@
 // ** React Imports
 import { Typography, Box, Grid, Divider, Stack, Chip, IconButton, Avatar } from "@mui/material";
+
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
