@@ -1,10 +1,17 @@
 // ** React Imports
-import { Typography, Box, Grid, Divider, Stack, Chip, IconButton } from "@mui/material";
+import { Typography, Box, Grid, Divider, Stack, Chip, IconButton, Avatar } from "@mui/material";
+
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
 import Image from "next/image";
 import * as _ from "lodash";
+
+import {
+  CallOutlined,
+  EmailOutlined,
+  RoomOutlined
+} from '@mui/icons-material';
 
 // ** Layout Import
 import AnimateSignature from "src/@core/components/AnimateSignature";
@@ -30,20 +37,27 @@ const Home = () => {
   const numAnimations = 100;
   const numStars = 200;
   const technologyList = [
-    { name: "NextJS" },
-    { name: "VueJS" },
-    { name: "NuxtJS" },
-    { name: "ReactJS" },
-    { name: "Express" },
-    { name: "NodeJS" },
-    { name: "HTML/CSS" },
-    { name: "TailwindCSS" },
-    { name: "Bootstrap" },
-    { name: "PHP" },
-    { name: "Laravel" },
-    { name: "Docker" },
-    { name: "CI/CD" },
-    { name: "Cypress" },
+    { name: "NextJS", icon: "devicon-nextjs-original" },
+    { name: "VueJS", icon: "devicon-vuejs-plain" },
+    { name: "NuxtJS", icon: "devicon-nuxtjs-plain" },
+    { name: "ReactJS", icon: "devicon-react-original" },
+    { name: "Express", icon: "devicon-express-original" },
+    { name: "NodeJS", icon: "devicon-nodejs-plain" },
+    { name: "CSS", icon: "devicon-css3-plain" },
+    { name: "HTML", icon: "devicon-html5-plain" },
+    { name: "Javascript", icon: "devicon-javascript-plain" },
+    { name: "Typescript", icon: "devicon-typescript-plain" },
+    { name: "TailwindCSS", icon: "devicon-tailwindcss-plain" },
+    { name: "Bootstrap", icon: "devicon-bootstrap-plain"},
+    { name: "PHP", icon: "devicon-php-plain"},
+    { name: "Laravel", icon: "devicon-laravel-plain"},
+    { name: "Docker", icon: "devicon-docker-plain" },
+    { name: "Git", icon: "devicon-git-plain" },
+    { name: "Elixir", icon: "devicon-elixir-plain" },
+    { name: "Go", icon: "devicon-go-original-wordmark" },
+    { name: "MySQL", icon: "devicon-mysql-plain" },
+    { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+    { name: "Jest", icon: "devicon-jest-plain" },
   ]
 
   const createStar = (frag) => {
@@ -208,13 +222,17 @@ const Home = () => {
               alignItems="center"
             >
               <Typography variant="body1" align="center">{"Full Stack Developer"}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              {["devicon-linkedin-plain", "devicon-github-original-wordmark"].map((icon, index) => (
-                <IconButton aria-label="delete" color="success" key={index}>
-                  <i className={`${icon}`}></i>
-                </IconButton>
-              ))}
+              <HackedTextTitle />
+              <Grid item xs={12} display='flex' flexDirection='row' justifyContent='center' alignItems='center' gap='2'>
+                {["devicon-linkedin-plain", "devicon-github-original"].map((icon, index) => (
+                  <IconButton aria-label="delete" sx={{ color: '#fff' }} key={index} size="small">
+                    <i className={`${icon}`}></i>
+                  </IconButton>
+                ))}
+                <CallOutlined />
+                <EmailOutlined />
+                <RoomOutlined />
+              </Grid>
             </Grid>
             <Grid
               item
@@ -222,14 +240,15 @@ const Home = () => {
               className="relative h-auto flex gap-4"
               sx={{ flexDirection: "column" }}
             >
-              <HackedTextTitle />
               <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
                 {technologyList.map((tag, index) => (
                   <Chip
-                    label={`Label ${tag.name}`}
-                    color="primary"
+                    icon={<i className={`${tag.icon}`}></i>}
+                    label={` ${tag.name}`}
+                    color="warning"
                     variant="outlined"
                     key={index}
+                    sx={{ padding: "0 .125rem 0 .5rem" }}
                   />
                 ))}
               </Stack>
