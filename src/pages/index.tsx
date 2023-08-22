@@ -1,22 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // ** React Imports
-import { Typography, Box, Grid, Divider, Stack, Chip, IconButton, Avatar } from "@mui/material";
+import { styled, useTheme } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Grid,
+  Divider,
+  Stack,
+  Chip,
+  Button,
+  Avatar,
+  ButtonProps,
+} from "@mui/material";
 
-import { ReactNode, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
-import { RoughEase } from "gsap/EasePack";
 import Image from "next/image";
 import * as _ from "lodash";
 
-import {
-  CallOutlined,
-  EmailOutlined,
-  RoomOutlined
-} from '@mui/icons-material';
+import { CallOutlined, EmailOutlined, RoomOutlined } from "@mui/icons-material";
 
 // ** Layout Import
-import AnimateSignature from "src/@core/components/AnimateSignature";
 import HackedTextTitle from "src/@core/components/HackedTextTitle";
-
 import bgNeonGithub from "public/images/neon-github-workspace.png";
 
 /**
@@ -28,6 +33,8 @@ export const getHomeRoute = (role: string) => {
 };
 
 const Home = () => {
+  const theme = useTheme();
+
   const refBanner = useRef<HTMLDivElement | null>(null);
   const refStar = useRef<HTMLDivElement | null>(null);
   const stars: { element: HTMLElement; timeline: TimelineMax }[] = [];
@@ -48,9 +55,9 @@ const Home = () => {
     { name: "Javascript", icon: "devicon-javascript-plain" },
     { name: "Typescript", icon: "devicon-typescript-plain" },
     { name: "TailwindCSS", icon: "devicon-tailwindcss-plain" },
-    { name: "Bootstrap", icon: "devicon-bootstrap-plain"},
-    { name: "PHP", icon: "devicon-php-plain"},
-    { name: "Laravel", icon: "devicon-laravel-plain"},
+    { name: "Bootstrap", icon: "devicon-bootstrap-plain" },
+    { name: "PHP", icon: "devicon-php-plain" },
+    { name: "Laravel", icon: "devicon-laravel-plain" },
     { name: "Docker", icon: "devicon-docker-plain" },
     { name: "Git", icon: "devicon-git-plain" },
     { name: "Elixir", icon: "devicon-elixir-plain" },
@@ -58,7 +65,7 @@ const Home = () => {
     { name: "MySQL", icon: "devicon-mysql-plain" },
     { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
     { name: "Jest", icon: "devicon-jest-plain" },
-  ]
+  ];
 
   const createStar = (frag) => {
     if (!refStar.current || !refBanner.current) {
@@ -215,23 +222,77 @@ const Home = () => {
             className="neon m-auto h-auto z-10 bg-transparent p-2"
             spacing={4}
           >
-            <Grid
-              item 
-              xs={12}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Typography variant="body1" align="center">{"Full Stack Developer"}</Typography>
+            <Grid item xs={12} justifyContent="center" alignItems="center">
+              <Typography variant="body1" align="center">
+                {"Full Stack Developer"}
+              </Typography>
               <HackedTextTitle />
-              <Grid item xs={12} display='flex' flexDirection='row' justifyContent='center' alignItems='center' gap='2'>
-                {["devicon-linkedin-plain", "devicon-github-original"].map((icon, index) => (
-                  <IconButton aria-label="delete" sx={{ color: '#fff' }} key={index} size="small">
-                    <i className={`${icon}`}></i>
-                  </IconButton>
-                ))}
-                <CallOutlined />
-                <EmailOutlined />
-                <RoomOutlined />
+              <Grid
+                item
+                xs={12}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                gap={2}
+              >
+                <ContactInformationIconLabel
+                  startIcon={<CallOutlined />}
+                  href="tel:(+66)97-247-1491"
+                >
+                  {"(+66)97-247-1491"}
+                </ContactInformationIconLabel>
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  sx={{ borderColor: "#eceff1" }}
+                />
+                <ContactInformationIconLabel
+                  startIcon={<EmailOutlined />}
+                  href="mailto:i.boonyarakthunya@gmail.com"
+                >
+                  {"i.boonyarakthunya@gmail.com"}
+                </ContactInformationIconLabel>
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  sx={{ borderColor: "#eceff1" }}
+                />
+                <ContactInformationIconLabel
+                  startIcon={<RoomOutlined />}
+                  href="https://www.google.com/maps/place/%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3/@13.7250481,100.3034502,10z/data=!3m1!4b1!4m6!3m5!1s0x311d6032280d61f3:0x10100b25de24820!8m2!3d13.7563309!4d100.5017651!16zL20vMGZuMmc?entry=ttu"
+                  className="select-none cursor-not-allowed"
+                >
+                  {"Thailand/Bangkok"}
+                </ContactInformationIconLabel>
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  sx={{ borderColor: "#eceff1" }}
+                />
+                <ContactInformationIconLabel
+                  size="small"
+                  startIcon={<i className="devicon-github-original"></i>}
+                  href="https://github.com/S09Z"
+                >
+                  {"S09Z"}
+                </ContactInformationIconLabel>
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  sx={{ borderColor: "#eceff1" }}
+                />
+                <ContactInformationIconLabel
+                  size="small"
+                  startIcon={<i className="devicon-linkedin-plain"></i>}
+                  href="https://www.linkedin.com/in/ittichaib/"
+                >
+                  {"ittichaib"}
+                </ContactInformationIconLabel>
               </Grid>
             </Grid>
             <Grid
@@ -259,18 +320,26 @@ const Home = () => {
                   <Divider
                     orientation="vertical"
                     flexItem
-                    style={{ minHeight: "100%", background: "white", width: "8px", borderRadius: ".25rem" }}
+                    style={{
+                      minHeight: "100%",
+                      background: "white",
+                      width: "8px",
+                      borderRadius: ".25rem",
+                    }}
                   />
-                  <Typography variant="body1" 
+                  <Typography
+                    variant="body1"
                     sx={{
                       position: "absolute",
                       top: "5.5rem",
                       left: "-7.25rem",
                       textAlign: "right",
                       width: "200px",
-                      transform: "rotate(-90deg)"
+                      transform: "rotate(-90deg)",
                     }}
-                  >{"Summary Overview"}</Typography>
+                  >
+                    {"Summary Overview"}
+                  </Typography>
                 </Grid>
                 <Grid className="relative flex-1">
                   <Typography>
@@ -285,18 +354,26 @@ const Home = () => {
                   <Divider
                     orientation="vertical"
                     flexItem
-                    style={{ minHeight: "100%", background: "white", width: "8px", borderRadius: ".25rem" }}
+                    style={{
+                      minHeight: "100%",
+                      background: "white",
+                      width: "8px",
+                      borderRadius: ".25rem",
+                    }}
                   />
-                  <Typography variant="body1" 
+                  <Typography
+                    variant="body1"
                     sx={{
                       position: "absolute",
                       top: "5.5rem",
                       left: "-7.25rem",
                       textAlign: "right",
                       width: "200px",
-                      transform: "rotate(-90deg)"
+                      transform: "rotate(-90deg)",
                     }}
-                  >{"Summary Overview"}</Typography>
+                  >
+                    {"Summary Overview"}
+                  </Typography>
                 </Grid>
                 <Grid className="relative flex-1">
                   <Typography>
@@ -332,3 +409,14 @@ const Home = () => {
 };
 
 export default Home;
+
+const ContactInformationIconLabel = styled(Button)<ButtonProps>(
+  ({ theme }) => ({
+    "& *": {
+      color: "#FFFFFF",
+      textTransform: "capitalize",
+    },
+    color: "#b0bec5",
+    textTransform: "capitalize",
+  })
+);

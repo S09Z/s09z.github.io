@@ -61,13 +61,8 @@ function MyApp(props: ExtendedAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>
-          Flow - ระบบจัดการเอกสาร เซ็นออนไลน์ และบริหารเวิร์คโฟลว์การทำงาน
-        </title>
-        <meta
-          name="description"
-          content="จากปัญหาในการทำงานเอกสารของบริษัทมหาชนไทยที่มีพนักงานกว่า 1,000 คน สู่การพัฒนาโปรแกรม Flow (BPM Platform) ที่มีระบบจัดการเอกสาร บริหารเวิร์คโฟลว์การทำงาน ช่วยแก้ปัญหาความยุ่งยากและลดเวลาทำงานเอกสารภายในองค์กรได้จริง"
-        />
+        <title>S09Z - Portfolio</title>
+        <meta name="description" content="S098 Portfolio - Ittichai Boonyarakthunya - Full Stack Developer" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>
