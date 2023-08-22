@@ -5,7 +5,7 @@ import { Typography, Grid } from "@mui/material";
 const HackedTextTitle = () => {
   const refTitle = useRef<HTMLDivElement | null>(null);
 
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!@#$%&";
   const targetText = "Ittichai Boonyarakthunya";
   const [animationInterval, setAnimationInterval] =
     useState<NodeJS.Timeout | null>(null);

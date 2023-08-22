@@ -1,10 +1,17 @@
 // ** React Imports
-import { Typography, Box, Grid, Container, Stack, Chip } from "@mui/material";
+import { Typography, Box, Grid, Divider, Stack, Chip, IconButton, Avatar } from "@mui/material";
+
 import { ReactNode, useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
 import Image from "next/image";
 import * as _ from "lodash";
+
+import {
+  CallOutlined,
+  EmailOutlined,
+  RoomOutlined
+} from '@mui/icons-material';
 
 // ** Layout Import
 import AnimateSignature from "src/@core/components/AnimateSignature";
@@ -29,6 +36,29 @@ const Home = () => {
 
   const numAnimations = 100;
   const numStars = 200;
+  const technologyList = [
+    { name: "NextJS", icon: "devicon-nextjs-original" },
+    { name: "VueJS", icon: "devicon-vuejs-plain" },
+    { name: "NuxtJS", icon: "devicon-nuxtjs-plain" },
+    { name: "ReactJS", icon: "devicon-react-original" },
+    { name: "Express", icon: "devicon-express-original" },
+    { name: "NodeJS", icon: "devicon-nodejs-plain" },
+    { name: "CSS", icon: "devicon-css3-plain" },
+    { name: "HTML", icon: "devicon-html5-plain" },
+    { name: "Javascript", icon: "devicon-javascript-plain" },
+    { name: "Typescript", icon: "devicon-typescript-plain" },
+    { name: "TailwindCSS", icon: "devicon-tailwindcss-plain" },
+    { name: "Bootstrap", icon: "devicon-bootstrap-plain"},
+    { name: "PHP", icon: "devicon-php-plain"},
+    { name: "Laravel", icon: "devicon-laravel-plain"},
+    { name: "Docker", icon: "devicon-docker-plain" },
+    { name: "Git", icon: "devicon-git-plain" },
+    { name: "Elixir", icon: "devicon-elixir-plain" },
+    { name: "Go", icon: "devicon-go-original-wordmark" },
+    { name: "MySQL", icon: "devicon-mysql-plain" },
+    { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+    { name: "Jest", icon: "devicon-jest-plain" },
+  ]
 
   const createStar = (frag) => {
     if (!refStar.current || !refBanner.current) {
@@ -88,22 +118,6 @@ const Home = () => {
 
   useEffect(() => {
     const frag = document.createDocumentFragment();
-    // for (let i = 0; i < numAnimations; i++) {
-    //   const ease = gsap.registerEase("", () => ({
-    //     name: `roughEase${i}`,
-    //     ease: "none",
-    //     roughEase: {
-    //       strength: random(1, 3),
-    //       points: Math.floor(random(50, 200)),
-    //       taper: "both",
-    //       randomize: true,
-    //       clamp: true,
-    //     },
-    //   }));
-
-    //   eases.push(ease);
-    // }
-
     const newEases: string[] = [];
 
     for (let i = 0; i < numAnimations; i++) {
@@ -186,9 +200,6 @@ const Home = () => {
         alignItems="center"
         maxWidth="lg"
         className="mx-auto py-28 relative"
-        sx={{
-          top: "calc(50% - 250px)",
-        }}
       >
         <Grid
           item
@@ -202,48 +213,96 @@ const Home = () => {
           <Grid
             container
             className="neon m-auto h-auto z-10 bg-transparent p-2"
+            spacing={4}
           >
+            <Grid
+              item 
+              xs={12}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography variant="body1" align="center">{"Full Stack Developer"}</Typography>
+              <HackedTextTitle />
+              <Grid item xs={12} display='flex' flexDirection='row' justifyContent='center' alignItems='center' gap='2'>
+                {["devicon-linkedin-plain", "devicon-github-original"].map((icon, index) => (
+                  <IconButton aria-label="delete" sx={{ color: '#fff' }} key={index} size="small">
+                    <i className={`${icon}`}></i>
+                  </IconButton>
+                ))}
+                <CallOutlined />
+                <EmailOutlined />
+                <RoomOutlined />
+              </Grid>
+            </Grid>
             <Grid
               item
               xs={12}
               className="relative h-auto flex gap-4"
               sx={{ flexDirection: "column" }}
             >
-              <HackedTextTitle />
-              <Typography>{"Full Stack Developer"}</Typography>
               <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-                {_.range(20).map((tag: number) => (
+                {technologyList.map((tag, index) => (
                   <Chip
-                    label={`Label ${tag}`}
-                    color="primary"
+                    icon={<i className={`${tag.icon}`}></i>}
+                    label={` ${tag.name}`}
+                    color="warning"
                     variant="outlined"
-                    key={tag}
+                    key={index}
+                    sx={{ padding: "0 .125rem 0 .5rem" }}
                   />
                 ))}
               </Stack>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              className="relative h-full flex gap-4"
-              sx={{ flexDirection: "column" }}
-            >
-              <Grid className="mx-auto">
-                <Typography variant="body1">{"Summary Text"}</Typography>
+            <Grid item xs={12} className="relative">
+              <Grid display="flex" flexDirection="row" gap="1rem">
+                <Grid className="relative flex-none">
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    style={{ minHeight: "100%", background: "white", width: "8px", borderRadius: ".25rem" }}
+                  />
+                  <Typography variant="body1" 
+                    sx={{
+                      position: "absolute",
+                      top: "5.5rem",
+                      left: "-7.25rem",
+                      textAlign: "right",
+                      width: "200px",
+                      transform: "rotate(-90deg)"
+                    }}
+                  >{"Summary Overview"}</Typography>
+                </Grid>
+                <Grid className="relative flex-1">
+                  <Typography>
+                    {text.split("\n").map((line) => `${line}<br />`)}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid className="mx-auto">
-                <Typography>
-                  {text.split("\n").map((line) => `${line}<br />`)}
-                </Typography>
-              </Grid>
-
-              <Grid className="mx-auto">
-                <Typography variant="body1">{"Summary Text"}</Typography>
-              </Grid>
-              <Grid className="mx-auto">
-                <Typography>
-                  {text.split("\n").map((line) => `${line}<br />`)}
-                </Typography>
+            </Grid>
+            <Grid item xs={12} className="relative">
+              <Grid display="flex" flexDirection="row" gap="1rem">
+                <Grid className="relative flex-none">
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    style={{ minHeight: "100%", background: "white", width: "8px", borderRadius: ".25rem" }}
+                  />
+                  <Typography variant="body1" 
+                    sx={{
+                      position: "absolute",
+                      top: "5.5rem",
+                      left: "-7.25rem",
+                      textAlign: "right",
+                      width: "200px",
+                      transform: "rotate(-90deg)"
+                    }}
+                  >{"Summary Overview"}</Typography>
+                </Grid>
+                <Grid className="relative flex-1">
+                  <Typography>
+                    {text.split("\n").map((line) => `${line}<br />`)}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
             <Grid

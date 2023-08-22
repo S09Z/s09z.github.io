@@ -27,6 +27,7 @@ class CustomDocument extends Document {
             href="/images/apple-touch-icon.png"
           />
           <link rel="shortcut icon" href="/images/favicon.png" />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
         </Head>
         <body>
           <Main />
