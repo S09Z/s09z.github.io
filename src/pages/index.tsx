@@ -11,6 +11,10 @@ import {
   Button,
   Avatar,
   ButtonProps,
+  Fade,
+  Switch,
+  FormControlLabel,
+  Paper 
 } from "@mui/material";
 
 import { useEffect, useState, useRef } from "react";
@@ -123,6 +127,12 @@ const Home = () => {
     };
   };
 
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
+
   useEffect(() => {
     const frag = document.createDocumentFragment();
     const newEases: string[] = [];
@@ -215,193 +225,200 @@ const Home = () => {
           sx={{
             background: `url(${bgNeonGithub.src}) no-repeat center`,
           }}
-        ></Grid>
+        ></Grid>  
+        <FormControlLabel
+          control={<Switch checked={checked} onChange={handleChange} />}
+          label="Show"
+        />
         <Grid item xs={12}>
           <Grid
-            container
             className="neon m-auto h-auto z-10 bg-transparent p-2"
-            spacing={4}
           >
-            <Grid item xs={12} justifyContent="center" alignItems="center">
-              <Typography variant="body1" align="center">
-                {"Full Stack Developer"}
-              </Typography>
-              <HackedTextTitle />
-              <Grid
-                item
-                xs={12}
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
-                gap={2}
-              >
-                <ContactInformationIconLabel
-                  startIcon={<CallOutlined />}
-                  href="tel:(+66)97-247-1491"
-                >
-                  {"(+66)97-247-1491"}
-                </ContactInformationIconLabel>
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  sx={{ borderColor: "#eceff1" }}
-                />
-                <ContactInformationIconLabel
-                  startIcon={<EmailOutlined />}
-                  href="mailto:i.boonyarakthunya@gmail.com"
-                >
-                  {"i.boonyarakthunya@gmail.com"}
-                </ContactInformationIconLabel>
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  sx={{ borderColor: "#eceff1" }}
-                />
-                <ContactInformationIconLabel
-                  startIcon={<RoomOutlined />}
-                  href="https://www.google.com/maps/place/%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3/@13.7250481,100.3034502,10z/data=!3m1!4b1!4m6!3m5!1s0x311d6032280d61f3:0x10100b25de24820!8m2!3d13.7563309!4d100.5017651!16zL20vMGZuMmc?entry=ttu"
-                  className="select-none cursor-not-allowed"
-                >
-                  {"Thailand/Bangkok"}
-                </ContactInformationIconLabel>
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  sx={{ borderColor: "#eceff1" }}
-                />
-                <ContactInformationIconLabel
-                  size="small"
-                  startIcon={<i className="devicon-github-original"></i>}
-                  href="https://github.com/S09Z"
-                >
-                  {"S09Z"}
-                </ContactInformationIconLabel>
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  sx={{ borderColor: "#eceff1" }}
-                />
-                <ContactInformationIconLabel
-                  size="small"
-                  startIcon={<i className="devicon-linkedin-plain"></i>}
-                  href="https://www.linkedin.com/in/ittichaib/"
-                >
-                  {"ittichaib"}
-                </ContactInformationIconLabel>
-              </Grid>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              className="relative h-auto flex gap-4"
-              sx={{ flexDirection: "column" }}
-            >
-              <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-                {technologyList.map((tag, index) => (
-                  <Chip
-                    icon={<i className={`${tag.icon}`}></i>}
-                    label={` ${tag.name}`}
-                    color="warning"
-                    variant="outlined"
-                    key={index}
-                    sx={{ padding: "0 .125rem 0 .5rem" }}
-                  />
-                ))}
-              </Stack>
-            </Grid>
-            <Grid item xs={12} className="relative">
-              <Grid display="flex" flexDirection="row" gap="1rem">
-                <Grid className="relative flex-none">
-                  <Divider
-                    orientation="vertical"
-                    flexItem
-                    style={{
-                      minHeight: "100%",
-                      background: "white",
-                      width: "8px",
-                      borderRadius: ".25rem",
-                    }}
-                  />
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      position: "absolute",
-                      top: "5.5rem",
-                      left: "-7.25rem",
-                      textAlign: "right",
-                      width: "200px",
-                      transform: "rotate(-90deg)",
-                    }}
+            <Fade in={checked} style={{ transitionDelay: checked ? '00ms' : '0ms' }}>
+              <Grid container spacing={4}>
+                <Grid item xs={12} justifyContent="center" alignItems="center">
+                  <Typography variant="body1" align="center">
+                    {"Full Stack Developer"}
+                  </Typography>
+                  <HackedTextTitle />
+                  <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={2}
                   >
-                    {"Summary Overview"}
-                  </Typography>
+                    <ContactInformationIconLabel
+                      startIcon={<CallOutlined />}
+                      href="tel:(+66)97-247-1491"
+                    >
+                      {"(+66)97-247-1491"}
+                    </ContactInformationIconLabel>
+                    <Divider
+                      orientation="vertical"
+                      variant="middle"
+                      flexItem
+                      sx={{ borderColor: "#eceff1" }}
+                    />
+                    <ContactInformationIconLabel
+                      startIcon={<EmailOutlined />}
+                      href="mailto:i.boonyarakthunya@gmail.com"
+                    >
+                      {"i.boonyarakthunya@gmail.com"}
+                    </ContactInformationIconLabel>
+                    <Divider
+                      orientation="vertical"
+                      variant="middle"
+                      flexItem
+                      sx={{ borderColor: "#eceff1" }}
+                    />
+                    <ContactInformationIconLabel
+                      startIcon={<RoomOutlined />}
+                      href="https://www.google.com/maps/place/%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3/@13.7250481,100.3034502,10z/data=!3m1!4b1!4m6!3m5!1s0x311d6032280d61f3:0x10100b25de24820!8m2!3d13.7563309!4d100.5017651!16zL20vMGZuMmc?entry=ttu"
+                      className="select-none cursor-not-allowed"
+                    >
+                      {"Thailand/Bangkok"}
+                    </ContactInformationIconLabel>
+                    <Divider
+                      orientation="vertical"
+                      variant="middle"
+                      flexItem
+                      sx={{ borderColor: "#eceff1" }}
+                    />
+                    <ContactInformationIconLabel
+                      size="small"
+                      startIcon={<i className="devicon-github-original"></i>}
+                      href="https://github.com/S09Z"
+                    >
+                      {"S09Z"}
+                    </ContactInformationIconLabel>
+                    <Divider
+                      orientation="vertical"
+                      variant="middle"
+                      flexItem
+                      sx={{ borderColor: "#eceff1" }}
+                    />
+                    <ContactInformationIconLabel
+                      size="small"
+                      startIcon={<i className="devicon-linkedin-plain"></i>}
+                      href="https://www.linkedin.com/in/ittichaib/"
+                    >
+                      {"ittichaib"}
+                    </ContactInformationIconLabel>
+                  </Grid>
                 </Grid>
-                <Grid className="relative flex-1">
-                  <Typography>
-                    {text.split("\n").map((line) => `${line}<br />`)}
-                  </Typography>
+                <Grid
+                  item
+                  xs={12}
+                  className="relative h-auto flex gap-4"
+                  sx={{ flexDirection: "column" }}
+                >
+                  <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                    {technologyList.map((tag, index) => (
+                      <Chip
+                        icon={<i className={`${tag.icon}`}></i>}
+                        label={` ${tag.name}`}
+                        color="warning"
+                        variant="outlined"
+                        key={index}
+                        sx={{ padding: "0 .125rem 0 .5rem" }}
+                      />
+                    ))}
+                  </Stack>
                 </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12} className="relative">
-              <Grid display="flex" flexDirection="row" gap="1rem">
-                <Grid className="relative flex-none">
-                  <Divider
-                    orientation="vertical"
-                    flexItem
-                    style={{
-                      minHeight: "100%",
-                      background: "white",
-                      width: "8px",
-                      borderRadius: ".25rem",
-                    }}
+                <Grid item xs={12} className="relative">
+                  <Grid display="flex" flexDirection="row" gap="1rem">
+                    <Grid className="relative flex-none">
+                      <Divider
+                        orientation="vertical"
+                        flexItem
+                        style={{
+                          minHeight: "100%",
+                          background: "white",
+                          width: "8px",
+                          borderRadius: ".25rem",
+                        }}
+                      />
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          position: "absolute",
+                          top: "5.5rem",
+                          left: "-7.25rem",
+                          textAlign: "right",
+                          width: "200px",
+                          transform: "rotate(-90deg)",
+                        }}
+                      >
+                        {"Summary Overview"}
+                      </Typography>
+                    </Grid>
+                    <Grid className="relative flex-1">
+                      <Typography>
+                        {text.split("\n").map((line) => `${line}<br />`)}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12} className="relative">
+                  <Grid display="flex" flexDirection="row" gap="1rem">
+                    <Grid className="relative flex-none">
+                      <Divider
+                        orientation="vertical"
+                        flexItem
+                        style={{
+                          minHeight: "100%",
+                          background: "white",
+                          width: "8px",
+                          borderRadius: ".25rem",
+                        }}
+                      />
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          position: "absolute",
+                          top: "5.5rem",
+                          left: "-7.25rem",
+                          textAlign: "right",
+                          width: "200px",
+                          transform: "rotate(-90deg)",
+                        }}
+                      >
+                        {"Summary Overview"}
+                      </Typography>
+                    </Grid>
+                    <Grid className="relative flex-1">
+                      <Typography>
+                        {text.split("\n").map((line) => `${line}<br />`)}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  className="relative h-full flex gap-4"
+                  sx={{
+                    flexDirection: "column",
+                    height: "150px",
+                    position: "relative",
+                    width: "100%",
+                  }}
+                >
+                  <Image
+                    src="./images/neon-signature.png"
+                    alt="neonSignature"
+                    layout="fill"
+                    objectFit="contain"
                   />
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      position: "absolute",
-                      top: "5.5rem",
-                      left: "-7.25rem",
-                      textAlign: "right",
-                      width: "200px",
-                      transform: "rotate(-90deg)",
-                    }}
-                  >
-                    {"Summary Overview"}
-                  </Typography>
-                </Grid>
-                <Grid className="relative flex-1">
-                  <Typography>
-                    {text.split("\n").map((line) => `${line}<br />`)}
-                  </Typography>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              className="relative h-full flex gap-4"
-              sx={{
-                flexDirection: "column",
-                height: "150px",
-                position: "relative",
-                width: "100%",
-              }}
-            >
-              <Image
-                src="./images/neon-signature.png"
-                alt="neonSignature"
-                layout="fill"
-                objectFit="contain"
-              />
-            </Grid>
+            </Fade>
           </Grid>
         </Grid>
+        
       </Grid>
       <Box id="star" ref={refStar}></Box>
     </Box>
