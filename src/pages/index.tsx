@@ -14,7 +14,9 @@ import {
   Fade,
   Switch,
   FormControlLabel,
-  Paper 
+  Paper,
+  ToggleButton,
+  ToggleButtonGroup
 } from "@mui/material";
 
 import { useEffect, useState, useRef } from "react";
@@ -36,13 +38,20 @@ export const getHomeRoute = (role: string) => {
   return "/document";
 };
 
+const tabsList = {
+  HOME: 'HOME',
+  PORTFOLIO: 'PORTFOLIO'
+}
+
+type ITabsList = keyof typeof tabsList
+
 const Home = () => {
   const theme = useTheme();
 
   const refBanner = useRef<HTMLDivElement | null>(null);
   const refStar = useRef<HTMLDivElement | null>(null);
   const stars: { element: HTMLElement; timeline: TimelineMax }[] = [];
-  // const [eases, setEases] = useState<typeof RoughEase[]>([])
+  const [tabs, setTabs] = useState<ITabsList>(tabsList.HOME)
   const [eases, setEases] = useState<string[]>([]);
 
   const numAnimations = 100;
@@ -126,12 +135,7 @@ const Home = () => {
       timeline: tl,
     };
   };
-
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => {
-    setChecked((prev) => !prev);
-  };
+  
 
   useEffect(() => {
     const frag = document.createDocumentFragment();
@@ -200,6 +204,14 @@ const Home = () => {
     };
   }, []);
 
+  const onSwitchTabHandler = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: ITabsList,
+  ) => {
+    console.log('onSwitchTabHandler ', newAlignment)
+    if (!_.isEmpty(newAlignment))  setTabs(newAlignment);
+  }
+
   return (
     <Box
       className="relative flex h-auto"
@@ -226,15 +238,31 @@ const Home = () => {
             background: `url(${bgNeonGithub.src}) no-repeat center`,
           }}
         ></Grid>  
-        <FormControlLabel
-          control={<Switch checked={checked} onChange={handleChange} />}
-          label="Show"
-        />
+
+        <StyledToggleButtonGroup
+          size="small"
+          value={tabs}
+          exclusive
+          onChange={onSwitchTabHandler}
+          aria-label="text formatting"
+        >
+          <ToggleButton value={tabsList.HOME} aria-label="bold">
+            {'HOME'}
+          </ToggleButton>
+          <ToggleButton value={tabsList.PORTFOLIO} aria-label="italic">
+            {'PORTFOLIO'}
+          </ToggleButton>
+        </StyledToggleButtonGroup>
+        
         <Grid item xs={12}>
           <Grid
             className="neon m-auto h-auto z-10 bg-transparent p-2"
           >
-            <Fade in={checked} style={{ transitionDelay: checked ? '00ms' : '0ms' }}>
+            <Fade in={Boolean(tabs === tabsList.HOME)} 
+            timeout={ 4000 }
+            key={'111'}
+            // style={{ transitionDelay: tabs === tabsList.HOME ? '100ms' : '0ms' }}
+            >
               <Grid container spacing={4}>
                 <Grid item xs={12} justifyContent="center" alignItems="center">
                   <Typography variant="body1" align="center">
@@ -416,6 +444,13 @@ const Home = () => {
                 </Grid>
               </Grid>
             </Fade>
+            <Fade in={Boolean(tabs !== tabsList.HOME)} 
+            timeout={ 4000 }
+            key={'222'}
+            // style={{ transitionDelay: tabs !== tabsList.HOME ? '100ms' : '0ms' }}
+            >
+              <>{"here my content"}</>
+            </Fade>
           </Grid>
         </Grid>
         
@@ -437,3 +472,20 @@ const ContactInformationIconLabel = styled(Button)<ButtonProps>(
     textTransform: "capitalize",
   })
 );
+
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+  '& .MuiToggleButtonGroup-grouped': {
+    margin: theme.spacing(0.5),
+    color: '#fff',
+    border: 0,
+    '&.Mui-disabled': {
+      border: 0,
+    },
+    '&:not(:first-of-type)': {
+      borderRadius: theme.shape.borderRadius,
+    },
+    '&:first-of-type': {
+      borderRadius: theme.shape.borderRadius,
+    },
+  },
+}));
