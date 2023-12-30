@@ -16,7 +16,7 @@ import {
   FormControlLabel,
   Paper,
   ToggleButton,
-  ToggleButtonGroup
+  ToggleButtonGroup,
 } from "@mui/material";
 
 import { useEffect, useState, useRef } from "react";
@@ -39,11 +39,11 @@ export const getHomeRoute = (role: string) => {
 };
 
 const tabsList = {
-  HOME: 'HOME',
-  PORTFOLIO: 'PORTFOLIO'
-}
+  HOME: "HOME",
+  PORTFOLIO: "PORTFOLIO",
+};
 
-type ITabsList = keyof typeof tabsList
+type ITabsList = keyof typeof tabsList;
 
 const Home = () => {
   const theme = useTheme();
@@ -51,7 +51,7 @@ const Home = () => {
   const refBanner = useRef<HTMLDivElement | null>(null);
   const refStar = useRef<HTMLDivElement | null>(null);
   const stars: { element: HTMLElement; timeline: TimelineMax }[] = [];
-  const [tabs, setTabs] = useState<ITabsList>(tabsList.HOME)
+  const [tabs, setTabs] = useState<ITabsList | string>(tabsList.HOME);
   const [eases, setEases] = useState<string[]>([]);
 
   const numAnimations = 100;
@@ -135,7 +135,6 @@ const Home = () => {
       timeline: tl,
     };
   };
-  
 
   useEffect(() => {
     const frag = document.createDocumentFragment();
@@ -178,8 +177,15 @@ const Home = () => {
     return min + (max - min) * Math.random();
   };
 
-  const text = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.\n
-  \nPhasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,`;
+  const text = `I have working in web development over 5 years, proficient in
+  both JS and PHP also have experience in developing and
+  deploying in enterprise level web project like document digital
+  signature management, business process management or
+  
+  report dashboard , I like to alway improve my work, self-
+  motivated creative thinker with high passion in designing,
+  adaptation and learn new thing, currently interesting into Data
+  Engineer or related path`;
 
   const handleUpdate = (x: number, y: number) => {
     document.documentElement.style.setProperty("--cursorX", `${x}px`);
@@ -206,15 +212,15 @@ const Home = () => {
 
   const onSwitchTabHandler = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: ITabsList,
+    newAlignment: ITabsList
   ) => {
-    console.log('onSwitchTabHandler ', newAlignment)
-    if (!_.isEmpty(newAlignment))  setTabs(newAlignment);
-  }
+    console.log("onSwitchTabHandler ", newAlignment);
+    if (!_.isEmpty(newAlignment)) setTabs(newAlignment);
+  };
 
   return (
     <Box
-      className="relative flex h-auto"
+      className="relative flex h-auto page"
       ref={refBanner}
       sx={{
         flexDirection: "column",
@@ -237,7 +243,7 @@ const Home = () => {
           sx={{
             background: `url(${bgNeonGithub.src}) no-repeat center`,
           }}
-        ></Grid>  
+        ></Grid>
 
         <StyledToggleButtonGroup
           size="small"
@@ -246,24 +252,23 @@ const Home = () => {
           onChange={onSwitchTabHandler}
           aria-label="text formatting"
         >
-          <ToggleButton value={tabsList.HOME} aria-label="bold">
-            {'HOME'}
+          {/* <ToggleButton value={tabsList.HOME} aria-label="bold">
+            {"HOME"}
           </ToggleButton>
           <ToggleButton value={tabsList.PORTFOLIO} aria-label="italic">
-            {'PORTFOLIO'}
-          </ToggleButton>
+            {"PORTFOLIO"}
+          </ToggleButton> */}
         </StyledToggleButtonGroup>
-        
+
         <Grid item xs={12}>
-          <Grid
-            className="neon m-auto h-auto z-10 bg-transparent p-2"
-          >
-            <Fade in={Boolean(tabs === tabsList.HOME)} 
-            timeout={ 4000 }
-            key={'111'}
-            // style={{ transitionDelay: tabs === tabsList.HOME ? '100ms' : '0ms' }}
+          <Grid className="neon m-auto h-auto z-10 bg-transparent p-2">
+            <Fade
+              in={Boolean(tabs === tabsList.HOME)}
+              timeout={4000}
+              key={"111"}
+              // style={{ transitionDelay: tabs === tabsList.HOME ? '100ms' : '0ms' }}
             >
-              <Grid container spacing={4}>
+              <Grid container spacing={6}>
                 <Grid item xs={12} justifyContent="center" alignItems="center">
                   <Typography variant="body1" align="center">
                     {"Full Stack Developer"}
@@ -363,64 +368,66 @@ const Home = () => {
                         orientation="vertical"
                         flexItem
                         style={{
-                          minHeight: "100%",
+                          minHeight: "95%",
                           background: "white",
                           width: "8px",
                           borderRadius: ".25rem",
+                          margin: ".325rem 0rem",
                         }}
                       />
                       <Typography
                         variant="body1"
                         sx={{
                           position: "absolute",
-                          top: "5.5rem",
+                          top: "5.25rem",
                           left: "-7.25rem",
                           textAlign: "right",
-                          width: "200px",
+                          width: "180px",
                           transform: "rotate(-90deg)",
                         }}
                       >
-                        {"Summary Overview"}
+                        {"Hi !"}
                       </Typography>
                     </Grid>
                     <Grid className="relative flex-1">
                       <Typography>
-                        {text.split("\n").map((line) => `${line}<br />`)}
+                        {
+                          "Sawad-dee I’m Oat. I’m a Mid-Level Full Stack Developer, You can find me hacking away with React, NextJS, TypeScript, TailwindCSS or anything related on the front-end & back-end. I have a good eye for UX & UI and web design. I am currently learning Golang and Python, and researching on Flutter and Elixr. Also look further to imporve my DevOps, Cloud Engineer and Data Engineer skills in the future."
+                        }
                       </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item xs={12} className="relative">
+                <Grid item xs={12} className="relative mb-5">
                   <Grid display="flex" flexDirection="row" gap="1rem">
                     <Grid className="relative flex-none">
                       <Divider
                         orientation="vertical"
                         flexItem
                         style={{
-                          minHeight: "100%",
+                          minHeight: "95%",
                           background: "white",
                           width: "8px",
                           borderRadius: ".25rem",
+                          margin: ".325rem 0rem",
                         }}
                       />
                       <Typography
                         variant="body1"
                         sx={{
                           position: "absolute",
-                          top: "5.5rem",
+                          top: "5.25rem",
                           left: "-7.25rem",
                           textAlign: "right",
-                          width: "200px",
+                          width: "180px",
                           transform: "rotate(-90deg)",
                         }}
                       >
-                        {"Summary Overview"}
+                        {"Overview"}
                       </Typography>
                     </Grid>
                     <Grid className="relative flex-1">
-                      <Typography>
-                        {text.split("\n").map((line) => `${line}<br />`)}
-                      </Typography>
+                      <Typography>{text}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -440,22 +447,25 @@ const Home = () => {
                     alt="neonSignature"
                     layout="fill"
                     objectFit="contain"
+                    className="mt-6"
                   />
                 </Grid>
               </Grid>
             </Fade>
-            <Fade in={Boolean(tabs !== tabsList.HOME)} 
-            timeout={ 4000 }
-            key={'222'}
-            // style={{ transitionDelay: tabs !== tabsList.HOME ? '100ms' : '0ms' }}
+            <Fade
+              in={Boolean(tabs !== tabsList.HOME)}
+              timeout={4000}
+              key={"222"}
+              // style={{ transitionDelay: tabs !== tabsList.HOME ? '100ms' : '0ms' }}
             >
-              <>{"here my content"}</>
+              <>{""}</>
             </Fade>
           </Grid>
         </Grid>
-        
       </Grid>
       <Box id="star" ref={refStar}></Box>
+      <Box className="circle-cursor circle-cursor--inner"></Box>
+      <Box className="circle-cursor circle-cursor--outer"></Box>
     </Box>
   );
 };
@@ -474,17 +484,17 @@ const ContactInformationIconLabel = styled(Button)<ButtonProps>(
 );
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-  '& .MuiToggleButtonGroup-grouped': {
+  "& .MuiToggleButtonGroup-grouped": {
     margin: theme.spacing(0.5),
-    color: '#fff',
+    color: "#fff",
     border: 0,
-    '&.Mui-disabled': {
+    "&.Mui-disabled": {
       border: 0,
     },
-    '&:not(:first-of-type)': {
+    "&:not(:first-of-type)": {
       borderRadius: theme.shape.borderRadius,
     },
-    '&:first-of-type': {
+    "&:first-of-type": {
       borderRadius: theme.shape.borderRadius,
     },
   },

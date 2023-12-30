@@ -28,7 +28,7 @@ import { Provider } from "react-redux";
 import { store } from "src/store";
 
 // ** Global css styles
-import "./../styles/globals.css";
+import "@/app/styles/globals.css";
 
 interface LayoutProps {
   getLayout?: (page: ReactNode) => ReactNode;
@@ -62,7 +62,10 @@ function MyApp(props: ExtendedAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>S09Z - Portfolio</title>
-        <meta name="description" content="S098 Portfolio - Ittichai Boonyarakthunya - Full Stack Developer" />
+        <meta
+          name="description"
+          content="S098 Portfolio - Ittichai Boonyarakthunya - Full Stack Developer"
+        />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>

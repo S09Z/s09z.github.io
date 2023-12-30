@@ -26,6 +26,17 @@
         "name": "next"
       }
     ],
+    "paths": {
+      "@/app/*": [
+        "./src/*"
+      ],
+      "@/public/*": [
+        "./public/*"
+      ],
+      "@/json/*": [
+        "./json/*"
+      ]
+    },
     "strictNullChecks": true
   },
   "include": [
