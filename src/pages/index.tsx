@@ -266,7 +266,7 @@ const Home = () => {
               key={"111"}
               // style={{ transitionDelay: tabs === tabsList.HOME ? '100ms' : '0ms' }}
             >
-              <Grid container spacing={6}>
+              <Grid container spacing={4}>
                 <Grid item xs={12} justifyContent="center" alignItems="center">
                   <Typography variant="body1" align="center">
                     {"Full Stack Developer"}
@@ -310,7 +310,7 @@ const Home = () => {
                       href="https://www.google.com/maps/place/%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3/@13.7250481,100.3034502,10z/data=!3m1!4b1!4m6!3m5!1s0x311d6032280d61f3:0x10100b25de24820!8m2!3d13.7563309!4d100.5017651!16zL20vMGZuMmc?entry=ttu"
                       className="select-none cursor-not-allowed"
                     >
-                      {"Thailand/Bangkok"}
+                      {"Bangkok/Thailand"}
                     </ContactInformationIconLabel>
                     <Divider
                       orientation="vertical"
