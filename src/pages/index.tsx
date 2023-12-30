@@ -181,11 +181,9 @@ const Home = () => {
   both JS and PHP also have experience in developing and
   deploying in enterprise level web project like document digital
   signature management, business process management or
-  
   report dashboard , I like to alway improve my work, self-
   motivated creative thinker with high passion in designing,
-  adaptation and learn new thing, currently interesting into Data
-  Engineer or related path`;
+  adaptation and learn new thing`;
 
   const handleUpdate = (x: number, y: number) => {
     document.documentElement.style.setProperty("--cursorX", `${x}px`);
