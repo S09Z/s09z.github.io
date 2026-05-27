@@ -1,41 +1,66 @@
-name: Deploy to Github Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
+# One deployment at a time — cancel any in-progress run on a new push
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+# Required by actions/deploy-pages — no deploy key needed
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  deployment:
+  # ── 1. Build ────────────────────────────────────────────────────────────────
+  build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3  # Use actions/setup-node@v2 instead of @v1
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: ${{ matrix.node-version }}
-          
-      - name: Install pnpm
-        run: npm install -g pnpm
+          bun-version: latest
+
+      - name: Cache Bun install
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lockb') }}
+          restore-keys: ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install --frozen-lockfile
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
 
       - name: Build
-        run: |
-          pnpm run build
-          pnpm run export
+        run: bun run build
 
-      - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          deploy_key: ${{ secrets.ACTIONS_SECRET_KEY }}
-          publish_dir: ./out
+          path: ./dist
+
+  # ── 2. Deploy ───────────────────────────────────────────────────────────────
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
