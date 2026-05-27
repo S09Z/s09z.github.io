@@ -1,0 +1,29 @@
+---
+const targetText = 'Ittichai Boonyarakthunya';
+---
+
+<h2 id="hacked-title" class="text-center uppercase text-4xl md:text-5xl font-bold text-white tracking-wide">
+  {targetText}
+</h2>
+
+<script>
+  const el = document.getElementById('hacked-title') as HTMLElement | null;
+  if (el) {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!@#$%&';
+    const targetText = 'Ittichai Boonyarakthunya';
+    let iteration = 0;
+
+    const interval = setInterval(() => {
+      el.innerText = targetText
+        .split('')
+        .map((_, index) => {
+          if (index < iteration) return targetText[index]!;
+          return letters[Math.floor(Math.random() * letters.length)]!;
+        })
+        .join('');
+
+      if (iteration >= targetText.length) clearInterval(interval);
+      iteration += 1 / 3;
+    }, 30);
+  }
+</script>

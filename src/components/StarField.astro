@@ -1,0 +1,79 @@
+---
+// Star field rendered purely client-side via GSAP.
+// The #star-template element is the prototype cloned 200 times.
+---
+
+<div id="star-template"></div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const banner = document.querySelector<HTMLElement>('.page');
+  const template = document.getElementById('star-template') as HTMLElement | null;
+
+  if (banner && template) {
+    const NUM_ANIMATIONS = 100;
+    const NUM_STARS = 200;
+
+    // Build a local eases array — no React state, no async delay
+    const eases: string[] = [];
+    for (let i = 0; i < NUM_ANIMATIONS; i++) {
+      const name = `roughEase${i}`;
+      gsap.registerEase(name, (p: number) => p + (Math.random() - 0.5) * 0.1);
+      eases.push(name);
+    }
+
+    const random = (min: number, max = 0): number => {
+      if (min > max) [min, max] = [max, min];
+      return min + (max - min) * Math.random();
+    };
+
+    const frag = document.createDocumentFragment();
+
+    for (let i = 0; i < NUM_STARS; i++) {
+      const star = template.cloneNode(true) as HTMLElement;
+      star.removeAttribute('id');
+
+      frag.appendChild(star);
+
+      gsap.set(star, {
+        position: 'absolute',
+        width: 20,
+        height: 20,
+        background: 'white',
+        rotation: random(360),
+        xPercent: -50,
+        yPercent: -50,
+        scale: 0,
+        autoAlpha: 0,
+        x: random(banner.offsetWidth),
+        y: random(banner.offsetHeight),
+      });
+
+      const tl = gsap.timeline({ repeat: -1, yoyo: true });
+
+      for (let j = 0; j < NUM_ANIMATIONS; j++) {
+        const ease1 = eases[Math.floor(random(NUM_ANIMATIONS))]!;
+        const ease2 = eases[Math.floor(random(NUM_ANIMATIONS))]!;
+
+        tl.to(star, {
+          duration: random(1, 2),
+          autoAlpha: random(0.7, 1),
+          scale: random(0.15, 0.4),
+          ease: ease1,
+          delay: random(5, 12),
+        }).to(star, {
+          duration: random(1, 2),
+          autoAlpha: 0,
+          scale: 0,
+          ease: ease2,
+          delay: random(0.3, 0.8),
+        });
+      }
+
+      tl.progress(random(1));
+    }
+
+    banner.appendChild(frag);
+  }
+</script>
