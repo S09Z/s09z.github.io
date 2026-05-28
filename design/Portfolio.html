@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio — Three Directions · S09Z</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;background:#f0eee9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:#2a251f}
+  iframe.frame{display:block;width:100%;height:100%;border:0;background:#06060a;pointer-events:auto}
+  .intro{background:#fff;border:1px solid rgba(0,0,0,.08);padding:32px;border-radius:6px;width:100%;height:100%;box-sizing:border-box;font-size:13px;line-height:1.55;color:#2a251f;overflow:auto}
+  .intro h1{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:0 0 8px}
+  .intro h2{font-size:13px;font-weight:600;margin:20px 0 6px;text-transform:uppercase;letter-spacing:.14em;color:#666}
+  .intro p{margin:0 0 10px;color:#3a3530;max-width:60ch}
+  .intro ul{padding-left:18px;margin:0 0 10px}
+  .intro li{margin-bottom:4px;color:#3a3530}
+  .intro code{background:#f0eee9;padding:1px 6px;border-radius:3px;font-size:12px;border:1px solid rgba(0,0,0,.06)}
+  .intro .palette{display:flex;gap:8px;margin-top:8px}
+  .intro .sw{width:28px;height:28px;border-radius:3px;border:1px solid rgba(0,0,0,.08)}
+  .intro .meta{display:grid;grid-template-columns:120px 1fr;gap:6px 14px;font-size:12px;color:#3a3530;margin-top:8px}
+  .intro .meta b{font-weight:600;color:#1a1a1a}
+  .intro .tag{display:inline-block;padding:2px 8px;border:1px solid rgba(0,0,0,.15);border-radius:3px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#555;margin-right:4px;margin-bottom:4px}
+</style>
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel">
+const PortfolioFrame = ({src, label}) => (
+  <iframe
+    className="frame"
+    src={src}
+    title={label}
+    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+    loading="lazy"
+  />
+);
+
+const Intro = () => (
+  <div className="intro">
+    <h1>Portfolio · three directions</h1>
+    <p style={{color:'#666'}}>For <b>Ittichai "Oat" Boonyarakthunya</b> · S09Z · 2026 redesign. Same content, three takes on neo-terminal / hacker aesthetic. All three feature liquid cursor distortion, slow-drifting WebGL noise/mesh backgrounds, kinetic type, and bilingual Thai/English headers.</p>
+
+    <h2>System</h2>
+    <div className="palette">
+      <div className="sw" style={{background:'#08080c'}} title="ink #08080c"></div>
+      <div className="sw" style={{background:'#13131c'}} title="ink-2 #13131c"></div>
+      <div className="sw" style={{background:'#e8e8f0'}} title="paper #e8e8f0"></div>
+      <div className="sw" style={{background:'#8c8ca0'}} title="paper-dim"></div>
+      <div className="sw" style={{background:'oklch(0.74 0.18 295)'}} title="accent purple"></div>
+      <div className="sw" style={{background:'oklch(0.82 0.14 200)'}} title="accent cyan"></div>
+    </div>
+    <div className="meta">
+      <span>Display</span><b>Space Grotesk · 400–700</b>
+      <span>Mono</span><b>JetBrains Mono · 300–700</b>
+      <span>Thai</span><b>Noto Sans Thai · 300–600</b>
+      <span>Accent</span><b>oklch(0.74 0.18 295) — violet</b>
+    </div>
+
+    <h2>What they share</h2>
+    <ul>
+      <li>Liquid cursor — custom pointer, text + UI distort/scale near the cursor</li>
+      <li>WebGL-style noise mesh background (slow purple drift)</li>
+      <li>Kinetic type — orbital, scrolling, or glitching</li>
+      <li>Bilingual Thai/English section headers (เกี่ยวกับผม · about, etc.)</li>
+      <li>Same five sections: Hero · About · Stack · Experience · Contact</li>
+    </ul>
+
+    <h2>What's different</h2>
+    <ul>
+      <li><b>① Terminal</b> — CRT scanlines, prompt-style headers, orbital ring stack</li>
+      <li><b>② Dossier</b> — Classified-file fiction; redacted bars peel away on hover</li>
+      <li><b>③ Operator</b> — SOC dashboard; radar, live log feed, equalizer stack</li>
+    </ul>
+
+    <h2>Open fullscreen</h2>
+    <p>Click the expand icon (top-right of any artboard) to view a direction in full. Use ←/→ to flip between them, Esc to exit.</p>
+
+    <h2>Caveats</h2>
+    <ul>
+      <li>Experience entries use plausible placeholders for company names — supply real ones to swap in.</li>
+      <li>Live time displays use UTC+7 (ICT) automatically.</li>
+      <li>No project section yet — flag if you want one and we'll add real work samples.</li>
+    </ul>
+
+    <h2>Next steps</h2>
+    <ul>
+      <li>Pick a direction (or pieces from each)</li>
+      <li>Provide real company names + project case studies</li>
+      <li>Refine copy / tone in the about section</li>
+      <li>Add Tweaks panel for live color/font swaps if you want to ship-ready</li>
+    </ul>
+  </div>
+);
+
+const App = () => {
+  const { DesignCanvas, DCSection, DCArtboard } = window;
+  return (
+    <DesignCanvas>
+      <DCSection id="ctx" title="Context" subtitle="Brief + system">
+        <DCArtboard id="intro" label="Brief" width={460} height={1400}>
+          <Intro/>
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="dirs" title="Three directions" subtitle="Full prototypes — click to expand">
+        <DCArtboard id="terminal" label="① Terminal · CRT" width={1280} height={2900}>
+          <PortfolioFrame src="directions/terminal.html" label="Terminal direction"/>
+        </DCArtboard>
+        <DCArtboard id="dossier" label="② Dossier · Redacted" width={1280} height={2900}>
+          <PortfolioFrame src="directions/dossier.html" label="Dossier direction"/>
+        </DCArtboard>
+        <DCArtboard id="monitor" label="③ Operator · SOC" width={1280} height={1400}>
+          <PortfolioFrame src="directions/monitor.html" label="Operator dashboard direction"/>
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

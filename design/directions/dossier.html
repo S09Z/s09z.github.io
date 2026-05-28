@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Personnel File · S09Z</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#08080c;
+    --ink-2:#101018;
+    --paper:#e8e8f0;
+    --paper-dim:#9696a6;
+    --paper-mute:#54546a;
+    --line:rgba(232,232,240,0.08);
+    --line-strong:rgba(232,232,240,0.22);
+    --accent:oklch(0.74 0.18 295);
+    --accent-deep:oklch(0.55 0.20 295);
+    --redact:oklch(0.20 0.04 295);
+    --warn:oklch(0.78 0.18 60);
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --display:'Space Grotesk', sans-serif;
+    --thai:'Noto Sans Thai', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:13px;line-height:1.5;cursor:none}
+  body{position:relative;overflow-x:hidden;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:var(--ink)}
+
+  /* WebGL mesh bg */
+  #bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.7}
+  /* Noise overlay */
+  .grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:1;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grainShift .8s steps(8) infinite}
+  @keyframes grainShift{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-1%)}75%{transform:translate(-1%,3%)}100%{transform:translate(1%,-2%)}}
+
+  /* Cursor */
+  .cursor-blob{position:fixed;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);pointer-events:none;z-index:99;mix-blend-mode:difference;transition:width .2s,height .2s,border-radius .2s}
+  .cursor-blob.hover{width:64px;height:64px}
+  .cursor-blob.text{width:3px;height:24px;border-radius:1px}
+  .cursor-cross{position:fixed;left:0;top:0;pointer-events:none;z-index:98;color:var(--accent);font-family:var(--mono);font-size:9px;letter-spacing:.1em;opacity:.5}
+
+  main{position:relative;z-index:2;max-width:1280px;margin:0 auto;background:transparent}
+
+  /* Dossier header */
+  .doc{padding:24px 36px;border:1px solid var(--line-strong);margin:24px;background:rgba(8,8,12,0.7);backdrop-filter:blur(4px)}
+  .doc-top{display:grid;grid-template-columns:1fr auto;align-items:start;padding-bottom:18px;border-bottom:2px solid var(--paper);margin-bottom:24px;font-size:11px}
+  .doc-top .left{display:flex;flex-direction:column;gap:6px}
+  .doc-top .left .file{font-size:11px;color:var(--paper-mute);letter-spacing:.18em;text-transform:uppercase}
+  .doc-top .left .file b{color:var(--accent);font-weight:500}
+  .doc-top .left h1.title{font-family:var(--display);font-weight:700;font-size:42px;letter-spacing:-.02em;color:var(--paper);line-height:1;margin-top:4px}
+  .doc-top .left .sub{font-family:var(--thai);font-size:13px;color:var(--paper-dim);margin-top:6px}
+  .stamps{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .stamp{font-family:var(--mono);font-size:10px;letter-spacing:.2em;padding:6px 10px;border:1.5px solid var(--accent);color:var(--accent);text-transform:uppercase;transform:rotate(-3deg);display:inline-block}
+  .stamp.warn{border-color:var(--warn);color:var(--warn);transform:rotate(2deg)}
+  .stamp.ok{border-color:var(--paper);color:var(--paper);transform:rotate(-1deg)}
+
+  /* Metadata bar */
+  .metabar{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line-strong);font-size:10px;text-transform:uppercase;letter-spacing:.14em}
+  .metabar .cell{padding:10px 14px;border-right:1px solid var(--line-strong);display:flex;flex-direction:column;gap:4px}
+  .metabar .cell:last-child{border-right:none}
+  .metabar .k{color:var(--paper-mute);font-size:9px}
+  .metabar .v{color:var(--paper);font-size:12px;letter-spacing:.04em}
+  .metabar .v.accent{color:var(--accent)}
+
+  /* HERO BLOCK */
+  .hero-block{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;margin-top:32px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+  .hero-name{font-family:var(--display);font-weight:600;font-size:88px;line-height:.88;letter-spacing:-.045em;color:var(--paper);position:relative}
+  .hero-name .redact{background:var(--paper);color:var(--paper);padding:0 .1em;border-radius:1px;transition:background .35s, color .35s, letter-spacing .35s}
+  .hero-name .redact:hover{background:transparent;color:var(--accent);letter-spacing:.04em}
+  .hero-name .lt{font-family:var(--mono);font-weight:300;color:var(--accent);font-size:.7em}
+  .hero-thai{font-family:var(--thai);font-size:20px;color:var(--paper-dim);margin-top:14px;font-weight:300}
+  .hero-thai b{color:var(--paper);font-weight:600}
+  .hero-thai .red{color:var(--accent)}
+
+  .hero-r{display:flex;flex-direction:column;gap:0;border:1px solid var(--line-strong);align-self:start}
+  .hero-r .row{display:grid;grid-template-columns:120px 1fr;padding:10px 14px;border-bottom:1px solid var(--line);font-size:11px;align-items:baseline}
+  .hero-r .row:last-child{border-bottom:none}
+  .hero-r .k{color:var(--paper-mute);text-transform:uppercase;letter-spacing:.14em;font-size:9px}
+  .hero-r .v{color:var(--paper);font-size:12px}
+  .hero-r .v .blk{background:var(--paper);color:var(--paper);transition:background .25s, color .25s}
+  .hero-r .v .blk:hover{background:transparent;color:var(--accent)}
+
+  /* Section */
+  .sec{margin-top:48px;padding-top:32px;border-top:1px solid var(--line-strong)}
+  .sec-head{display:grid;grid-template-columns:160px 1fr 160px;gap:24px;align-items:end;margin-bottom:28px;padding-bottom:14px;border-bottom:1px dashed var(--line-strong)}
+  .sec-num{font-family:var(--mono);font-size:11px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.18em;display:flex;flex-direction:column;gap:4px}
+  .sec-num b{color:var(--accent);font-weight:500;font-size:28px;letter-spacing:0;font-family:var(--display);line-height:1}
+  .sec-num .thai{font-family:var(--thai);color:var(--paper-dim);text-transform:none;letter-spacing:.04em;margin-top:8px}
+  .sec h2{font-family:var(--display);font-weight:500;font-size:32px;letter-spacing:-.02em;color:var(--paper);line-height:1.1}
+  .sec h2 .ac{color:var(--accent)}
+  .sec-right{font-size:10px;color:var(--paper-mute);text-align:right;letter-spacing:.16em;text-transform:uppercase;line-height:1.6}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:240px 1fr;gap:36px}
+  .about-side{font-size:10px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.16em;line-height:1.7;display:flex;flex-direction:column;gap:18px}
+  .about-side .qr{width:120px;height:120px;background-image:linear-gradient(45deg,transparent 49%,var(--paper) 49% 51%,transparent 51%),linear-gradient(-45deg,transparent 49%,var(--paper) 49% 51%,transparent 51%),linear-gradient(0deg,var(--ink-2) 0,var(--ink-2) 100%);background-size:8px 8px,8px 8px,100% 100%;border:1px solid var(--paper);position:relative;filter:saturate(0)}
+  .about-side .qr::after{content:"";position:absolute;inset:8px;background:repeating-conic-gradient(var(--paper) 0 25%, var(--ink-2) 0 50%);background-size:12px 12px;opacity:.6}
+  .about-side .label{font-weight:500;color:var(--paper);letter-spacing:.18em}
+  .about-body{font-family:var(--display);font-weight:400;font-size:18px;line-height:1.6;color:var(--paper);max-width:60ch}
+  .about-body p+p{margin-top:14px}
+  .about-body .mute{color:var(--paper-dim);font-size:15px}
+  .about-body .hl{background:linear-gradient(transparent 65%, var(--accent) 65%, var(--accent) 92%, transparent 92%);color:var(--paper)}
+
+  /* SKILLS GRID */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .skill-cat{border:1px solid var(--line-strong);padding:20px}
+  .skill-cat h3{font-family:var(--mono);font-size:10px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.2em;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:16px;display:flex;justify-content:space-between}
+  .skill-cat h3 .ct{color:var(--accent)}
+  .skill-row{display:grid;grid-template-columns:1fr auto;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13px;align-items:center;gap:12px;transition:padding .25s}
+  .skill-row:hover{padding-left:8px}
+  .skill-row:last-child{border-bottom:none}
+  .skill-row .nm{color:var(--paper);font-family:var(--display);font-weight:500}
+  .skill-row .lv{font-size:10px;letter-spacing:.16em;color:var(--paper-mute);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+  .skill-row .dots{display:inline-flex;gap:2px}
+  .skill-row .dots i{width:6px;height:6px;border-radius:50%;background:var(--paper-mute)}
+  .skill-row .dots i.on{background:var(--accent)}
+
+  /* TIMELINE - left rail style */
+  .ttl{position:relative;padding-left:200px}
+  .ttl::before{content:"";position:absolute;left:160px;top:0;bottom:0;width:1px;background:var(--line-strong)}
+  .entry{position:relative;padding:24px 0 24px 28px;border-bottom:1px solid var(--line)}
+  .entry::before{content:"";position:absolute;left:-7px;top:32px;width:13px;height:13px;border-radius:50%;background:var(--ink);border:2px solid var(--paper-mute)}
+  .entry.now::before{border-color:var(--accent);box-shadow:0 0 12px var(--accent)}
+  .entry .yr{position:absolute;left:-200px;top:24px;width:140px;font-family:var(--mono);font-size:11px;color:var(--paper-dim);display:flex;flex-direction:column;gap:2px;text-align:right;padding-right:24px}
+  .entry .yr b{color:var(--paper);font-weight:500;font-family:var(--display);font-size:18px;letter-spacing:-.02em}
+  .entry .yr .dur{font-size:9px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.18em;margin-top:4px}
+  .entry .body{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start}
+  .entry h3{font-family:var(--display);font-weight:500;font-size:22px;color:var(--paper);letter-spacing:-.01em}
+  .entry .org{font-size:11px;color:var(--paper-dim);margin-top:4px;text-transform:uppercase;letter-spacing:.14em}
+  .entry p{margin-top:10px;font-size:13px;color:var(--paper-dim);line-height:1.6;max-width:54ch}
+  .entry .tags{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start}
+  .entry .tags span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--line-strong);color:var(--paper-dim);border-radius:1px}
+
+  /* CONTACT panel */
+  .ping{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:48px 0 12px}
+  .ping h2.big{font-family:var(--display);font-weight:600;font-size:72px;line-height:.92;letter-spacing:-.04em}
+  .ping h2.big .ac{color:var(--accent)}
+  .ping h2.big .blur{filter:blur(0px);transition:filter .35s, letter-spacing .35s;cursor:none}
+  .ping h2.big .blur:hover{filter:blur(0px);letter-spacing:.02em}
+  .ping h2.big .red{background:var(--accent);color:var(--ink);padding:0 .12em}
+  .ping .thai{font-family:var(--thai);font-size:17px;color:var(--paper-dim);margin-top:20px;line-height:1.6}
+
+  .channels{display:flex;flex-direction:column;gap:0;border:1px solid var(--line-strong)}
+  .ch{display:grid;grid-template-columns:80px 1fr 32px;gap:16px;padding:18px 20px;border-bottom:1px solid var(--line);font-size:14px;align-items:center;color:var(--paper);transition:background .2s, padding .25s}
+  .ch:last-child{border-bottom:none}
+  .ch:hover{background:rgba(232,232,240,0.04);padding-left:30px}
+  .ch .lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-mute)}
+  .ch .v{font-family:var(--mono);font-size:13px}
+  .ch:hover .v{color:var(--accent)}
+  .ch .arr{justify-self:end;color:var(--paper-mute);transition:color .2s, transform .25s}
+  .ch:hover .arr{color:var(--accent);transform:translateX(4px)}
+
+  /* Foot */
+  .foot{padding:24px 0 8px;margin-top:36px;border-top:1px solid var(--line-strong);display:grid;grid-template-columns:1fr 1fr 1fr;font-size:10px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.18em}
+  .foot .c{padding:0 8px}
+  .foot .c b{color:var(--paper)}
+  .foot .right{text-align:right}
+
+  /* perforation */
+  .perf{height:14px;background:radial-gradient(circle, var(--ink) 4px, transparent 5px) repeat-x;background-size:14px 14px;background-position:center;margin:18px 0;opacity:.5}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="grain"></div>
+<div class="cursor-blob" id="cb"></div>
+<div class="cursor-cross" id="cc"></div>
+
+<main>
+  <article class="doc">
+    <!-- HEADER -->
+    <header class="doc-top">
+      <div class="left">
+        <div class="file">file no. <b>S09Z-2026-001</b> · personnel record · class III · last sync <b id="sync">--:--:--</b></div>
+        <h1 class="title">PERSONNEL_FILE.dossier</h1>
+        <div class="sub">เอกสารส่วนตัว · ห้ามเผยแพร่นอกเหนือจากที่ระบุไว้</div>
+      </div>
+      <div class="stamps">
+        <span class="stamp">cleared · 2026</span>
+        <span class="stamp warn">do not redistribute</span>
+        <span class="stamp ok">verified · S09Z</span>
+      </div>
+    </header>
+
+    <!-- METADATA BAR -->
+    <div class="metabar">
+      <div class="cell"><span class="k">subject</span><span class="v">Ittichai B.</span></div>
+      <div class="cell"><span class="k">alias</span><span class="v accent">"Oat"</span></div>
+      <div class="cell"><span class="k">origin</span><span class="v">Bangkok · TH</span></div>
+      <div class="cell"><span class="k">function</span><span class="v">full-stack eng</span></div>
+      <div class="cell"><span class="k">level</span><span class="v">mid · L4</span></div>
+      <div class="cell"><span class="k">status</span><span class="v accent">● open</span></div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-block">
+      <div>
+        <div class="hero-name">
+          <span class="redact">Ittichai</span> <span class="lt">[subject]</span><br>
+          <span class="redact">Boonyarak</span><span class="redact">thunya</span>
+        </div>
+        <div class="hero-thai">นาม: <b>อิทธิชัย บุญยะรักษ์ทันยา</b> · <span class="red">โอ๊ต</span> · นักพัฒนาเว็บฟูลสแต็ก · ภูมิลำเนา กรุงเทพมหานคร</div>
+      </div>
+      <aside class="hero-r">
+        <div class="row"><span class="k">D.O.B</span><span class="v"><span class="blk">██/██/199█</span></span></div>
+        <div class="row"><span class="k">Loc</span><span class="v">13.7563°N, 100.5018°E</span></div>
+        <div class="row"><span class="k">Exp</span><span class="v">5+ years · web dev</span></div>
+        <div class="row"><span class="k">Discipline</span><span class="v">FE / BE / DevOps-curious</span></div>
+        <div class="row"><span class="k">Languages</span><span class="v">TH · EN · TS · PHP · Go</span></div>
+        <div class="row"><span class="k">Affiliations</span><span class="v"><span class="blk">██████████ co., ltd.</span></span></div>
+      </aside>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="sec">
+      <header class="sec-head">
+        <div class="sec-num"><b>§ 01</b>brief / โปรไฟล์<span class="thai">เกี่ยวกับ</span></div>
+        <h2>Mid-level full-stack engineer. <span class="ac">UX-literate.</span> Ships first, polishes always.</h2>
+        <div class="sec-right">classification<br>internal · level III</div>
+      </header>
+
+      <div class="about">
+        <aside class="about-side">
+          <div class="qr"></div>
+          <div><span class="label">Excerpt 04.A</span><br>verified statement<br>recorded · 2026</div>
+        </aside>
+        <div class="about-body">
+          <p>Sawad-dee — known as <span class="hl">Oat</span>. A mid-level full-stack developer working out of Bangkok. The work cycles between React/Next/TypeScript on the front and Node, Express, Laravel, PHP on the back.</p>
+          <p class="mute">Five years of production work across digital-signature platforms, business-process-management systems, and enterprise dashboards. The kind of code that has to keep running on a Sunday.</p>
+          <p>Currently studying <span class="hl">Golang &amp; Python</span>; researching Flutter and Elixir on the side. Looking further out: DevOps, cloud, data-engineering. The future tools are picked up the same way as the present ones — slowly, deliberately, then suddenly.</p>
+          <p class="mute">Treats every codebase like a room. Leaves it tidier.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="sec">
+      <header class="sec-head">
+        <div class="sec-num"><b>§ 02</b>arsenal / สมรรถนะ<span class="thai">เครื่องมือ</span></div>
+        <h2>Inventory. <span class="ac">Field-tested,</span> ranked, dated.</h2>
+        <div class="sec-right">scale · 0–5<br>self-assessed</div>
+      </header>
+
+      <div class="skills" id="sk"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="sec">
+      <header class="sec-head">
+        <div class="sec-num"><b>§ 03</b>log / บันทึก<span class="thai">ประวัติการทำงาน</span></div>
+        <h2>Movement record. <span class="ac">2019 → present.</span></h2>
+        <div class="sec-right">chronological<br>most-recent-first</div>
+      </header>
+
+      <div class="ttl">
+        <div class="entry now">
+          <div class="yr"><b>2024 — now</b><span class="dur">active · 2y</span></div>
+          <div class="body">
+            <div>
+              <h3>Full-stack engineer</h3>
+              <div class="org">██████████ · enterprise SaaS · Bangkok</div>
+              <p>Lead front-end on a digital-signature platform serving thousands of corporate users. Driving the Next 15 + RSC migration; owning developer experience for a 6-engineer team. Mentoring two juniors.</p>
+            </div>
+            <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Node</span><span>PostgreSQL</span><span>Docker</span><span>Jest</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="yr"><b>2022 — 2024</b><span class="dur">2 years</span></div>
+          <div class="body">
+            <div>
+              <h3>Web developer</h3>
+              <div class="org">██████████ · business-process platform · Bangkok</div>
+              <p>Built workflow engine and reporting dashboards for an in-house BPM tool. Implemented role-based document routing; cut average approval time from days to hours. Owned the Vue 3 component library.</p>
+            </div>
+            <div class="tags"><span>Vue 3</span><span>Nuxt</span><span>Laravel</span><span>PHP</span><span>MySQL</span><span>Tailwind</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="yr"><b>2020 — 2022</b><span class="dur">2 years</span></div>
+          <div class="body">
+            <div>
+              <h3>Junior developer</h3>
+              <div class="org">agency &amp; freelance · Bangkok</div>
+              <p>Shipped reporting dashboards, e-commerce front-ends, and a handful of marketing sites. Learnt the difference between code that works and code that ships.</p>
+            </div>
+            <div class="tags"><span>React</span><span>Express</span><span>Bootstrap</span><span>jQuery</span><span>MySQL</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="yr"><b>2019 — 2020</b><span class="dur">1 year</span></div>
+          <div class="body">
+            <div>
+              <h3>First repo, first deploy</h3>
+              <div class="org">self-taught · everywhere</div>
+              <p>Built a portfolio site, broke it, rebuilt it. Learnt git the hard way. Decided this was the job.</p>
+            </div>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span><span>git</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec">
+      <header class="sec-head">
+        <div class="sec-num"><b>§ 04</b>contact / ติดต่อ<span class="thai">ส่งสัญญาณ</span></div>
+        <h2>Open channels. <span class="ac">No pleasantries required.</span></h2>
+        <div class="sec-right">encryption · optional<br>response · 24–48h</div>
+      </header>
+
+      <div class="ping">
+        <div>
+          <h2 class="big">
+            transmit<br>
+            <span class="blur">a signal,</span><br>
+            <span class="ac">/* await reply */</span>
+          </h2>
+          <div class="thai">ส่งข้อความมาทักทาย หรือชวนทำโปรเจกต์ก็ได้ครับ · ตอบทุกอีเมล</div>
+        </div>
+        <div class="channels">
+          <a class="ch" href="mailto:i.boonyarakthunya@gmail.com">
+            <span class="lbl">email</span>
+            <span class="v">i.boonyarakthunya@gmail.com</span>
+            <span class="arr">→</span>
+          </a>
+          <a class="ch" href="tel:+66972471491">
+            <span class="lbl">voice</span>
+            <span class="v">+66 (0) 97 247 1491</span>
+            <span class="arr">→</span>
+          </a>
+          <a class="ch" href="https://github.com/S09Z">
+            <span class="lbl">code</span>
+            <span class="v">github.com/S09Z</span>
+            <span class="arr">→</span>
+          </a>
+          <a class="ch" href="https://linkedin.com/in/ittichaib/">
+            <span class="lbl">network</span>
+            <span class="v">linkedin.com/in/ittichaib</span>
+            <span class="arr">→</span>
+          </a>
+          <a class="ch" href="#">
+            <span class="lbl">dossier</span>
+            <span class="v">cv-2026.pdf · 92KB</span>
+            <span class="arr">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="perf"></div>
+
+    <footer class="foot">
+      <div class="c">file <b>S09Z-2026-001</b> · revision 03</div>
+      <div class="c" style="text-align:center">end of record · ¶</div>
+      <div class="c right">© 2026 · ittichai b.</div>
+    </footer>
+  </article>
+</main>
+
+<script>
+/* Cursor */
+const cb = document.getElementById('cb'), cc = document.getElementById('cc');
+let mx=0,my=0;
+addEventListener('mousemove', e=>{
+  mx=e.clientX; my=e.clientY;
+  cb.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  cc.style.transform=`translate(${mx+18}px,${my+18}px)`;
+  cc.textContent = `${String(mx).padStart(4,'0')} · ${String(my).padStart(4,'0')}`;
+});
+document.querySelectorAll('a, .skill-row, .ch, .entry, .redact').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cb.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>cb.classList.remove('hover'));
+});
+
+/* Sync clock */
+const sync = document.getElementById('sync');
+setInterval(()=>{
+  const d = new Date();
+  sync.textContent = d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Bangkok'});
+},1000);
+
+/* Skills */
+const CATS = [
+  ['frontend / framework', [['Next.js',5],['React',5],['Vue 3 · Nuxt',4],['TypeScript',5],['Tailwind',5],['CSS · HTML',5]]],
+  ['backend / runtime', [['Node · Express',4],['Laravel · PHP',4],['PostgreSQL',4],['MySQL',4],['Go',2],['Elixir',2]]],
+  ['tooling / infra', [['Docker',3],['Git',5],['Jest',4],['Bootstrap',4],['Python',3],['DevOps · cloud',2]]]
+];
+const sk = document.getElementById('sk');
+CATS.forEach(([t,rows])=>{
+  const c = document.createElement('div'); c.className='skill-cat';
+  c.innerHTML = `<h3>${t} <span class="ct">${rows.length}</span></h3>` + rows.map(([nm,lv])=>{
+    let dots = ''; for(let i=0;i<5;i++) dots += `<i class="${i<lv?'on':''}"></i>`;
+    return `<div class="skill-row"><span class="nm">${nm}</span><span class="lv"><span class="dots">${dots}</span></span></div>`;
+  }).join('');
+  sk.appendChild(c);
+});
+
+/* BG: drifting purple mesh + noise (canvas2d) */
+const cv = document.getElementById('bg');
+const cx = cv.getContext('2d');
+function rz(){ cv.width=innerWidth; cv.height=innerHeight; }
+rz(); addEventListener('resize',rz);
+let t=0;
+function bg(){
+  t += 0.0035;
+  const w=cv.width,h=cv.height;
+  cx.fillStyle = '#06060a';
+  cx.fillRect(0,0,w,h);
+  const blobs=[
+    {x:w*(0.2+0.18*Math.sin(t)), y:h*(0.25+0.15*Math.cos(t*0.6)), r:w*0.55, c:'rgba(143,108,255,0.20)'},
+    {x:w*(0.85+0.1*Math.cos(t*0.7)), y:h*(0.5+0.1*Math.sin(t*0.5)), r:w*0.45, c:'rgba(95,75,200,0.18)'},
+    {x:w*(0.5+0.08*Math.sin(t*0.4)), y:h*(1.0+0.05*Math.cos(t*0.3)), r:w*0.6, c:'rgba(40,80,180,0.12)'},
+  ];
+  blobs.forEach(b=>{
+    const g = cx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+    g.addColorStop(0,b.c); g.addColorStop(1,'rgba(0,0,0,0)');
+    cx.fillStyle = g; cx.fillRect(0,0,w,h);
+  });
+  requestAnimationFrame(bg);
+}
+bg();
+
+/* Random glitch flicker on title at intervals */
+const title = document.querySelector('h1.title');
+function glitch(){
+  const txt = 'PERSONNEL_FILE.dossier';
+  const G = '!@#$%^*+=<>?/[]{}\\|';
+  let i = 0;
+  const t = setInterval(()=>{
+    let out = '';
+    for(let k=0;k<txt.length;k++){
+      out += k < i ? txt[k] : (Math.random()<0.5 ? G[Math.floor(Math.random()*G.length)] : txt[k]);
+    }
+    title.textContent = out;
+    i++;
+    if(i>txt.length){ clearInterval(t); title.textContent = txt; }
+  }, 35);
+}
+setInterval(glitch, 8000);
+glitch();
+</script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>S09Z · Operator Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#06060a;
+    --ink-2:#0d0d14;
+    --ink-3:#13131c;
+    --paper:#e8e8f0;
+    --paper-dim:#8c8ca0;
+    --paper-mute:#4a4a5c;
+    --line:rgba(232,232,240,0.07);
+    --line-strong:rgba(232,232,240,0.2);
+    --accent:oklch(0.75 0.18 295);
+    --accent-2:oklch(0.82 0.14 200);
+    --green:oklch(0.78 0.18 150);
+    --warn:oklch(0.78 0.18 60);
+    --bad:oklch(0.68 0.22 25);
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --display:'Space Grotesk', sans-serif;
+    --thai:'Noto Sans Thai', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;line-height:1.4;cursor:none}
+  body{position:relative;overflow-x:hidden;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:var(--ink)}
+
+  /* Matrix bg */
+  #bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.5}
+  /* Mesh overlay */
+  #mesh{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.55}
+  /* Grid lines */
+  .grid-overlay{position:fixed;inset:0;z-index:1;pointer-events:none;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px),linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px;mask-image:radial-gradient(circle at 50% 35%, #000 30%, transparent 75%)}
+
+  /* Crosshair cursor */
+  .xh{position:fixed;left:0;top:0;width:1px;height:100vh;background:var(--accent);opacity:.25;pointer-events:none;z-index:50}
+  .yh{position:fixed;left:0;top:0;width:100vw;height:1px;background:var(--accent);opacity:.25;pointer-events:none;z-index:50}
+  .cur{position:fixed;left:0;top:0;width:28px;height:28px;border:1px solid var(--accent);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:99;transition:width .2s,height .2s}
+  .cur::before,.cur::after{content:"";position:absolute;background:var(--accent)}
+  .cur::before{left:50%;top:-6px;bottom:-6px;width:1px;transform:translateX(-50%)}
+  .cur::after{top:50%;left:-6px;right:-6px;height:1px;transform:translateY(-50%)}
+  .cur.hot{width:54px;height:54px;border-color:var(--accent-2)}
+  .cur-tag{position:fixed;left:0;top:0;pointer-events:none;z-index:99;font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.14em;opacity:.7}
+
+  main{position:relative;z-index:2;padding:16px}
+
+  /* Top bar */
+  .tb{display:grid;grid-template-columns:auto 1fr auto auto;gap:24px;align-items:center;padding:8px 16px;border:1px solid var(--line-strong);background:rgba(13,13,20,0.6);backdrop-filter:blur(4px);font-size:11px}
+  .tb .logo{display:flex;gap:10px;align-items:baseline;font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em}
+  .tb .logo .v{color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.14em}
+  .tb .nav{display:flex;gap:0;justify-self:center}
+  .tb .nav a{padding:6px 14px;border-right:1px solid var(--line);color:var(--paper-dim);letter-spacing:.14em;text-transform:uppercase;font-size:10px;transition:background .2s,color .2s}
+  .tb .nav a:first-child{border-left:1px solid var(--line)}
+  .tb .nav a:hover{background:var(--accent);color:var(--ink)}
+  .tb .nav a.active{color:var(--accent)}
+  .tb .pill{display:inline-flex;gap:6px;align-items:center;padding:4px 10px;border:1px solid var(--line-strong);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  .tb .pill.ok{color:var(--green);border-color:rgba(120,255,180,0.3)}
+  .tb .pill.ok::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .tb .clk{font-family:var(--mono);font-size:12px;color:var(--paper)}
+
+  /* Dashboard grid */
+  .dash{display:grid;grid-template-columns:repeat(12, 1fr);grid-auto-rows:minmax(64px,auto);gap:8px;margin-top:8px}
+  .card{border:1px solid var(--line-strong);background:rgba(13,13,20,0.7);backdrop-filter:blur(4px);padding:14px 16px;position:relative;overflow:hidden}
+  .card h3{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-mute);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+  .card h3 .id{color:var(--accent);font-weight:500}
+  .card h3 .sig{display:inline-flex;gap:4px;align-items:center}
+  .card h3 .sig i{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+
+  /* Hero card */
+  .hero{grid-column:span 8;grid-row:span 4;padding:32px;display:flex;flex-direction:column;justify-content:space-between;min-height:480px}
+  .hero .ascii{font-family:var(--mono);font-size:10px;color:var(--paper-mute);white-space:pre;line-height:1;opacity:.65}
+  .hero .name{font-family:var(--display);font-weight:500;font-size:96px;line-height:.88;letter-spacing:-.04em;color:var(--paper);margin:14px 0}
+  .hero .name .ac{color:var(--accent)}
+  .hero .name .tag{font-family:var(--mono);font-size:.18em;font-weight:300;color:var(--paper-dim);letter-spacing:.04em;vertical-align:top;margin-left:.4em}
+  .hero .thai{font-family:var(--thai);font-size:18px;color:var(--paper-dim);font-weight:300;margin-bottom:14px}
+  .hero .thai b{color:var(--paper);font-weight:600}
+  .hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:18px;border-top:1px dashed var(--line)}
+  .hero-meta .m{display:flex;flex-direction:column;gap:4px}
+  .hero-meta .m .k{font-size:9px;color:var(--paper-mute);letter-spacing:.18em;text-transform:uppercase}
+  .hero-meta .m .v{font-size:14px;color:var(--paper);font-family:var(--display);font-weight:500}
+  .hero-meta .m .v .ac{color:var(--accent)}
+
+  /* Radar */
+  .radar{grid-column:span 4;grid-row:span 2;display:flex;flex-direction:column;min-height:240px}
+  .radar-svg{flex:1;display:flex;align-items:center;justify-content:center}
+  .radar svg{width:100%;max-width:220px;height:auto}
+  .radar circle.r{fill:none;stroke:var(--line-strong)}
+  .radar line.cross{stroke:var(--line-strong)}
+  .radar .scan{fill:url(#scangrad)}
+  .radar .blip{fill:var(--accent);filter:drop-shadow(0 0 4px var(--accent))}
+  .radar text{font-family:var(--mono);font-size:9px;fill:var(--paper-mute);letter-spacing:.1em}
+
+  /* Stats */
+  .stats{grid-column:span 4;grid-row:span 2;min-height:200px;display:flex;flex-direction:column}
+  .stat-row{display:grid;grid-template-columns:1fr auto;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);gap:12px}
+  .stat-row:last-child{border-bottom:none}
+  .stat-row .k{font-size:11px;color:var(--paper-dim)}
+  .stat-row .v{font-family:var(--display);font-size:22px;font-weight:500;color:var(--paper);letter-spacing:-.01em}
+  .stat-row .v sup{font-size:10px;color:var(--accent);margin-left:3px;font-weight:400;font-family:var(--mono)}
+
+  /* Log feed */
+  .feed{grid-column:span 8;grid-row:span 3;min-height:280px;display:flex;flex-direction:column}
+  .feed-body{flex:1;overflow:hidden;font-size:11px;line-height:1.6;font-family:var(--mono)}
+  .feed-row{display:grid;grid-template-columns:80px 60px 1fr;gap:10px;padding:4px 0;color:var(--paper-dim);border-bottom:1px dotted var(--line)}
+  .feed-row .t{color:var(--paper-mute);font-size:10px}
+  .feed-row .lvl{font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+  .feed-row.ok .lvl{color:var(--green)}
+  .feed-row.warn .lvl{color:var(--warn)}
+  .feed-row.info .lvl{color:var(--accent-2)}
+  .feed-row.acc .lvl{color:var(--accent)}
+  .feed-row .msg b{color:var(--paper);font-weight:500}
+
+  /* Skills equalizer */
+  .skills{grid-column:span 12;grid-row:span 3;min-height:280px;padding:18px 24px}
+  .sk-grid{display:grid;grid-template-columns:repeat(16, 1fr);gap:10px;align-items:end;height:180px;margin-top:14px}
+  .sk-col{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end;cursor:none}
+  .sk-bar{width:80%;background:linear-gradient(to top, var(--accent-deep,oklch(0.55 0.20 295)) 0%, var(--accent) 100%);position:relative;transition:height 1.4s cubic-bezier(.2,.7,.2,1),filter .25s,transform .25s;transform-origin:bottom}
+  .sk-bar:hover{filter:brightness(1.4);transform:scaleX(1.15)}
+  .sk-bar::before{content:attr(data-v);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--paper);font-family:var(--display);font-weight:500}
+  .sk-col .nm{font-size:10px;color:var(--paper-dim);text-align:center;line-height:1.2;height:24px;letter-spacing:.04em}
+
+  /* About card */
+  .about{grid-column:span 6;grid-row:span 3;min-height:280px;padding:24px}
+  .about-body{font-family:var(--display);font-size:16px;line-height:1.6;color:var(--paper);margin-top:14px;font-weight:400}
+  .about-body p+p{margin-top:12px}
+  .about-body .mute{color:var(--paper-dim);font-size:14px}
+  .about-body .hl{color:var(--accent)}
+
+  /* Timeline card */
+  .tl{grid-column:span 6;grid-row:span 3;min-height:280px;padding:24px}
+  .tl-list{margin-top:8px;display:flex;flex-direction:column;gap:0}
+  .tl-row{display:grid;grid-template-columns:84px 1fr;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line);position:relative}
+  .tl-row::before{content:"";position:absolute;left:84px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--paper-mute);transform:translateX(-3px)}
+  .tl-row.now::before{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .tl-row .yr{font-size:11px;color:var(--paper-dim);font-family:var(--mono);padding-top:2px}
+  .tl-row .role{padding-left:14px}
+  .tl-row .role .pos{font-family:var(--display);font-size:16px;font-weight:500;color:var(--paper);letter-spacing:-.01em}
+  .tl-row .role .org{font-size:10px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.14em;margin-top:2px}
+  .tl-row .role .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .tl-row .role .tags span{font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border:1px solid var(--line);color:var(--paper-dim)}
+
+  /* Spark */
+  .spark{grid-column:span 4;grid-row:span 2;min-height:180px}
+  .spark .big{font-family:var(--display);font-size:48px;font-weight:500;color:var(--paper);letter-spacing:-.03em;line-height:1;margin-top:10px}
+  .spark .big sup{font-size:14px;color:var(--accent);margin-left:6px;font-weight:400}
+  .spark .sub{font-size:10px;color:var(--paper-mute);text-transform:uppercase;letter-spacing:.18em;margin-top:6px}
+  .spark svg{width:100%;height:60px;margin-top:14px}
+  .spark path.line{fill:none;stroke:var(--accent);stroke-width:1.5}
+  .spark path.fill{fill:url(#sparkgrad);opacity:.5}
+
+  /* Contact */
+  .contact{grid-column:span 12;grid-row:span 3;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:48px;min-height:260px;align-items:end}
+  .contact h2{font-family:var(--display);font-weight:500;font-size:64px;line-height:.95;letter-spacing:-.035em}
+  .contact h2 .ac{color:var(--accent)}
+  .contact .thai{font-family:var(--thai);font-size:16px;color:var(--paper-dim);margin-top:18px}
+  .ch-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-strong)}
+  .ch-list a{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;color:var(--paper);transition:background .2s,color .2s}
+  .ch-list a:nth-child(2n){border-right:none}
+  .ch-list a:nth-last-child(-n+2){border-bottom:none}
+  .ch-list a:hover{background:var(--accent);color:var(--ink)}
+  .ch-list a:hover .lbl{color:var(--ink)}
+  .ch-list a .lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-mute);transition:color .2s}
+  .ch-list a .v{font-family:var(--mono);font-size:12px}
+
+  /* Footer bar */
+  .fb{display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 16px;border:1px solid var(--line-strong);font-size:10px;color:var(--paper-mute);letter-spacing:.14em;text-transform:uppercase;margin-top:8px;background:rgba(13,13,20,0.6)}
+  .fb b{color:var(--paper)}
+  .fb .ac{color:var(--accent)}
+  .fb .c{display:flex;gap:14px;align-items:center}
+  .fb .c.r{justify-content:flex-end}
+  .fb .c.m{justify-content:center}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<canvas id="mesh"></canvas>
+<div class="grid-overlay"></div>
+
+<div class="xh" id="xh"></div>
+<div class="yh" id="yh"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-tag" id="ctag"></div>
+
+<main>
+  <!-- TOP BAR -->
+  <header class="tb">
+    <div class="logo">s09z<span class="v">::operator</span></div>
+    <nav class="nav">
+      <a href="#brief" class="active">/brief</a>
+      <a href="#stack">/stack</a>
+      <a href="#log">/log</a>
+      <a href="#ping">/ping</a>
+    </nav>
+    <span class="pill ok">link · stable</span>
+    <span class="pill">node · bkk-01</span>
+    <span class="clk" id="clk">--:--:--</span>
+  </header>
+
+  <!-- DASH GRID -->
+  <div class="dash">
+    <!-- Hero -->
+    <section class="card hero" id="brief">
+      <pre class="ascii">
+   ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄  ▄▄▄▄▄▄
+  ██   ██  ▀▀█▄ ██  ██ ▀▀▀██▀
+  ██▄▄▄██ ▄▄▄██▀ ██▄▄██▀  ██
+  ▀▀▀▀▀▀▀ ▀▀▀▀▀  ▀▀▀▀▀  ▀▀▀▀▀  · operator profile · class III
+      </pre>
+      <div>
+        <div class="thai">สวัสดี · ผมชื่อ <b>โอ๊ต</b> · นักพัฒนาเว็บฟูลสแต็กจากกรุงเทพฯ</div>
+        <h1 class="name">Ittichai <span class="ac">B.</span> <span class="tag">// "oat"</span></h1>
+        <div style="font-size:13px;color:var(--paper-dim);max-width:60ch;font-family:var(--display);line-height:1.5;margin-top:4px">
+          Mid-level full-stack engineer. Five years building production web apps — digital signatures, BPM, dashboards. Currently sharpening Go &amp; Elixir.
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="m"><span class="k">role</span><span class="v">Full-stack <span class="ac">/ L4</span></span></div>
+        <div class="m"><span class="k">based</span><span class="v">Bangkok · UTC<span class="ac">+7</span></span></div>
+        <div class="m"><span class="k">years</span><span class="v">05<span class="ac">+</span></span></div>
+        <div class="m"><span class="k">status</span><span class="v"><span class="ac">●</span> open</span></div>
+      </div>
+    </section>
+
+    <!-- Radar -->
+    <section class="card radar">
+      <h3>scan · 0x01 <span class="sig"><i></i>active</span></h3>
+      <div class="radar-svg">
+        <svg viewBox="-110 -110 220 220">
+          <defs>
+            <linearGradient id="scangrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="oklch(0.74 0.18 295)" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="oklch(0.74 0.18 295)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <circle class="r" r="100"/>
+          <circle class="r" r="70"/>
+          <circle class="r" r="40"/>
+          <line class="cross" x1="-100" y1="0" x2="100" y2="0"/>
+          <line class="cross" x1="0" y1="-100" x2="0" y2="100"/>
+          <g id="scanArm"><path class="scan" d="M0 0 L100 0 A100 100 0 0 1 86.6 50 Z"/></g>
+          <circle class="blip" cx="50" cy="-40" r="3"/>
+          <circle class="blip" cx="-30" cy="60" r="2.5"/>
+          <circle class="blip" cx="65" cy="35" r="2.2"/>
+          <text x="-100" y="-104">N</text>
+          <text x="98" y="-104">42°</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="card stats">
+      <h3>vitals · 0x02 <span class="sig"><i></i>live</span></h3>
+      <div class="stat-row"><span class="k">years shipping</span><span class="v">05<sup>+</sup></span></div>
+      <div class="stat-row"><span class="k">primary lang</span><span class="v">TS<sup>/PHP</sup></span></div>
+      <div class="stat-row"><span class="k">repos</span><span class="v">42<sup>+</sup></span></div>
+      <div class="stat-row"><span class="k">coffees / day</span><span class="v">3.2<sup>x</sup></span></div>
+    </section>
+
+    <!-- Spark uptime -->
+    <section class="card spark">
+      <h3>response · ping <span class="sig"><i></i></span></h3>
+      <div class="big">24<sup>hr</sup></div>
+      <div class="sub">avg reply time · last 30d</div>
+      <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sparkgrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="oklch(0.74 0.18 295)" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="oklch(0.74 0.18 295)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path class="fill" id="sparkFill"></path>
+        <path class="line" id="sparkLine"></path>
+      </svg>
+    </section>
+
+    <!-- About -->
+    <section class="card about" id="brief2">
+      <h3>brief · บันทึก <span class="id">0x03</span></h3>
+      <div class="about-body">
+        <p>Sawad-dee — I'm <span class="hl">Oat</span>. A mid-level full-stack developer working out of Bangkok.</p>
+        <p>Five years of production work across digital-signature platforms, BPM systems and enterprise dashboards. Front-end with React, Next, TypeScript &amp; Tailwind; back-end with Node, Express, Laravel &amp; PHP.</p>
+        <p class="mute">Currently learning <span class="hl">Go &amp; Python</span>. Researching Flutter and Elixir on the side. Looking ahead toward DevOps, cloud and data-engineering work.</p>
+        <p class="mute">Self-motivated. Adaptive. Treats every codebase like a room — leaves it tidier than I found it.</p>
+      </div>
+    </section>
+
+    <!-- Feed -->
+    <section class="card feed" id="log">
+      <h3>activity feed · 0x04 <span class="sig"><i></i>streaming</span></h3>
+      <div class="feed-body" id="feedBody"></div>
+    </section>
+
+    <!-- Skills equalizer -->
+    <section class="card skills" id="stack">
+      <h3>stack · arsenal <span class="id">0x05 — 16 channels, self-rated</span></h3>
+      <div class="sk-grid" id="skGrid"></div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="card tl">
+      <h3>movement log · 0x06 <span class="id">2019 → now</span></h3>
+      <div class="tl-list">
+        <div class="tl-row now">
+          <div class="yr">2024—now</div>
+          <div class="role">
+            <div class="pos">Full-stack engineer</div>
+            <div class="org">enterprise saas · bangkok</div>
+            <div class="tags"><span>Next</span><span>TS</span><span>Tailwind</span><span>Node</span><span>PG</span><span>Docker</span></div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="yr">2022—24</div>
+          <div class="role">
+            <div class="pos">Web developer</div>
+            <div class="org">BPM platform · bangkok</div>
+            <div class="tags"><span>Vue 3</span><span>Nuxt</span><span>Laravel</span><span>PHP</span><span>MySQL</span></div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="yr">2020—22</div>
+          <div class="role">
+            <div class="pos">Junior developer</div>
+            <div class="org">agency &amp; freelance · bangkok</div>
+            <div class="tags"><span>React</span><span>Express</span><span>Bootstrap</span><span>jQuery</span></div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="yr">2019—20</div>
+          <div class="role">
+            <div class="pos">First repo, first deploy</div>
+            <div class="org">self-taught · everywhere</div>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span><span>git</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="card contact" id="ping">
+      <div>
+        <h3>open channels · 0x07 <span class="sig"><i></i></span></h3>
+        <h2>ping me. <span class="ac">/* always */</span></h2>
+        <div class="thai">ส่งอีเมลมาทักทาย หรือชวนทำโปรเจกต์ก็ได้ครับ · ตอบทุกข้อความ</div>
+      </div>
+      <div class="ch-list">
+        <a href="mailto:i.boonyarakthunya@gmail.com"><span class="lbl">email</span><span class="v">i.boonyarakthunya@gmail.com</span></a>
+        <a href="tel:+66972471491"><span class="lbl">voice</span><span class="v">+66 97 247 1491</span></a>
+        <a href="https://github.com/S09Z"><span class="lbl">github</span><span class="v">github.com/S09Z</span></a>
+        <a href="https://linkedin.com/in/ittichaib/"><span class="lbl">linkedin</span><span class="v">/in/ittichaib</span></a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="fb">
+    <div class="c"><b>s09z::operator</b> <span class="ac">v.2026.01</span></div>
+    <div class="c m">© ittichai b. · built in bangkok · UTC+7</div>
+    <div class="c r">node-bkk-01 · <span class="ac">uptime</span> <b id="ut">00:00:00</b></div>
+  </footer>
+</main>
+
+<script>
+/* Crosshair cursor */
+const cur = document.getElementById('cur');
+const xh = document.getElementById('xh');
+const yh = document.getElementById('yh');
+const ctag = document.getElementById('ctag');
+let mx=0,my=0;
+addEventListener('mousemove', e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  xh.style.transform = `translateX(${mx}px)`;
+  yh.style.transform = `translateY(${my}px)`;
+  ctag.style.transform = `translate(${mx+22}px,${my+22}px)`;
+  ctag.textContent = `[x:${String(mx).padStart(4,'0')} y:${String(my).padStart(4,'0')}] tgt: ok`;
+});
+document.querySelectorAll('a, .sk-bar, .tl-row, .ch-list a').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('hot'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('hot'));
+});
+
+/* Clock */
+const clk = document.getElementById('clk');
+const ut = document.getElementById('ut');
+const start = Date.now();
+setInterval(()=>{
+  const d = new Date();
+  clk.textContent = d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Bangkok'}) + ' ICT';
+  const s = Math.floor((Date.now()-start)/1000);
+  ut.textContent = `${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor((s%3600)/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+},1000);
+
+/* Radar arm rotation */
+const arm = document.getElementById('scanArm');
+let ra = 0;
+function spin(){
+  ra = (ra+0.9)%360;
+  arm.setAttribute('transform', `rotate(${ra})`);
+  requestAnimationFrame(spin);
+}
+spin();
+
+/* Skills equalizer */
+const SK = [
+  ['TS',96],['React',95],['Next',92],['Vue',86],['Tail',94],['Node',90],['Lara',82],['PHP',82],
+  ['PG',80],['MySQL',82],['Docker',76],['Jest',78],['Go',55],['Elixir',45],['Py',60],['Git',96]
+];
+const skg = document.getElementById('skGrid');
+SK.forEach(([nm,v])=>{
+  const c = document.createElement('div'); c.className='sk-col';
+  c.innerHTML = `<div class="sk-bar" data-v="${v}" style="height:0%"></div><div class="nm">${nm}</div>`;
+  skg.appendChild(c);
+});
+setTimeout(()=>{
+  document.querySelectorAll('.sk-bar').forEach((b,i)=>{
+    setTimeout(()=>{ b.style.height = b.dataset.v + '%'; }, i*45);
+  });
+}, 350);
+
+/* Sparkline */
+const pts = [];
+for(let i=0;i<=24;i++){
+  const v = 28 + Math.sin(i*0.6)*8 + Math.cos(i*0.3)*5 + Math.random()*4;
+  pts.push([i*(200/24), 60 - v]);
+}
+const path = pts.map((p,i)=>`${i?'L':'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ');
+document.getElementById('sparkLine').setAttribute('d', path);
+document.getElementById('sparkFill').setAttribute('d', path + ` L200 60 L0 60 Z`);
+
+/* Live activity feed */
+const FEED = [
+  ['ok','deploy','Next.js 15 RSC migration → <b>v2.4.1</b> pushed to prod'],
+  ['info','commit','feat(workflow): role-based routing — <b>+182 / -94</b>'],
+  ['ok','pr-merged','#284 · refactor digital-sig flow → <b>main</b>'],
+  ['acc','learning','elixir/phoenix · liveview module 04 · <b>complete</b>'],
+  ['info','commit','chore(deps): bump tailwind 4.0.0 → <b>4.1.2</b>'],
+  ['warn','review','3 PRs awaiting review · queue depth <b>03</b>'],
+  ['ok','release','v.2026.01.beta tagged · <b>247 commits</b>'],
+  ['info','meet','code-review · backend team · <b>30m</b>'],
+  ['acc','reading','"designing data-intensive applications" · ch 9'],
+  ['ok','commit','docs(readme): polish onboarding · <b>+38 / -12</b>'],
+  ['info','study','go · channels + select · <b>day 14</b>'],
+  ['ok','test','jest suite · <b>327 / 327</b> green · 4.2s'],
+];
+const fb = document.getElementById('feedBody');
+function pad(n){ return String(n).padStart(2,'0') }
+function ts(d){ return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}` }
+function pushRow(item){
+  const [lvl, tag, msg] = item;
+  const d = document.createElement('div');
+  d.className = 'feed-row ' + lvl;
+  d.innerHTML = `<span class="t">${ts(new Date())}</span><span class="lvl">${tag}</span><span class="msg">${msg}</span>`;
+  fb.insertBefore(d, fb.firstChild);
+  while(fb.children.length > 9) fb.removeChild(fb.lastChild);
+}
+FEED.slice(0,8).forEach(f=>pushRow(f));
+let fi = 0;
+setInterval(()=>{ pushRow(FEED[fi % FEED.length]); fi++; }, 3500);
+
+/* BG: drifting purple mesh (canvas) */
+const cv = document.getElementById('bg');
+const cx = cv.getContext('2d');
+function rz(){ cv.width = innerWidth; cv.height = innerHeight; }
+rz(); addEventListener('resize',rz);
+let bt=0;
+function bg(){
+  bt += 0.003;
+  const w=cv.width,h=cv.height;
+  cx.fillStyle='#04040a'; cx.fillRect(0,0,w,h);
+  const blobs=[
+    {x:w*(0.2+0.15*Math.sin(bt)), y:h*(0.3+0.1*Math.cos(bt*0.7)), r:w*0.5, c:'rgba(143,108,255,0.16)'},
+    {x:w*(0.8+0.1*Math.cos(bt*0.6)), y:h*(0.7+0.12*Math.sin(bt*0.5)), r:w*0.45, c:'rgba(80,70,180,0.14)'},
+    {x:w*(0.5+0.08*Math.sin(bt*0.3)), y:h*(0.1+0.06*Math.cos(bt*0.4)), r:w*0.5, c:'rgba(40,100,180,0.10)'},
+  ];
+  blobs.forEach(b=>{
+    const g=cx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+    g.addColorStop(0,b.c); g.addColorStop(1,'rgba(0,0,0,0)');
+    cx.fillStyle=g; cx.fillRect(0,0,w,h);
+  });
+  requestAnimationFrame(bg);
+}
+bg();
+
+/* Matrix-rain on mesh canvas */
+const mc = document.getElementById('mesh');
+const mx2 = mc.getContext('2d');
+function rm(){ mc.width = innerWidth; mc.height = innerHeight; cols = Math.floor(mc.width / 14); drops = Array(cols).fill(0).map(()=>Math.random()*mc.height/14); }
+let cols, drops;
+rm(); addEventListener('resize',rm);
+const CHARS = '01010110ITTICHAIOATS09Zฮกขคงจฉชฒณดตถทธ▶◆◇';
+function rain(){
+  mx2.fillStyle = 'rgba(4,4,10,0.12)';
+  mx2.fillRect(0,0,mc.width,mc.height);
+  mx2.font = '11px "JetBrains Mono", monospace';
+  for(let i=0;i<cols;i++){
+    const ch = CHARS[Math.floor(Math.random()*CHARS.length)];
+    const y = drops[i]*14;
+    mx2.fillStyle = Math.random()<0.02 ? 'rgba(232,232,240,0.6)' : 'rgba(143,108,255,0.45)';
+    mx2.fillText(ch, i*14, y);
+    if(y > mc.height && Math.random()>0.975) drops[i] = 0;
+    drops[i] += 1;
+  }
+  setTimeout(()=>requestAnimationFrame(rain), 80);
+}
+rain();
+</script>
+</body>
+</html>
