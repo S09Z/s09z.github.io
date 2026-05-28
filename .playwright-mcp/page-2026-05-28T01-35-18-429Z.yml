@@ -1,0 +1,1194 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: S09Z TERMINAL · v.2026.01 · booting
+    - generic [ref=e5]: "> entering portfolio"
+  - generic:
+    - generic: $ goto ./section
+  - button "Tweaks" [ref=e7]: ⚙
+  - complementary:
+    - generic:
+      - generic: // tweaks
+      - button: ×
+    - generic:
+      - generic:
+        - generic:
+          - text: accent
+          - generic: color
+        - generic:
+          - button
+          - button
+          - button
+          - button
+      - generic:
+        - generic: theme
+        - generic:
+          - button: dark
+          - button: light
+      - generic:
+        - generic: cursor
+        - generic:
+          - button: ring
+          - button: dot
+          - button: native
+      - generic:
+        - generic: scanlines
+        - generic:
+          - button: low
+          - button: norm
+          - button: high
+          - button: "off"
+      - generic:
+        - generic: motion
+        - generic:
+          - button: "on"
+          - button: "off"
+        - generic:
+          - text: press
+          - generic: /
+          - text: for command palette
+  - button "Back to top" [ref=e8]:
+    - generic [ref=e9]: ↑
+    - generic [ref=e10]: top
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]: S09Z::oat
+      - navigation [ref=e15]:
+        - link "/about" [ref=e16] [cursor=pointer]:
+          - /url: "#about"
+        - link "/projects" [ref=e17] [cursor=pointer]:
+          - /url: "#projects"
+        - link "/work" [ref=e18] [cursor=pointer]:
+          - /url: "#work"
+        - link "/contact" [ref=e19] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=e20]:
+        - generic [ref=e21]: online · BKK
+        - generic [ref=e23]: "--:--:-- ICT"
+    - generic [ref=e24]:
+      - generic [ref=e26]: $
+      - generic [ref=e28]:
+        - heading "I t t i c h a i B o o n y a r a k · t h u n y a" [level=1] [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: I
+            - generic [ref=e32]: t
+            - generic [ref=e33]: t
+            - generic [ref=e34]: i
+            - generic [ref=e35]: c
+            - generic [ref=e36]: h
+            - generic [ref=e37]: a
+            - generic [ref=e38]: i
+          - generic [ref=e39]:
+            - generic [ref=e40]: B
+            - generic [ref=e41]: o
+            - generic [ref=e42]: o
+            - generic [ref=e43]: "n"
+            - generic [ref=e44]: "y"
+            - generic [ref=e45]: a
+            - generic [ref=e46]: r
+            - generic [ref=e47]: a
+            - generic [ref=e48]: k
+            - generic [ref=e50]: ·
+            - generic [ref=e51]: t
+            - generic [ref=e52]: h
+            - generic [ref=e53]: u
+            - generic [ref=e54]: "n"
+            - generic [ref=e55]: "y"
+            - generic [ref=e56]: a
+        - generic [ref=e57]: อิทธิชัย บุญยะรักษ์ทันยา · เรียกผม โอ๊ต ก็พอ · Software Engineer based in Bangkok · 5+ years shipping production web.
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]: // portrait
+          - text: S09Z
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: role
+            - generic [ref=e64]:
+              - text: Software Engineer
+              - emphasis [ref=e65]: // full-stack
+          - generic [ref=e66]:
+            - generic [ref=e67]: based
+            - generic [ref=e68]: Bangkok, Thailand · UTC+7
+          - generic [ref=e69]:
+            - generic [ref=e70]: years
+            - generic [ref=e71]: 5+ shipping production web
+          - generic [ref=e72]:
+            - generic [ref=e73]: focus
+            - generic [ref=e74]: TS, React, Next, Node, Laravel
+          - generic [ref=e75]:
+            - generic [ref=e76]: status
+            - generic [ref=e77]:
+              - emphasis [ref=e78]: ●
+              - text: open to interesting work
+      - generic:
+        - img:
+          - generic:
+            - generic: typescript · next · react · node · go · elixir · laravel · postgres ·
+          - generic:
+            - generic: build · ship · learn · refactor · iterate · review · deploy ·
+          - generic:
+            - generic: bkk · ictgmt+7 · 13.7563°n ·
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - link "TypeScript ◆" [ref=e82]:
+          - /url: "#"
+          - generic [ref=e84]: TypeScript
+          - generic [ref=e85]: ◆
+        - link "JavaScript ◆" [ref=e86]:
+          - /url: "#"
+          - generic [ref=e88]: JavaScript
+          - generic [ref=e89]: ◆
+        - link "PHP ◆" [ref=e90]:
+          - /url: "#"
+          - generic [ref=e92]: PHP
+          - generic [ref=e93]: ◆
+        - link "Go ◆" [ref=e94]:
+          - /url: "#"
+          - generic [ref=e96]: Go
+          - generic [ref=e97]: ◆
+        - link "Elixir ◆" [ref=e98]:
+          - /url: "#"
+          - generic [ref=e100]: Elixir
+          - generic [ref=e101]: ◆
+        - link "Python ◆" [ref=e102]:
+          - /url: "#"
+          - generic [ref=e104]: Python
+          - generic [ref=e105]: ◆
+        - link "React ◆" [ref=e106]:
+          - /url: "#"
+          - generic [ref=e108]: React
+          - generic [ref=e109]: ◆
+        - link "Next.js ◆" [ref=e110]:
+          - /url: "#"
+          - generic [ref=e112]: Next.js
+          - generic [ref=e113]: ◆
+        - link "Vue.js ◆" [ref=e114]:
+          - /url: "#"
+          - generic [ref=e116]: Vue.js
+          - generic [ref=e117]: ◆
+        - link "Nuxt ◆" [ref=e118]:
+          - /url: "#"
+          - generic [ref=e120]: Nuxt
+          - generic [ref=e121]: ◆
+        - link "Tailwind ◆" [ref=e122]:
+          - /url: "#"
+          - generic [ref=e124]: Tailwind
+          - generic [ref=e125]: ◆
+        - link "Bootstrap ◆" [ref=e126]:
+          - /url: "#"
+          - generic [ref=e128]: Bootstrap
+          - generic [ref=e129]: ◆
+        - link "HTML5 ◆" [ref=e130]:
+          - /url: "#"
+          - generic [ref=e132]: HTML5
+          - generic [ref=e133]: ◆
+        - link "CSS3 ◆" [ref=e134]:
+          - /url: "#"
+          - generic [ref=e136]: CSS3
+          - generic [ref=e137]: ◆
+        - link "Node.js ◆" [ref=e138]:
+          - /url: "#"
+          - generic [ref=e140]: Node.js
+          - generic [ref=e141]: ◆
+        - link "Express ◆" [ref=e142]:
+          - /url: "#"
+          - generic [ref=e144]: Express
+          - generic [ref=e145]: ◆
+        - link "Laravel ◆" [ref=e146]:
+          - /url: "#"
+          - generic [ref=e148]: Laravel
+          - generic [ref=e149]: ◆
+        - link "NestJS ◆" [ref=e150]:
+          - /url: "#"
+          - generic [ref=e152]: NestJS
+          - generic [ref=e153]: ◆
+        - link "PostgreSQL ◆" [ref=e154]:
+          - /url: "#"
+          - generic [ref=e156]: PostgreSQL
+          - generic [ref=e157]: ◆
+        - link "MySQL ◆" [ref=e158]:
+          - /url: "#"
+          - generic [ref=e160]: MySQL
+          - generic [ref=e161]: ◆
+        - link "Docker ◆" [ref=e162]:
+          - /url: "#"
+          - generic [ref=e164]: Docker
+          - generic [ref=e165]: ◆
+        - link "Git ◆" [ref=e166]:
+          - /url: "#"
+          - generic [ref=e168]: Git
+          - generic [ref=e169]: ◆
+        - link "Jest ◆" [ref=e170]:
+          - /url: "#"
+          - generic [ref=e172]: Jest
+          - generic [ref=e173]: ◆
+        - link "Linux ◆" [ref=e174]:
+          - /url: "#"
+          - generic [ref=e176]: Linux
+          - generic [ref=e177]: ◆
+      - generic [ref=e178]:
+        - link "TypeScript ◆" [ref=e179]:
+          - /url: "#"
+          - generic [ref=e181]: TypeScript
+          - generic [ref=e182]: ◆
+        - link "JavaScript ◆" [ref=e183]:
+          - /url: "#"
+          - generic [ref=e185]: JavaScript
+          - generic [ref=e186]: ◆
+        - link "PHP ◆" [ref=e187]:
+          - /url: "#"
+          - generic [ref=e189]: PHP
+          - generic [ref=e190]: ◆
+        - link "Go ◆" [ref=e191]:
+          - /url: "#"
+          - generic [ref=e193]: Go
+          - generic [ref=e194]: ◆
+        - link "Elixir ◆" [ref=e195]:
+          - /url: "#"
+          - generic [ref=e197]: Elixir
+          - generic [ref=e198]: ◆
+        - link "Python ◆" [ref=e199]:
+          - /url: "#"
+          - generic [ref=e201]: Python
+          - generic [ref=e202]: ◆
+        - link "React ◆" [ref=e203]:
+          - /url: "#"
+          - generic [ref=e205]: React
+          - generic [ref=e206]: ◆
+        - link "Next.js ◆" [ref=e207]:
+          - /url: "#"
+          - generic [ref=e209]: Next.js
+          - generic [ref=e210]: ◆
+        - link "Vue.js ◆" [ref=e211]:
+          - /url: "#"
+          - generic [ref=e213]: Vue.js
+          - generic [ref=e214]: ◆
+        - link "Nuxt ◆" [ref=e215]:
+          - /url: "#"
+          - generic [ref=e217]: Nuxt
+          - generic [ref=e218]: ◆
+        - link "Tailwind ◆" [ref=e219]:
+          - /url: "#"
+          - generic [ref=e221]: Tailwind
+          - generic [ref=e222]: ◆
+        - link "Bootstrap ◆" [ref=e223]:
+          - /url: "#"
+          - generic [ref=e225]: Bootstrap
+          - generic [ref=e226]: ◆
+        - link "HTML5 ◆" [ref=e227]:
+          - /url: "#"
+          - generic [ref=e229]: HTML5
+          - generic [ref=e230]: ◆
+        - link "CSS3 ◆" [ref=e231]:
+          - /url: "#"
+          - generic [ref=e233]: CSS3
+          - generic [ref=e234]: ◆
+        - link "Node.js ◆" [ref=e235]:
+          - /url: "#"
+          - generic [ref=e237]: Node.js
+          - generic [ref=e238]: ◆
+        - link "Express ◆" [ref=e239]:
+          - /url: "#"
+          - generic [ref=e241]: Express
+          - generic [ref=e242]: ◆
+        - link "Laravel ◆" [ref=e243]:
+          - /url: "#"
+          - generic [ref=e245]: Laravel
+          - generic [ref=e246]: ◆
+        - link "NestJS ◆" [ref=e247]:
+          - /url: "#"
+          - generic [ref=e249]: NestJS
+          - generic [ref=e250]: ◆
+        - link "PostgreSQL ◆" [ref=e251]:
+          - /url: "#"
+          - generic [ref=e253]: PostgreSQL
+          - generic [ref=e254]: ◆
+        - link "MySQL ◆" [ref=e255]:
+          - /url: "#"
+          - generic [ref=e257]: MySQL
+          - generic [ref=e258]: ◆
+        - link "Docker ◆" [ref=e259]:
+          - /url: "#"
+          - generic [ref=e261]: Docker
+          - generic [ref=e262]: ◆
+        - link "Git ◆" [ref=e263]:
+          - /url: "#"
+          - generic [ref=e265]: Git
+          - generic [ref=e266]: ◆
+        - link "Jest ◆" [ref=e267]:
+          - /url: "#"
+          - generic [ref=e269]: Jest
+          - generic [ref=e270]: ◆
+        - link "Linux ◆" [ref=e271]:
+          - /url: "#"
+          - generic [ref=e273]: Linux
+          - generic [ref=e274]: ◆
+    - generic [ref=e275]:
+      - generic [ref=e276]:
+        - generic [ref=e277]:
+          - generic [ref=e278]: 01 / about
+          - generic [ref=e279]: เกี่ยวกับผม
+        - heading "M i d - l e v e l f u l l - s t a c k e n g i n e e r , w i t h a d e s i g n e r ' s e y e f o r w h a t s h i p s ." [level=2] [ref=e280]:
+          - generic [ref=e281]: M
+          - generic [ref=e282]: i
+          - generic [ref=e283]: d
+          - generic [ref=e284]: "-"
+          - generic [ref=e285]: l
+          - generic [ref=e286]: e
+          - generic [ref=e287]: v
+          - generic [ref=e288]: e
+          - generic [ref=e289]: l
+          - generic [ref=e291]: f
+          - generic [ref=e292]: u
+          - generic [ref=e293]: l
+          - generic [ref=e294]: l
+          - generic [ref=e295]: "-"
+          - generic [ref=e296]: s
+          - generic [ref=e297]: t
+          - generic [ref=e298]: a
+          - generic [ref=e299]: c
+          - generic [ref=e300]: k
+          - generic [ref=e302]: e
+          - generic [ref=e303]: "n"
+          - generic [ref=e304]: g
+          - generic [ref=e305]: i
+          - generic [ref=e306]: "n"
+          - generic [ref=e307]: e
+          - generic [ref=e308]: e
+          - generic [ref=e309]: r
+          - generic [ref=e310]: ","
+          - generic [ref=e312]: w
+          - generic [ref=e313]: i
+          - generic [ref=e314]: t
+          - generic [ref=e315]: h
+          - generic [ref=e317]: a
+          - generic [ref=e319]:
+            - generic [ref=e320]: d
+            - generic [ref=e321]: e
+            - generic [ref=e322]: s
+            - generic [ref=e323]: i
+            - generic [ref=e324]: g
+            - generic [ref=e325]: "n"
+            - generic [ref=e326]: e
+            - generic [ref=e327]: r
+            - generic [ref=e328]: "'"
+            - generic [ref=e329]: s
+            - generic [ref=e331]: e
+            - generic [ref=e332]: "y"
+            - generic [ref=e333]: e
+          - generic [ref=e335]: f
+          - generic [ref=e336]: o
+          - generic [ref=e337]: r
+          - generic [ref=e339]: w
+          - generic [ref=e340]: h
+          - generic [ref=e341]: a
+          - generic [ref=e342]: t
+          - generic [ref=e344]: s
+          - generic [ref=e345]: h
+          - generic [ref=e346]: i
+          - generic [ref=e347]: p
+          - generic [ref=e348]: s
+          - generic [ref=e349]: .
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - paragraph [ref=e360]:
+            - generic [ref=e361]: S
+            - generic [ref=e362]: a
+            - generic [ref=e363]: w
+            - generic [ref=e364]: a
+            - generic [ref=e365]: d
+            - generic [ref=e366]: "-"
+            - generic [ref=e367]: d
+            - generic [ref=e368]: e
+            - generic [ref=e369]: e
+            - generic [ref=e371]: —
+            - generic [ref=e373]: I
+            - generic [ref=e374]: "'"
+            - generic [ref=e375]: m
+            - generic [ref=e378]: ▌
+            - generic [ref=e379]: .
+            - generic [ref=e381]: I
+            - generic [ref=e383]: s
+            - generic [ref=e384]: p
+            - generic [ref=e385]: e
+            - generic [ref=e386]: "n"
+            - generic [ref=e387]: d
+            - generic [ref=e389]: m
+            - generic [ref=e390]: "y"
+            - generic [ref=e392]: d
+            - generic [ref=e393]: a
+            - generic [ref=e394]: "y"
+            - generic [ref=e395]: s
+            - generic [ref=e397]: b
+            - generic [ref=e398]: u
+            - generic [ref=e399]: i
+            - generic [ref=e400]: l
+            - generic [ref=e401]: d
+            - generic [ref=e402]: i
+            - generic [ref=e403]: "n"
+            - generic [ref=e404]: g
+            - generic [ref=e406]: w
+            - generic [ref=e407]: e
+            - generic [ref=e408]: b
+            - generic [ref=e410]: p
+            - generic [ref=e411]: r
+            - generic [ref=e412]: o
+            - generic [ref=e413]: d
+            - generic [ref=e414]: u
+            - generic [ref=e415]: c
+            - generic [ref=e416]: t
+            - generic [ref=e417]: s
+            - generic [ref=e419]: w
+            - generic [ref=e420]: i
+            - generic [ref=e421]: t
+            - generic [ref=e422]: h
+            - generic [ref=e424]: R
+            - generic [ref=e425]: e
+            - generic [ref=e426]: a
+            - generic [ref=e427]: c
+            - generic [ref=e428]: t
+            - generic [ref=e429]: ","
+            - generic [ref=e431]: "N"
+            - generic [ref=e432]: e
+            - generic [ref=e433]: x
+            - generic [ref=e434]: t
+            - generic [ref=e435]: .
+            - generic [ref=e436]: j
+            - generic [ref=e437]: s
+            - generic [ref=e438]: ","
+            - generic [ref=e440]: T
+            - generic [ref=e441]: "y"
+            - generic [ref=e442]: p
+            - generic [ref=e443]: e
+            - generic [ref=e444]: S
+            - generic [ref=e445]: c
+            - generic [ref=e446]: r
+            - generic [ref=e447]: i
+            - generic [ref=e448]: p
+            - generic [ref=e449]: t
+            - generic [ref=e451]: a
+            - generic [ref=e452]: "n"
+            - generic [ref=e453]: d
+            - generic [ref=e455]: T
+            - generic [ref=e456]: a
+            - generic [ref=e457]: i
+            - generic [ref=e458]: l
+            - generic [ref=e459]: w
+            - generic [ref=e460]: i
+            - generic [ref=e461]: "n"
+            - generic [ref=e462]: d
+            - generic [ref=e463]: C
+            - generic [ref=e464]: S
+            - generic [ref=e465]: S
+            - generic [ref=e467]: o
+            - generic [ref=e468]: "n"
+            - generic [ref=e470]: t
+            - generic [ref=e471]: h
+            - generic [ref=e472]: e
+            - generic [ref=e474]: f
+            - generic [ref=e475]: r
+            - generic [ref=e476]: o
+            - generic [ref=e477]: "n"
+            - generic [ref=e478]: t
+            - generic [ref=e479]: ","
+            - generic [ref=e481]: "N"
+            - generic [ref=e482]: o
+            - generic [ref=e483]: d
+            - generic [ref=e484]: e
+            - generic [ref=e485]: ","
+            - generic [ref=e487]: E
+            - generic [ref=e488]: x
+            - generic [ref=e489]: p
+            - generic [ref=e490]: r
+            - generic [ref=e491]: e
+            - generic [ref=e492]: s
+            - generic [ref=e493]: s
+            - generic [ref=e494]: ","
+            - generic [ref=e496]: L
+            - generic [ref=e497]: a
+            - generic [ref=e498]: r
+            - generic [ref=e499]: a
+            - generic [ref=e500]: v
+            - generic [ref=e501]: e
+            - generic [ref=e502]: l
+            - generic [ref=e504]: a
+            - generic [ref=e505]: "n"
+            - generic [ref=e506]: d
+            - generic [ref=e508]: P
+            - generic [ref=e509]: H
+            - generic [ref=e510]: P
+            - generic [ref=e512]: o
+            - generic [ref=e513]: "n"
+            - generic [ref=e515]: t
+            - generic [ref=e516]: h
+            - generic [ref=e517]: e
+            - generic [ref=e519]: b
+            - generic [ref=e520]: a
+            - generic [ref=e521]: c
+            - generic [ref=e522]: k
+            - generic [ref=e523]: .
+          - paragraph [ref=e532]:
+            - generic [ref=e533]: I
+            - generic [ref=e534]: "'"
+            - generic [ref=e535]: v
+            - generic [ref=e536]: e
+            - generic [ref=e538]: s
+            - generic [ref=e539]: h
+            - generic [ref=e540]: i
+            - generic [ref=e541]: p
+            - generic [ref=e542]: p
+            - generic [ref=e543]: e
+            - generic [ref=e544]: d
+            - generic [ref=e546]: e
+            - generic [ref=e547]: "n"
+            - generic [ref=e548]: t
+            - generic [ref=e549]: e
+            - generic [ref=e550]: r
+            - generic [ref=e551]: p
+            - generic [ref=e552]: r
+            - generic [ref=e553]: i
+            - generic [ref=e554]: s
+            - generic [ref=e555]: e
+            - generic [ref=e556]: "-"
+            - generic [ref=e557]: g
+            - generic [ref=e558]: r
+            - generic [ref=e559]: a
+            - generic [ref=e560]: d
+            - generic [ref=e561]: e
+            - generic [ref=e563]: t
+            - generic [ref=e564]: o
+            - generic [ref=e565]: o
+            - generic [ref=e566]: l
+            - generic [ref=e567]: s
+            - generic [ref=e568]: ":"
+            - generic [ref=e570]: d
+            - generic [ref=e571]: i
+            - generic [ref=e572]: g
+            - generic [ref=e573]: i
+            - generic [ref=e574]: t
+            - generic [ref=e575]: a
+            - generic [ref=e576]: l
+            - generic [ref=e577]: "-"
+            - generic [ref=e578]: s
+            - generic [ref=e579]: i
+            - generic [ref=e580]: g
+            - generic [ref=e581]: "n"
+            - generic [ref=e582]: a
+            - generic [ref=e583]: t
+            - generic [ref=e584]: u
+            - generic [ref=e585]: r
+            - generic [ref=e586]: e
+            - generic [ref=e588]: p
+            - generic [ref=e589]: l
+            - generic [ref=e590]: a
+            - generic [ref=e591]: t
+            - generic [ref=e592]: f
+            - generic [ref=e593]: o
+            - generic [ref=e594]: r
+            - generic [ref=e595]: m
+            - generic [ref=e596]: s
+            - generic [ref=e597]: ","
+            - generic [ref=e599]: B
+            - generic [ref=e600]: P
+            - generic [ref=e601]: M
+            - generic [ref=e603]: s
+            - generic [ref=e604]: "y"
+            - generic [ref=e605]: s
+            - generic [ref=e606]: t
+            - generic [ref=e607]: e
+            - generic [ref=e608]: m
+            - generic [ref=e609]: s
+            - generic [ref=e610]: ","
+            - generic [ref=e612]: i
+            - generic [ref=e613]: "n"
+            - generic [ref=e614]: t
+            - generic [ref=e615]: e
+            - generic [ref=e616]: r
+            - generic [ref=e617]: "n"
+            - generic [ref=e618]: a
+            - generic [ref=e619]: l
+            - generic [ref=e621]: d
+            - generic [ref=e622]: a
+            - generic [ref=e623]: s
+            - generic [ref=e624]: h
+            - generic [ref=e625]: b
+            - generic [ref=e626]: o
+            - generic [ref=e627]: a
+            - generic [ref=e628]: r
+            - generic [ref=e629]: d
+            - generic [ref=e630]: s
+            - generic [ref=e631]: .
+            - generic [ref=e633]: T
+            - generic [ref=e634]: h
+            - generic [ref=e635]: e
+            - generic [ref=e637]: k
+            - generic [ref=e638]: i
+            - generic [ref=e639]: "n"
+            - generic [ref=e640]: d
+            - generic [ref=e642]: o
+            - generic [ref=e643]: f
+            - generic [ref=e645]: w
+            - generic [ref=e646]: o
+            - generic [ref=e647]: r
+            - generic [ref=e648]: k
+            - generic [ref=e650]: w
+            - generic [ref=e651]: h
+            - generic [ref=e652]: e
+            - generic [ref=e653]: r
+            - generic [ref=e654]: e
+            - generic [ref=e656]: t
+            - generic [ref=e657]: h
+            - generic [ref=e658]: e
+            - generic [ref=e660]: u
+            - generic [ref=e661]: s
+            - generic [ref=e662]: e
+            - generic [ref=e663]: r
+            - generic [ref=e665]: i
+            - generic [ref=e666]: s
+            - generic [ref=e668]: a
+            - generic [ref=e670]: c
+            - generic [ref=e671]: o
+            - generic [ref=e672]: l
+            - generic [ref=e673]: l
+            - generic [ref=e674]: e
+            - generic [ref=e675]: a
+            - generic [ref=e676]: g
+            - generic [ref=e677]: u
+            - generic [ref=e678]: e
+            - generic [ref=e680]: a
+            - generic [ref=e681]: "n"
+            - generic [ref=e682]: d
+            - generic [ref=e684]: t
+            - generic [ref=e685]: h
+            - generic [ref=e686]: e
+            - generic [ref=e688]: S
+            - generic [ref=e689]: L
+            - generic [ref=e690]: A
+            - generic [ref=e692]: i
+            - generic [ref=e693]: s
+            - generic [ref=e695]: "\""
+            - generic [ref=e696]: "y"
+            - generic [ref=e697]: e
+            - generic [ref=e698]: s
+            - generic [ref=e699]: t
+            - generic [ref=e700]: e
+            - generic [ref=e701]: r
+            - generic [ref=e702]: d
+            - generic [ref=e703]: a
+            - generic [ref=e704]: "y"
+            - generic [ref=e705]: "\""
+            - generic [ref=e706]: .
+          - paragraph [ref=e715]:
+            - generic [ref=e716]: I
+            - generic [ref=e717]: "'"
+            - generic [ref=e718]: m
+            - generic [ref=e720]: c
+            - generic [ref=e721]: u
+            - generic [ref=e722]: r
+            - generic [ref=e723]: r
+            - generic [ref=e724]: e
+            - generic [ref=e725]: "n"
+            - generic [ref=e726]: t
+            - generic [ref=e727]: l
+            - generic [ref=e728]: "y"
+            - generic [ref=e730]: l
+            - generic [ref=e731]: e
+            - generic [ref=e732]: a
+            - generic [ref=e733]: r
+            - generic [ref=e734]: "n"
+            - generic [ref=e735]: i
+            - generic [ref=e736]: "n"
+            - generic [ref=e737]: g
+            - generic [ref=e739]: G
+            - generic [ref=e740]: o
+            - generic [ref=e741]: l
+            - generic [ref=e742]: a
+            - generic [ref=e743]: "n"
+            - generic [ref=e744]: g
+            - generic [ref=e746]: a
+            - generic [ref=e747]: "n"
+            - generic [ref=e748]: d
+            - generic [ref=e750]: P
+            - generic [ref=e751]: "y"
+            - generic [ref=e752]: t
+            - generic [ref=e753]: h
+            - generic [ref=e754]: o
+            - generic [ref=e755]: "n"
+            - generic [ref=e756]: ;
+            - generic [ref=e758]: r
+            - generic [ref=e759]: e
+            - generic [ref=e760]: s
+            - generic [ref=e761]: e
+            - generic [ref=e762]: a
+            - generic [ref=e763]: r
+            - generic [ref=e764]: c
+            - generic [ref=e765]: h
+            - generic [ref=e766]: i
+            - generic [ref=e767]: "n"
+            - generic [ref=e768]: g
+            - generic [ref=e770]: F
+            - generic [ref=e771]: l
+            - generic [ref=e772]: u
+            - generic [ref=e773]: t
+            - generic [ref=e774]: t
+            - generic [ref=e775]: e
+            - generic [ref=e776]: r
+            - generic [ref=e778]: a
+            - generic [ref=e779]: "n"
+            - generic [ref=e780]: d
+            - generic [ref=e782]: E
+            - generic [ref=e783]: l
+            - generic [ref=e784]: i
+            - generic [ref=e785]: x
+            - generic [ref=e786]: i
+            - generic [ref=e787]: r
+            - generic [ref=e789]: o
+            - generic [ref=e790]: "n"
+            - generic [ref=e792]: t
+            - generic [ref=e793]: h
+            - generic [ref=e794]: e
+            - generic [ref=e796]: s
+            - generic [ref=e797]: i
+            - generic [ref=e798]: d
+            - generic [ref=e799]: e
+            - generic [ref=e800]: .
+            - generic [ref=e802]: L
+            - generic [ref=e803]: o
+            - generic [ref=e804]: o
+            - generic [ref=e805]: k
+            - generic [ref=e806]: i
+            - generic [ref=e807]: "n"
+            - generic [ref=e808]: g
+            - generic [ref=e810]: a
+            - generic [ref=e811]: h
+            - generic [ref=e812]: e
+            - generic [ref=e813]: a
+            - generic [ref=e814]: d
+            - generic [ref=e816]: I
+            - generic [ref=e818]: w
+            - generic [ref=e819]: a
+            - generic [ref=e820]: "n"
+            - generic [ref=e821]: t
+            - generic [ref=e823]: t
+            - generic [ref=e824]: o
+            - generic [ref=e826]: g
+            - generic [ref=e827]: r
+            - generic [ref=e828]: o
+            - generic [ref=e829]: w
+            - generic [ref=e831]: i
+            - generic [ref=e832]: "n"
+            - generic [ref=e833]: t
+            - generic [ref=e834]: o
+            - generic [ref=e836]: D
+            - generic [ref=e837]: e
+            - generic [ref=e838]: v
+            - generic [ref=e839]: O
+            - generic [ref=e840]: p
+            - generic [ref=e841]: s
+            - generic [ref=e842]: ","
+            - generic [ref=e844]: c
+            - generic [ref=e845]: l
+            - generic [ref=e846]: o
+            - generic [ref=e847]: u
+            - generic [ref=e848]: d
+            - generic [ref=e850]: a
+            - generic [ref=e851]: "n"
+            - generic [ref=e852]: d
+            - generic [ref=e854]: d
+            - generic [ref=e855]: a
+            - generic [ref=e856]: t
+            - generic [ref=e857]: a
+            - generic [ref=e858]: "-"
+            - generic [ref=e859]: e
+            - generic [ref=e860]: "n"
+            - generic [ref=e861]: g
+            - generic [ref=e862]: i
+            - generic [ref=e863]: "n"
+            - generic [ref=e864]: e
+            - generic [ref=e865]: e
+            - generic [ref=e866]: r
+            - generic [ref=e867]: i
+            - generic [ref=e868]: "n"
+            - generic [ref=e869]: g
+            - generic [ref=e871]: t
+            - generic [ref=e872]: e
+            - generic [ref=e873]: r
+            - generic [ref=e874]: r
+            - generic [ref=e875]: i
+            - generic [ref=e876]: t
+            - generic [ref=e877]: o
+            - generic [ref=e878]: r
+            - generic [ref=e879]: "y"
+            - generic [ref=e880]: .
+          - paragraph [ref=e889]:
+            - generic [ref=e890]: S
+            - generic [ref=e891]: e
+            - generic [ref=e892]: l
+            - generic [ref=e893]: f
+            - generic [ref=e894]: "-"
+            - generic [ref=e895]: m
+            - generic [ref=e896]: o
+            - generic [ref=e897]: t
+            - generic [ref=e898]: i
+            - generic [ref=e899]: v
+            - generic [ref=e900]: a
+            - generic [ref=e901]: t
+            - generic [ref=e902]: e
+            - generic [ref=e903]: d
+            - generic [ref=e904]: .
+            - generic [ref=e906]: A
+            - generic [ref=e907]: d
+            - generic [ref=e908]: a
+            - generic [ref=e909]: p
+            - generic [ref=e910]: t
+            - generic [ref=e911]: i
+            - generic [ref=e912]: v
+            - generic [ref=e913]: e
+            - generic [ref=e914]: .
+            - generic [ref=e916]: I
+            - generic [ref=e918]: t
+            - generic [ref=e919]: r
+            - generic [ref=e920]: e
+            - generic [ref=e921]: a
+            - generic [ref=e922]: t
+            - generic [ref=e924]: e
+            - generic [ref=e925]: v
+            - generic [ref=e926]: e
+            - generic [ref=e927]: r
+            - generic [ref=e928]: "y"
+            - generic [ref=e930]: c
+            - generic [ref=e931]: o
+            - generic [ref=e932]: d
+            - generic [ref=e933]: e
+            - generic [ref=e934]: b
+            - generic [ref=e935]: a
+            - generic [ref=e936]: s
+            - generic [ref=e937]: e
+            - generic [ref=e939]: l
+            - generic [ref=e940]: i
+            - generic [ref=e941]: k
+            - generic [ref=e942]: e
+            - generic [ref=e944]: a
+            - generic [ref=e946]: r
+            - generic [ref=e947]: o
+            - generic [ref=e948]: o
+            - generic [ref=e949]: m
+            - generic [ref=e951]: I
+            - generic [ref=e952]: "'"
+            - generic [ref=e953]: d
+            - generic [ref=e955]: l
+            - generic [ref=e956]: i
+            - generic [ref=e957]: k
+            - generic [ref=e958]: e
+            - generic [ref=e960]: t
+            - generic [ref=e961]: o
+            - generic [ref=e963]: l
+            - generic [ref=e964]: e
+            - generic [ref=e965]: a
+            - generic [ref=e966]: v
+            - generic [ref=e967]: e
+            - generic [ref=e969]: t
+            - generic [ref=e970]: i
+            - generic [ref=e971]: d
+            - generic [ref=e972]: i
+            - generic [ref=e973]: e
+            - generic [ref=e974]: r
+            - generic [ref=e976]: t
+            - generic [ref=e977]: h
+            - generic [ref=e978]: a
+            - generic [ref=e979]: "n"
+            - generic [ref=e981]: I
+            - generic [ref=e983]: f
+            - generic [ref=e984]: o
+            - generic [ref=e985]: u
+            - generic [ref=e986]: "n"
+            - generic [ref=e987]: d
+            - generic [ref=e989]: i
+            - generic [ref=e990]: t
+            - generic [ref=e991]: .
+        - generic [ref=e998]:
+          - generic [ref=e999]:
+            - generic [ref=e1000]: years shipping
+            - generic [ref=e1001]:
+              - text: "05"
+              - superscript [ref=e1002]: +
+          - generic [ref=e1003]:
+            - generic [ref=e1004]: primary stacks
+            - generic [ref=e1005]:
+              - text: JS
+              - superscript [ref=e1006]: /PHP
+          - generic [ref=e1007]:
+            - generic [ref=e1008]: currently @
+            - generic [ref=e1009]:
+              - text: BKK
+              - superscript [ref=e1010]: ↗
+    - generic [ref=e1011]:
+      - generic [ref=e1012]:
+        - generic [ref=e1013]:
+          - generic [ref=e1014]: 02.5 / projects
+          - generic [ref=e1015]: ผลงาน
+        - heading "S e l e c t e d c a s e s t u d i e s . / / s u p p l y r e a l s c r e e n s h o t s + l i n k s" [level=2] [ref=e1016]:
+          - generic [ref=e1017]: S
+          - generic [ref=e1018]: e
+          - generic [ref=e1019]: l
+          - generic [ref=e1020]: e
+          - generic [ref=e1021]: c
+          - generic [ref=e1022]: t
+          - generic [ref=e1023]: e
+          - generic [ref=e1024]: d
+          - generic [ref=e1026]:
+            - generic [ref=e1027]: c
+            - generic [ref=e1028]: a
+            - generic [ref=e1029]: s
+            - generic [ref=e1030]: e
+            - generic [ref=e1032]: s
+            - generic [ref=e1033]: t
+            - generic [ref=e1034]: u
+            - generic [ref=e1035]: d
+            - generic [ref=e1036]: i
+            - generic [ref=e1037]: e
+            - generic [ref=e1038]: s
+            - generic [ref=e1039]: .
+          - generic [ref=e1041]:
+            - generic [ref=e1042]: /
+            - generic [ref=e1043]: /
+            - generic [ref=e1045]: s
+            - generic [ref=e1046]: u
+            - generic [ref=e1047]: p
+            - generic [ref=e1048]: p
+            - generic [ref=e1049]: l
+            - generic [ref=e1050]: "y"
+            - generic [ref=e1052]: r
+            - generic [ref=e1053]: e
+            - generic [ref=e1054]: a
+            - generic [ref=e1055]: l
+            - generic [ref=e1057]: s
+            - generic [ref=e1058]: c
+            - generic [ref=e1059]: r
+            - generic [ref=e1060]: e
+            - generic [ref=e1061]: e
+            - generic [ref=e1062]: "n"
+            - generic [ref=e1063]: s
+            - generic [ref=e1064]: h
+            - generic [ref=e1065]: o
+            - generic [ref=e1066]: t
+            - generic [ref=e1067]: s
+            - generic [ref=e1069]: +
+            - generic [ref=e1071]: l
+            - generic [ref=e1072]: i
+            - generic [ref=e1073]: "n"
+            - generic [ref=e1074]: k
+            - generic [ref=e1075]: s
+      - generic [ref=e1076]:
+        - link "enterprise 2024 — now S· lead front-end · ongoing Digital Signature Platform End-to-end document signing for thousands of corporate users. Led the Next 15 + RSC migration, modernised the canvas-based signing flow, owned the design-system rewrite. Next.js TS Tailwind Node PostgreSQL case study →" [ref=e1077]:
+          - /url: "#"
+          - generic [ref=e1078]:
+            - generic [ref=e1079]: enterprise
+            - generic [ref=e1080]: 2024 — now
+            - generic [ref=e1081]: S·
+          - generic [ref=e1082]:
+            - generic [ref=e1083]: lead front-end · ongoing
+            - heading "Digital Signature Platform" [level=3] [ref=e1084]
+            - paragraph [ref=e1085]: End-to-end document signing for thousands of corporate users. Led the Next 15 + RSC migration, modernised the canvas-based signing flow, owned the design-system rewrite.
+            - generic [ref=e1086]:
+              - generic [ref=e1087]: Next.js
+              - generic [ref=e1088]: TS
+              - generic [ref=e1089]: Tailwind
+              - generic [ref=e1090]: Node
+              - generic [ref=e1091]: PostgreSQL
+          - generic [ref=e1092]: case study →
+        - link "BPM 2022 — 2024 B· full-stack · shipped Workflow Engine + Dashboards Role-based document routing for an in-house BPM platform. Cut average approval time from days to hours. Owned the Vue 3 component library & the reporting dashboards. Vue 3 Nuxt Laravel PHP MySQL case study →" [ref=e1093]:
+          - /url: "#"
+          - generic [ref=e1094]:
+            - generic [ref=e1095]: BPM
+            - generic [ref=e1096]: 2022 — 2024
+            - generic [ref=e1097]: B·
+          - generic [ref=e1098]:
+            - generic [ref=e1099]: full-stack · shipped
+            - heading "Workflow Engine + Dashboards" [level=3] [ref=e1100]
+            - paragraph [ref=e1101]: Role-based document routing for an in-house BPM platform. Cut average approval time from days to hours. Owned the Vue 3 component library & the reporting dashboards.
+            - generic [ref=e1102]:
+              - generic [ref=e1103]: Vue 3
+              - generic [ref=e1104]: Nuxt
+              - generic [ref=e1105]: Laravel
+              - generic [ref=e1106]: PHP
+              - generic [ref=e1107]: MySQL
+          - generic [ref=e1108]: case study →
+        - link "freelance 2020 — 2022 R· solo build Reporting Dashboard Suite Custom analytics dashboards for several agency clients. Real-time data viz with charts, drilldowns, exportable reports. Delivered solo on short timelines. React Express D3 Bootstrap case study →" [ref=e1109]:
+          - /url: "#"
+          - generic [ref=e1110]:
+            - generic [ref=e1111]: freelance
+            - generic [ref=e1112]: 2020 — 2022
+            - generic [ref=e1113]: R·
+          - generic [ref=e1114]:
+            - generic [ref=e1115]: solo build
+            - heading "Reporting Dashboard Suite" [level=3] [ref=e1116]
+            - paragraph [ref=e1117]: Custom analytics dashboards for several agency clients. Real-time data viz with charts, drilldowns, exportable reports. Delivered solo on short timelines.
+            - generic [ref=e1118]:
+              - generic [ref=e1119]: React
+              - generic [ref=e1120]: Express
+              - generic [ref=e1121]: D3
+              - generic [ref=e1122]: Bootstrap
+          - generic [ref=e1123]: case study →
+    - generic [ref=e1124]:
+      - generic [ref=e1125]:
+        - generic [ref=e1126]:
+          - generic [ref=e1127]: 03 / log
+          - generic [ref=e1128]: ประสบการณ์
+        - heading "F i v e y e a r s o f t i c k e t s c l o s e d & f e a t u r e s s h i p p e d ." [level=2] [ref=e1129]:
+          - generic [ref=e1130]: F
+          - generic [ref=e1131]: i
+          - generic [ref=e1132]: v
+          - generic [ref=e1133]: e
+          - generic [ref=e1135]: "y"
+          - generic [ref=e1136]: e
+          - generic [ref=e1137]: a
+          - generic [ref=e1138]: r
+          - generic [ref=e1139]: s
+          - generic [ref=e1141]: o
+          - generic [ref=e1142]: f
+          - generic [ref=e1144]:
+            - generic [ref=e1145]: t
+            - generic [ref=e1146]: i
+            - generic [ref=e1147]: c
+            - generic [ref=e1148]: k
+            - generic [ref=e1149]: e
+            - generic [ref=e1150]: t
+            - generic [ref=e1151]: s
+            - generic [ref=e1153]: c
+            - generic [ref=e1154]: l
+            - generic [ref=e1155]: o
+            - generic [ref=e1156]: s
+            - generic [ref=e1157]: e
+            - generic [ref=e1158]: d
+          - generic [ref=e1160]: "&"
+          - generic [ref=e1162]: f
+          - generic [ref=e1163]: e
+          - generic [ref=e1164]: a
+          - generic [ref=e1165]: t
+          - generic [ref=e1166]: u
+          - generic [ref=e1167]: r
+          - generic [ref=e1168]: e
+          - generic [ref=e1169]: s
+          - generic [ref=e1171]: s
+          - generic [ref=e1172]: h
+          - generic [ref=e1173]: i
+          - generic [ref=e1174]: p
+          - generic [ref=e1175]: p
+          - generic [ref=e1176]: e
+          - generic [ref=e1177]: d
+          - generic [ref=e1178]: .
+      - generic [ref=e1179]:
+        - generic [ref=e1180]:
+          - generic [ref=e1181]:
+            - generic [ref=e1182]: 2024 — now
+            - generic [ref=e1183]: ● active
+          - generic [ref=e1184]:
+            - generic [ref=e1187]: ▌
+            - generic [ref=e1188]: Enterprise SaaS · Bangkok
+            - generic [ref=e1189]: Lead front-end on a digital-signature platform serving thousands of corporate users. Migrating legacy modules to Next 15 + RSC; owning DX for a 6-engineer team.
+          - generic [ref=e1190]:
+            - generic [ref=e1191]: Next.js
+            - generic [ref=e1192]: TypeScript
+            - generic [ref=e1193]: Tailwind
+            - generic [ref=e1194]: Node
+            - generic [ref=e1195]: PostgreSQL
+            - generic [ref=e1196]: Docker
+        - generic [ref=e1197]:
+          - generic [ref=e1198]:
+            - generic [ref=e1199]: 2022 — 2024
+            - generic [ref=e1200]: 2y
+          - generic [ref=e1201]:
+            - generic [ref=e1204]: ▌
+            - generic [ref=e1205]: Business-process platform · Bangkok
+            - generic [ref=e1206]: Built BPM workflow engine and dashboards. Implemented role-based document routing; cut average approval time from days to hours.
+          - generic [ref=e1207]:
+            - generic [ref=e1208]: Vue 3
+            - generic [ref=e1209]: Nuxt
+            - generic [ref=e1210]: Laravel
+            - generic [ref=e1211]: PHP
+            - generic [ref=e1212]: MySQL
+        - generic [ref=e1213]:
+          - generic [ref=e1214]:
+            - generic [ref=e1215]: 2020 — 2022
+            - generic [ref=e1216]: 2y
+          - generic [ref=e1217]:
+            - generic [ref=e1220]: ▌
+            - generic [ref=e1221]: Agency & freelance · Bangkok
+            - generic [ref=e1222]: Shipped reporting dashboards, e-commerce front-ends, and a handful of marketing sites. Learnt the difference between code that works and code that ships.
+          - generic [ref=e1223]:
+            - generic [ref=e1224]: React
+            - generic [ref=e1225]: Express
+            - generic [ref=e1226]: Bootstrap
+            - generic [ref=e1227]: jQuery
+        - generic [ref=e1228]:
+          - generic [ref=e1229]:
+            - generic [ref=e1230]: 2019 — 2020
+            - generic [ref=e1231]: 1y
+          - generic [ref=e1232]:
+            - generic [ref=e1235]: ▌
+            - generic [ref=e1236]: Self-taught · everywhere
+            - generic [ref=e1237]: Built a portfolio site, broke it, rebuilt it, learnt git the hard way. Decided this was the job.
+          - generic [ref=e1238]:
+            - generic [ref=e1239]: HTML
+            - generic [ref=e1240]: CSS
+            - generic [ref=e1241]: JS
+            - generic [ref=e1242]: git
+    - generic [ref=e1243]:
+      - generic [ref=e1245]:
+        - generic [ref=e1246]: 04 / ping
+        - generic [ref=e1247]: ติดต่อ
+      - generic [ref=e1248]:
+        - generic [ref=e1249]:
+          - heading "l e t ' s b u i l d s o m e t h i n g _" [level=2] [ref=e1250]:
+            - generic [ref=e1251]:
+              - generic [ref=e1252]: l
+              - generic [ref=e1253]: e
+              - generic [ref=e1254]: t
+              - generic [ref=e1255]: "'"
+              - generic [ref=e1256]: s
+            - generic [ref=e1257]: b
+            - generic [ref=e1258]: u
+            - generic [ref=e1259]: i
+            - generic [ref=e1260]: l
+            - generic [ref=e1261]: d
+            - generic [ref=e1263]:
+              - generic [ref=e1264]: s
+              - generic [ref=e1265]: o
+              - generic [ref=e1266]: m
+              - generic [ref=e1267]: e
+              - generic [ref=e1268]: t
+              - generic [ref=e1269]: h
+              - generic [ref=e1270]: i
+              - generic [ref=e1271]: "n"
+              - generic [ref=e1272]: g
+              - generic [ref=e1273]: _
+          - generic [ref=e1274]: ส่งอีเมลมาทักทาย หรือชวนทำโปรเจกต์ก็ได้นะ
+        - generic [ref=e1275]:
+          - link "email i.boonyarakthunya@gmail.com ↗" [ref=e1276] [cursor=pointer]:
+            - /url: mailto:i.boonyarakthunya@gmail.com
+            - generic [ref=e1277]: email
+            - generic [ref=e1278]: i.boonyarakthunya@gmail.com
+            - generic [ref=e1279]: ↗
+          - link "phone +66 97 247 1491 ↗" [ref=e1280] [cursor=pointer]:
+            - /url: tel:+66972471491
+            - generic [ref=e1281]: phone
+            - generic [ref=e1282]: +66 97 247 1491
+            - generic [ref=e1283]: ↗
+          - link "github github.com/S09Z ↗" [ref=e1284] [cursor=pointer]:
+            - /url: https://github.com/S09Z
+            - generic [ref=e1285]: github
+            - generic [ref=e1286]: github.com/S09Z
+            - generic [ref=e1287]: ↗
+          - link "linkedin /in/ittichaib ↗" [ref=e1288] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/ittichaib/
+            - generic [ref=e1289]: linkedin
+            - generic [ref=e1290]: /in/ittichaib
+            - generic [ref=e1291]: ↗
+          - link "resume resume.pdf — 2026 ↗" [ref=e1292] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e1293]: resume
+            - generic [ref=e1294]: resume.pdf — 2026
+            - generic [ref=e1295]: ↗
+    - generic [ref=e1296]:
+      - generic [ref=e1297]: © 2026 · ittichai b. · built with care in bangkok
+      - generic [ref=e1298]: "[ s09z::end_of_transmission ]"
