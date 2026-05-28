@@ -1,11 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const techStack = [
-  'TypeScript', 'JavaScript', 'PHP', 'Go', 'Elixir', 'Python',
-  'React', 'Next.js', 'Vue.js', 'Nuxt', 'Tailwind', 'Bootstrap',
-  'HTML5', 'CSS3', 'Node.js', 'Express', 'Laravel', 'NestJS',
-  'PostgreSQL', 'MySQL', 'Docker', 'Git', 'Jest', 'Linux',
+const techRows = [
+  [
+    { name: 'TypeScript',  icon: 'devicon-typescript-plain colored' },
+    { name: 'JavaScript',  icon: 'devicon-javascript-plain colored' },
+    { name: 'PHP',         icon: 'devicon-php-plain colored' },
+    { name: 'Go',          icon: 'devicon-go-original-wordmark colored' },
+    { name: 'Elixir',      icon: 'devicon-elixir-plain colored' },
+    { name: 'Python',      icon: 'devicon-python-plain colored' },
+    { name: 'React',       icon: 'devicon-react-original colored' },
+    { name: 'Next.js',     icon: 'devicon-nextjs-original' },
+  ],
+  [
+    { name: 'Vue.js',      icon: 'devicon-vuejs-plain colored' },
+    { name: 'Nuxt',        icon: 'devicon-nuxtjs-plain colored' },
+    { name: 'Tailwind',    icon: 'devicon-tailwindcss-plain colored' },
+    { name: 'Bootstrap',   icon: 'devicon-bootstrap-plain colored' },
+    { name: 'HTML5',       icon: 'devicon-html5-plain colored' },
+    { name: 'CSS3',        icon: 'devicon-css3-plain colored' },
+    { name: 'Node.js',     icon: 'devicon-nodejs-plain colored' },
+    { name: 'Express',     icon: 'devicon-express-original' },
+  ],
+  [
+    { name: 'Laravel',     icon: 'devicon-laravel-plain colored' },
+    { name: 'NestJS',      icon: 'devicon-nestjs-plain colored' },
+    { name: 'PostgreSQL',  icon: 'devicon-postgresql-plain colored' },
+    { name: 'MySQL',       icon: 'devicon-mysql-plain colored' },
+    { name: 'Docker',      icon: 'devicon-docker-plain colored' },
+    { name: 'Git',         icon: 'devicon-git-plain colored' },
+    { name: 'Jest',        icon: 'devicon-jest-plain colored' },
+    { name: 'Linux',       icon: 'devicon-linux-plain' },
+  ],
 ];
 
 const projects = [
@@ -45,34 +71,42 @@ const workHistory = [
   {
     period: '2024 — now',
     active: true,
-    role: 'Full-stack engineer',
-    company: 'Enterprise baan · Bangkok',
-    desc: 'Lead front-end on a digital signature platform serving thousands of documents monthly. Drive the migration to Next 15 + RSC, owning JS for a 6-engineer team.',
-    stack: ['Next.js', 'TypeScript', 'React', 'Node.js', 'PostgreSQL'],
+    role: 'Senior Developer',
+    company: 'WHA Group · Bangkok',
+    desc: 'Senior developer at a large industrial estate and logistics group. Working across cloud and container environments (Docker, Kubernetes, Huawei Cloud) on document management and backoffice web systems.',
+    stack: ['Next.js', 'TypeScript', 'React', 'Docker', 'Kubernetes', 'Huawei Cloud'],
   },
   {
     period: '2022 — 2024',
     active: false,
-    role: 'Web developer',
-    company: 'Business process · Bangkok',
-    desc: 'Built BPM workflow engine and dashboard suite. Implemented role-based document routing, cut average approval time from days to hours.',
-    stack: ['Vue 3', 'Nuxt', 'Laravel', 'PHP', 'MySQL'],
+    role: 'Mid-Level Full Stack Developer',
+    company: 'SO-Siamrajathanee Plc. · Samut Prakan',
+    desc: 'Led front-end architecture with Vue 3 + Nuxt on enterprise BPM and document management platforms. Owned the reporting dashboard suite and drove role-based workflow routing that cut approval cycles from days to hours.',
+    stack: ['Vue 3', 'Nuxt', 'Laravel', 'PHP', 'PostgreSQL', 'MySQL'],
   },
   {
-    period: '2020 — 2022',
+    period: '2020 — 2021',
     active: false,
-    role: 'Junior developer',
-    company: 'Agency + Freelance · Bangkok',
-    desc: 'Shipped reporting dashboards, e-commerce front-ends, WordPress customisations. Learned the difference between code that works and code that ships.',
-    stack: ['React', 'Express', 'Bootstrap', 'PHP'],
+    role: 'Full Stack Developer',
+    company: 'SO-Siamrajathanee Plc. · Samut Prakan',
+    desc: 'Full-stack development on internal web applications, graph dashboards, and BPM systems serving enterprise clients across Thailand.',
+    stack: ['Vue.js', 'Laravel', 'PHP', 'MySQL', 'JavaScript'],
   },
   {
-    period: '2019',
+    period: '2017 — 2018',
     active: false,
-    role: 'First repo, first deploy',
-    company: 'Intern · Bangkok',
-    desc: 'CS internship — wrote the first commit that went to production. Hooked.',
-    stack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+    role: 'Frontend Developer',
+    company: 'xsense information service co. ltd · Nonthaburi',
+    desc: 'Built responsive UIs and integrated REST APIs for client-facing web products.',
+    stack: ['JavaScript', 'HTML5', 'CSS3', 'Bootstrap', 'jQuery'],
+  },
+  {
+    period: '2016 — 2017',
+    active: false,
+    role: 'Web Programmer',
+    company: 'Research For Life · Nonthaburi',
+    desc: 'First professional role — developed and maintained web applications for a research organisation.',
+    stack: ['PHP', 'JavaScript', 'HTML', 'CSS', 'MySQL'],
   },
 ];
 ---
@@ -85,7 +119,7 @@ const workHistory = [
     <div class="t-nav-links">
       <a href="#about">/about</a>
       <a href="#projects">/projects</a>
-      <a href="#work">/work</a>
+      <a href="#career">/career</a>
       <a href="#contact">/contact</a>
     </div>
     <div class="t-nav-meta">
@@ -105,13 +139,13 @@ const workHistory = [
         </div>
 
         <h1 class="t-h1" data-liq>
-          I t t i c h a i<br />
-          B o o n y a r a k<span class="accent"> · </span>t h u n y a
+          Ittichai<span class="accent"> ·</span><br />
+          Boonyarakthunya
         </h1>
 
         <p class="hero-subtitle">
           อิทธิชัย บุญยะรักษ์ทันยา · เรียกผม โอ๊ต ก็พอ<br />
-          Software Engineer based in Bangkok · 5+ years shipping production web.
+          Senior Full Stack Developer · Bangkok · 8+ years shipping production web.
         </p>
       </div>
 
@@ -126,7 +160,7 @@ const workHistory = [
             07/01
           </div>
           <div class="hero-stat-cell">
-            <div class="val">5+ years</div>
+            <div class="val">8+ years</div>
             shipping production web
           </div>
           <div class="hero-stat-cell">
@@ -147,20 +181,33 @@ const workHistory = [
       <!-- Row 1 → left -->
       <div class="ticker-row">
         <div class="ticker-inner">
-          {[...techStack, ...techStack].map((t) => (
-            <a href="#" class="ticker-item">
-              {t} <span class="dot">◆</span>
-            </a>
+          {[...techRows[0], ...techRows[0], ...techRows[0], ...techRows[0]].map((t) => (
+            <span class="ticker-item">
+              <i class={`${t.icon} ticker-icon`} title={t.name}></i>
+              <span class="dot">◆</span>
+            </span>
           ))}
         </div>
       </div>
       <!-- Row 2 → right -->
       <div class="ticker-row">
         <div class="ticker-inner reverse">
-          {[...techStack, ...techStack].map((t) => (
-            <a href="#" class="ticker-item">
-              {t} <span class="dot">◆</span>
-            </a>
+          {[...techRows[1], ...techRows[1], ...techRows[1], ...techRows[1]].map((t) => (
+            <span class="ticker-item">
+              <i class={`${t.icon} ticker-icon`} title={t.name}></i>
+              <span class="dot">◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+      <!-- Row 3 → left -->
+      <div class="ticker-row">
+        <div class="ticker-inner">
+          {[...techRows[2], ...techRows[2], ...techRows[2], ...techRows[2]].map((t) => (
+            <span class="ticker-item">
+              <i class={`${t.icon} ticker-icon`} title={t.name}></i>
+              <span class="dot">◆</span>
+            </span>
           ))}
         </div>
       </div>
@@ -178,32 +225,34 @@ const workHistory = [
         <div style="display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:start;">
 
           <div>
-            <h2 class="t-h2" style="margin-bottom:2rem;">
-              Mid-level full-stack<br />
+            <h2 class="t-h2" data-liq style="margin-bottom:2rem;">
+              Senior full-stack<br />
               engineer, with a <span class="accent">designer's</span><br />
               eye for what ships.
             </h2>
 
             <div style="display:flex; flex-direction:column; gap:1rem; max-width:58ch;">
-              <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
-                Sawad-dee — I'm Oat. I spend my days building web products with React, Next.js,
-                TypeScript and TailwindCSS on the front, and Node, Express, Laravel and PHP on the back.
-                I have a good eye for UX & UI and web design.
+              <p data-liq style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+                Sawad-dee — I'm Oat. Senior full-stack developer based in Bangkok with 8+ years
+                building production web applications. Currently at WHA Group working across cloud
+                and container environments — Docker, Kubernetes, Huawei Cloud.
               </p>
-              <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
-                I've shipped enterprise-grade tools: digital signature platforms, BPM systems,
-                internal dashboards. The kind of work where a user is a colleague and uptime matters.
+              <p data-liq style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+                My work spans document management, BPM, graph & reporting dashboards, and backoffice
+                web apps — systems where reliability and UX both matter. I've led front-end architecture
+                and owned full-stack delivery across every level of seniority.
               </p>
-              <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
-                I'm currently learning Golang and Python; looking ahead I want to grow in DevOps,
-                Cloud and Data Engineering. Also on the side: Elixir and Flutter.
+              <p data-liq style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+                I hold a Master's in AI for Business Analytics from KMITL and a B.Sc. in Computer
+                Science from RMUTT. My focus is shifting toward Machine Learning, LLM applications,
+                and AI Engineering — building intelligent systems on top of solid engineering foundations.
               </p>
             </div>
           </div>
 
           <div style="display:flex; flex-direction:column; gap:2rem; padding-top:0.5rem;">
             <div class="stat-block">
-              <div class="stat-num">05</div>
+              <div class="stat-num">08</div>
               <div class="stat-label">years</div>
             </div>
             <div class="stat-block">
@@ -232,7 +281,7 @@ const workHistory = [
           <span class="t-section-cmd"><span class="prompt">$ </span>ls ./case-studies</span>
         </div>
 
-        <h2 class="t-h2" style="margin-bottom:0.5rem;">
+        <h2 class="t-h2" data-liq style="margin-bottom:0.5rem;">
           Selected case studies.
         </h2>
         <p style="font-size:0.62rem; color:var(--muted); margin-bottom:2.5rem; letter-spacing:0.1em;">
@@ -270,16 +319,16 @@ const workHistory = [
     <div class="t-divider"></div>
 
     <!-- ── Work ─────────────────────────────────────── -->
-    <section id="work">
+    <section id="career">
       <div class="t-section">
 
         <div class="t-section-head">
-          <span class="t-section-num">03 / work</span>
+          <span class="t-section-num">03 / career</span>
           <span class="t-section-cmd"><span class="prompt">$ </span>git log --oneline ./career</span>
         </div>
 
-        <h2 class="t-h2" style="margin-bottom:3rem;">
-          Five years of tickets closed<br />
+        <h2 class="t-h2" data-liq style="margin-bottom:3rem;">
+          Eight years of tickets closed<br />
           &amp; features shipped.
         </h2>
 
@@ -319,7 +368,7 @@ const workHistory = [
         <div class="contact-grid">
 
           <div>
-            <div class="contact-cta">
+            <div class="contact-cta" data-liq>
               let's<br />
               build <span class="accent">somethi</span><br />
               ng<span class="cursor">_</span>
@@ -409,12 +458,22 @@ const workHistory = [
     document.querySelectorAll('[data-liq]').forEach((el) => {
       const walk = (node: Node) => {
         if (node.nodeType === 3) {
+          /* Collapse HTML indentation whitespace (newlines + multi-space)
+             into a single space, then skip purely-whitespace nodes. */
+          const text = (node.textContent ?? '')
+            .replace(/[\n\r\t]+/g, ' ')
+            .replace(/ {2,}/g, ' ');
+          if (!text.trim()) return;
           const frag = document.createDocumentFragment();
-          for (const c of [...(node.textContent ?? '')]) {
-            const s = document.createElement('span');
-            s.className = 'ch';
-            s.textContent = c === ' ' ? ' ' : c;
-            frag.appendChild(s);
+          for (const c of [...text]) {
+            if (c === ' ') {
+              frag.appendChild(document.createTextNode(' '));
+            } else {
+              const s = document.createElement('span');
+              s.className = 'ch';
+              s.textContent = c;
+              frag.appendChild(s);
+            }
           }
           node.parentNode!.replaceChild(frag, node);
         } else if (node.nodeType === 1) {
