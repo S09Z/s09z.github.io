@@ -1,0 +1,602 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "S09Z::oat" [ref=e3] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=e4]:
+      - link "/about" [ref=e5] [cursor=pointer]:
+        - /url: "#about"
+      - link "/projects" [ref=e6] [cursor=pointer]:
+        - /url: "#projects"
+      - link "/work" [ref=e7] [cursor=pointer]:
+        - /url: "#work"
+      - link "/contact" [ref=e8] [cursor=pointer]:
+        - /url: "#contact"
+    - generic [ref=e9]:
+      - generic [ref=e10]: ● online · BKK
+      - generic [ref=e11]: 09:17:55 ICT
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: $ cat ./identity.md
+        - heading "I t t i c h a i B o o n y a r a k · t h u n y a" [level=1] [ref=e16]:
+          - text: I t t i c h a i
+          - text: B o o n y a r a k · t h u n y a
+        - paragraph [ref=e17]:
+          - text: อิทธิชัย บุญยะรักษ์ทันยา · เรียกผม โอ๊ต ก็พอ
+          - text: Software Engineer based in Bangkok · 5+ years shipping production web.
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - generic [ref=e21]: Software Engineer
+            - text: Full stack
+          - generic [ref=e22]:
+            - generic [ref=e23]: Bangkok
+            - text: 07/01
+          - generic [ref=e24]:
+            - generic [ref=e25]: 5+ years
+            - text: shipping production web
+          - generic [ref=e26]:
+            - generic [ref=e27]: Open
+            - text: to opportunities
+        - generic [ref=e29]:
+          - text: "[ oat.jpg ]"
+          - text: not found
+    - generic [ref=e30]:
+      - generic [ref=e32]:
+        - link "TypeScript ◆" [ref=e33] [cursor=pointer]:
+          - /url: "#"
+          - text: TypeScript
+          - generic [ref=e34]: ◆
+        - link "JavaScript ◆" [ref=e35] [cursor=pointer]:
+          - /url: "#"
+          - text: JavaScript
+          - generic [ref=e36]: ◆
+        - link "PHP ◆" [ref=e37] [cursor=pointer]:
+          - /url: "#"
+          - text: PHP
+          - generic [ref=e38]: ◆
+        - link "Go ◆" [ref=e39] [cursor=pointer]:
+          - /url: "#"
+          - text: Go
+          - generic [ref=e40]: ◆
+        - link "Elixir ◆" [ref=e41] [cursor=pointer]:
+          - /url: "#"
+          - text: Elixir
+          - generic [ref=e42]: ◆
+        - link "Python ◆" [ref=e43] [cursor=pointer]:
+          - /url: "#"
+          - text: Python
+          - generic [ref=e44]: ◆
+        - link "React ◆" [ref=e45] [cursor=pointer]:
+          - /url: "#"
+          - text: React
+          - generic [ref=e46]: ◆
+        - link "Next.js ◆" [ref=e47] [cursor=pointer]:
+          - /url: "#"
+          - text: Next.js
+          - generic [ref=e48]: ◆
+        - link "Vue.js ◆" [ref=e49] [cursor=pointer]:
+          - /url: "#"
+          - text: Vue.js
+          - generic [ref=e50]: ◆
+        - link "Nuxt ◆" [ref=e51] [cursor=pointer]:
+          - /url: "#"
+          - text: Nuxt
+          - generic [ref=e52]: ◆
+        - link "Tailwind ◆" [ref=e53] [cursor=pointer]:
+          - /url: "#"
+          - text: Tailwind
+          - generic [ref=e54]: ◆
+        - link "Bootstrap ◆" [ref=e55] [cursor=pointer]:
+          - /url: "#"
+          - text: Bootstrap
+          - generic [ref=e56]: ◆
+        - link "HTML5 ◆" [ref=e57] [cursor=pointer]:
+          - /url: "#"
+          - text: HTML5
+          - generic [ref=e58]: ◆
+        - link "CSS3 ◆" [ref=e59] [cursor=pointer]:
+          - /url: "#"
+          - text: CSS3
+          - generic [ref=e60]: ◆
+        - link "Node.js ◆" [ref=e61] [cursor=pointer]:
+          - /url: "#"
+          - text: Node.js
+          - generic [ref=e62]: ◆
+        - link "Express ◆" [ref=e63] [cursor=pointer]:
+          - /url: "#"
+          - text: Express
+          - generic [ref=e64]: ◆
+        - link "Laravel ◆" [ref=e65] [cursor=pointer]:
+          - /url: "#"
+          - text: Laravel
+          - generic [ref=e66]: ◆
+        - link "NestJS ◆" [ref=e67] [cursor=pointer]:
+          - /url: "#"
+          - text: NestJS
+          - generic [ref=e68]: ◆
+        - link "PostgreSQL ◆" [ref=e69] [cursor=pointer]:
+          - /url: "#"
+          - text: PostgreSQL
+          - generic [ref=e70]: ◆
+        - link "MySQL ◆" [ref=e71] [cursor=pointer]:
+          - /url: "#"
+          - text: MySQL
+          - generic [ref=e72]: ◆
+        - link "Docker ◆" [ref=e73] [cursor=pointer]:
+          - /url: "#"
+          - text: Docker
+          - generic [ref=e74]: ◆
+        - link "Git ◆" [ref=e75] [cursor=pointer]:
+          - /url: "#"
+          - text: Git
+          - generic [ref=e76]: ◆
+        - link "Jest ◆" [ref=e77] [cursor=pointer]:
+          - /url: "#"
+          - text: Jest
+          - generic [ref=e78]: ◆
+        - link "Linux ◆" [ref=e79] [cursor=pointer]:
+          - /url: "#"
+          - text: Linux
+          - generic [ref=e80]: ◆
+        - link "TypeScript ◆" [ref=e81] [cursor=pointer]:
+          - /url: "#"
+          - text: TypeScript
+          - generic [ref=e82]: ◆
+        - link "JavaScript ◆" [ref=e83] [cursor=pointer]:
+          - /url: "#"
+          - text: JavaScript
+          - generic [ref=e84]: ◆
+        - link "PHP ◆" [ref=e85] [cursor=pointer]:
+          - /url: "#"
+          - text: PHP
+          - generic [ref=e86]: ◆
+        - link "Go ◆" [ref=e87] [cursor=pointer]:
+          - /url: "#"
+          - text: Go
+          - generic [ref=e88]: ◆
+        - link "Elixir ◆" [ref=e89] [cursor=pointer]:
+          - /url: "#"
+          - text: Elixir
+          - generic [ref=e90]: ◆
+        - link "Python ◆" [ref=e91] [cursor=pointer]:
+          - /url: "#"
+          - text: Python
+          - generic [ref=e92]: ◆
+        - link "React ◆" [ref=e93] [cursor=pointer]:
+          - /url: "#"
+          - text: React
+          - generic [ref=e94]: ◆
+        - link "Next.js ◆" [ref=e95] [cursor=pointer]:
+          - /url: "#"
+          - text: Next.js
+          - generic [ref=e96]: ◆
+        - link "Vue.js ◆" [ref=e97] [cursor=pointer]:
+          - /url: "#"
+          - text: Vue.js
+          - generic [ref=e98]: ◆
+        - link "Nuxt ◆" [ref=e99] [cursor=pointer]:
+          - /url: "#"
+          - text: Nuxt
+          - generic [ref=e100]: ◆
+        - link "Tailwind ◆" [ref=e101] [cursor=pointer]:
+          - /url: "#"
+          - text: Tailwind
+          - generic [ref=e102]: ◆
+        - link "Bootstrap ◆" [ref=e103] [cursor=pointer]:
+          - /url: "#"
+          - text: Bootstrap
+          - generic [ref=e104]: ◆
+        - link "HTML5 ◆" [ref=e105] [cursor=pointer]:
+          - /url: "#"
+          - text: HTML5
+          - generic [ref=e106]: ◆
+        - link "CSS3 ◆" [ref=e107] [cursor=pointer]:
+          - /url: "#"
+          - text: CSS3
+          - generic [ref=e108]: ◆
+        - link "Node.js ◆" [ref=e109] [cursor=pointer]:
+          - /url: "#"
+          - text: Node.js
+          - generic [ref=e110]: ◆
+        - link "Express ◆" [ref=e111] [cursor=pointer]:
+          - /url: "#"
+          - text: Express
+          - generic [ref=e112]: ◆
+        - link "Laravel ◆" [ref=e113] [cursor=pointer]:
+          - /url: "#"
+          - text: Laravel
+          - generic [ref=e114]: ◆
+        - link "NestJS ◆" [ref=e115] [cursor=pointer]:
+          - /url: "#"
+          - text: NestJS
+          - generic [ref=e116]: ◆
+        - link "PostgreSQL ◆" [ref=e117] [cursor=pointer]:
+          - /url: "#"
+          - text: PostgreSQL
+          - generic [ref=e118]: ◆
+        - link "MySQL ◆" [ref=e119] [cursor=pointer]:
+          - /url: "#"
+          - text: MySQL
+          - generic [ref=e120]: ◆
+        - link "Docker ◆" [ref=e121] [cursor=pointer]:
+          - /url: "#"
+          - text: Docker
+          - generic [ref=e122]: ◆
+        - link "Git ◆" [ref=e123] [cursor=pointer]:
+          - /url: "#"
+          - text: Git
+          - generic [ref=e124]: ◆
+        - link "Jest ◆" [ref=e125] [cursor=pointer]:
+          - /url: "#"
+          - text: Jest
+          - generic [ref=e126]: ◆
+        - link "Linux ◆" [ref=e127] [cursor=pointer]:
+          - /url: "#"
+          - text: Linux
+          - generic [ref=e128]: ◆
+      - generic [ref=e130]:
+        - link "TypeScript ◆" [ref=e131] [cursor=pointer]:
+          - /url: "#"
+          - text: TypeScript
+          - generic [ref=e132]: ◆
+        - link "JavaScript ◆" [ref=e133] [cursor=pointer]:
+          - /url: "#"
+          - text: JavaScript
+          - generic [ref=e134]: ◆
+        - link "PHP ◆" [ref=e135] [cursor=pointer]:
+          - /url: "#"
+          - text: PHP
+          - generic [ref=e136]: ◆
+        - link "Go ◆" [ref=e137] [cursor=pointer]:
+          - /url: "#"
+          - text: Go
+          - generic [ref=e138]: ◆
+        - link "Elixir ◆" [ref=e139] [cursor=pointer]:
+          - /url: "#"
+          - text: Elixir
+          - generic [ref=e140]: ◆
+        - link "Python ◆" [ref=e141] [cursor=pointer]:
+          - /url: "#"
+          - text: Python
+          - generic [ref=e142]: ◆
+        - link "React ◆" [ref=e143] [cursor=pointer]:
+          - /url: "#"
+          - text: React
+          - generic [ref=e144]: ◆
+        - link "Next.js ◆" [ref=e145] [cursor=pointer]:
+          - /url: "#"
+          - text: Next.js
+          - generic [ref=e146]: ◆
+        - link "Vue.js ◆" [ref=e147] [cursor=pointer]:
+          - /url: "#"
+          - text: Vue.js
+          - generic [ref=e148]: ◆
+        - link "Nuxt ◆" [ref=e149] [cursor=pointer]:
+          - /url: "#"
+          - text: Nuxt
+          - generic [ref=e150]: ◆
+        - link "Tailwind ◆" [ref=e151] [cursor=pointer]:
+          - /url: "#"
+          - text: Tailwind
+          - generic [ref=e152]: ◆
+        - link "Bootstrap ◆" [ref=e153] [cursor=pointer]:
+          - /url: "#"
+          - text: Bootstrap
+          - generic [ref=e154]: ◆
+        - link "HTML5 ◆" [ref=e155] [cursor=pointer]:
+          - /url: "#"
+          - text: HTML5
+          - generic [ref=e156]: ◆
+        - link "CSS3 ◆" [ref=e157] [cursor=pointer]:
+          - /url: "#"
+          - text: CSS3
+          - generic [ref=e158]: ◆
+        - link "Node.js ◆" [ref=e159] [cursor=pointer]:
+          - /url: "#"
+          - text: Node.js
+          - generic [ref=e160]: ◆
+        - link "Express ◆" [ref=e161] [cursor=pointer]:
+          - /url: "#"
+          - text: Express
+          - generic [ref=e162]: ◆
+        - link "Laravel ◆" [ref=e163] [cursor=pointer]:
+          - /url: "#"
+          - text: Laravel
+          - generic [ref=e164]: ◆
+        - link "NestJS ◆" [ref=e165] [cursor=pointer]:
+          - /url: "#"
+          - text: NestJS
+          - generic [ref=e166]: ◆
+        - link "PostgreSQL ◆" [ref=e167] [cursor=pointer]:
+          - /url: "#"
+          - text: PostgreSQL
+          - generic [ref=e168]: ◆
+        - link "MySQL ◆" [ref=e169] [cursor=pointer]:
+          - /url: "#"
+          - text: MySQL
+          - generic [ref=e170]: ◆
+        - link "Docker ◆" [ref=e171] [cursor=pointer]:
+          - /url: "#"
+          - text: Docker
+          - generic [ref=e172]: ◆
+        - link "Git ◆" [ref=e173] [cursor=pointer]:
+          - /url: "#"
+          - text: Git
+          - generic [ref=e174]: ◆
+        - link "Jest ◆" [ref=e175] [cursor=pointer]:
+          - /url: "#"
+          - text: Jest
+          - generic [ref=e176]: ◆
+        - link "Linux ◆" [ref=e177] [cursor=pointer]:
+          - /url: "#"
+          - text: Linux
+          - generic [ref=e178]: ◆
+        - link "TypeScript ◆" [ref=e179] [cursor=pointer]:
+          - /url: "#"
+          - text: TypeScript
+          - generic [ref=e180]: ◆
+        - link "JavaScript ◆" [ref=e181] [cursor=pointer]:
+          - /url: "#"
+          - text: JavaScript
+          - generic [ref=e182]: ◆
+        - link "PHP ◆" [ref=e183] [cursor=pointer]:
+          - /url: "#"
+          - text: PHP
+          - generic [ref=e184]: ◆
+        - link "Go ◆" [ref=e185] [cursor=pointer]:
+          - /url: "#"
+          - text: Go
+          - generic [ref=e186]: ◆
+        - link "Elixir ◆" [ref=e187] [cursor=pointer]:
+          - /url: "#"
+          - text: Elixir
+          - generic [ref=e188]: ◆
+        - link "Python ◆" [ref=e189] [cursor=pointer]:
+          - /url: "#"
+          - text: Python
+          - generic [ref=e190]: ◆
+        - link "React ◆" [ref=e191] [cursor=pointer]:
+          - /url: "#"
+          - text: React
+          - generic [ref=e192]: ◆
+        - link "Next.js ◆" [ref=e193] [cursor=pointer]:
+          - /url: "#"
+          - text: Next.js
+          - generic [ref=e194]: ◆
+        - link "Vue.js ◆" [ref=e195] [cursor=pointer]:
+          - /url: "#"
+          - text: Vue.js
+          - generic [ref=e196]: ◆
+        - link "Nuxt ◆" [ref=e197] [cursor=pointer]:
+          - /url: "#"
+          - text: Nuxt
+          - generic [ref=e198]: ◆
+        - link "Tailwind ◆" [ref=e199] [cursor=pointer]:
+          - /url: "#"
+          - text: Tailwind
+          - generic [ref=e200]: ◆
+        - link "Bootstrap ◆" [ref=e201] [cursor=pointer]:
+          - /url: "#"
+          - text: Bootstrap
+          - generic [ref=e202]: ◆
+        - link "HTML5 ◆" [ref=e203] [cursor=pointer]:
+          - /url: "#"
+          - text: HTML5
+          - generic [ref=e204]: ◆
+        - link "CSS3 ◆" [ref=e205] [cursor=pointer]:
+          - /url: "#"
+          - text: CSS3
+          - generic [ref=e206]: ◆
+        - link "Node.js ◆" [ref=e207] [cursor=pointer]:
+          - /url: "#"
+          - text: Node.js
+          - generic [ref=e208]: ◆
+        - link "Express ◆" [ref=e209] [cursor=pointer]:
+          - /url: "#"
+          - text: Express
+          - generic [ref=e210]: ◆
+        - link "Laravel ◆" [ref=e211] [cursor=pointer]:
+          - /url: "#"
+          - text: Laravel
+          - generic [ref=e212]: ◆
+        - link "NestJS ◆" [ref=e213] [cursor=pointer]:
+          - /url: "#"
+          - text: NestJS
+          - generic [ref=e214]: ◆
+        - link "PostgreSQL ◆" [ref=e215] [cursor=pointer]:
+          - /url: "#"
+          - text: PostgreSQL
+          - generic [ref=e216]: ◆
+        - link "MySQL ◆" [ref=e217] [cursor=pointer]:
+          - /url: "#"
+          - text: MySQL
+          - generic [ref=e218]: ◆
+        - link "Docker ◆" [ref=e219] [cursor=pointer]:
+          - /url: "#"
+          - text: Docker
+          - generic [ref=e220]: ◆
+        - link "Git ◆" [ref=e221] [cursor=pointer]:
+          - /url: "#"
+          - text: Git
+          - generic [ref=e222]: ◆
+        - link "Jest ◆" [ref=e223] [cursor=pointer]:
+          - /url: "#"
+          - text: Jest
+          - generic [ref=e224]: ◆
+        - link "Linux ◆" [ref=e225] [cursor=pointer]:
+          - /url: "#"
+          - text: Linux
+          - generic [ref=e226]: ◆
+    - generic [ref=e228]:
+      - generic [ref=e229]:
+        - generic [ref=e230]: 01 / about
+        - generic [ref=e231]: $ cat ./about.md
+      - generic [ref=e232]:
+        - generic [ref=e233]:
+          - heading "Mid-level full-stack engineer, with a designer's eye for what ships." [level=2] [ref=e234]:
+            - text: Mid-level full-stack
+            - text: engineer, with a designer's
+            - text: eye for what ships.
+          - generic [ref=e235]:
+            - paragraph [ref=e236]: Sawad-dee — I'm Oat. I spend my days building web products with React, Next.js, TypeScript and TailwindCSS on the front, and Node, Express, Laravel and PHP on the back. I have a good eye for UX & UI and web design.
+            - paragraph [ref=e237]: "I've shipped enterprise-grade tools: digital signature platforms, BPM systems, internal dashboards. The kind of work where a user is a colleague and uptime matters."
+            - paragraph [ref=e238]: "I'm currently learning Golang and Python; looking ahead I want to grow in DevOps, Cloud and Data Engineering. Also on the side: Elixir and Flutter."
+        - generic [ref=e239]:
+          - generic [ref=e240]:
+            - generic [ref=e241]: "05"
+            - generic [ref=e242]: years
+          - generic [ref=e243]:
+            - generic [ref=e244]: JS
+            - generic [ref=e245]: primary lang
+          - generic [ref=e246]:
+            - generic [ref=e247]: BKK
+            - generic [ref=e248]: location
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - generic [ref=e253]: 02 / projects
+        - generic [ref=e254]: $ ls ./case-studies
+      - heading "Selected case studies." [level=2] [ref=e255]
+      - paragraph [ref=e256]: // SUPPLY REAL SCREENSHOTS + LINKS
+      - generic [ref=e257]:
+        - link "enterprise 2024 — now lead front-end · ongoing S· Digital Signature Platform End-to-end document signing for thousands of corporate users. Led the Next 15 + RSC migration, modernised the canvas-based signing flow, owned the design-system rewrite. Next.js TS Tailwind Node PostgreSQL case study →" [ref=e258] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e259]:
+            - generic [ref=e260]: enterprise
+            - generic [ref=e261]: 2024 — now
+          - generic [ref=e262]: lead front-end · ongoing
+          - generic [ref=e264]: S·
+          - generic [ref=e265]: Digital Signature Platform
+          - generic [ref=e266]: End-to-end document signing for thousands of corporate users. Led the Next 15 + RSC migration, modernised the canvas-based signing flow, owned the design-system rewrite.
+          - generic [ref=e267]:
+            - generic [ref=e268]: Next.js
+            - generic [ref=e269]: TS
+            - generic [ref=e270]: Tailwind
+            - generic [ref=e271]: Node
+            - generic [ref=e272]: PostgreSQL
+          - generic [ref=e273]: case study →
+        - link "BPM 2022 — 2024 full-stack · shipped B· Workflow Engine + Dashboards Role-based document routing for an in-house BPM platform. Cut average approval time from days to hours. Owned the Vue 3 component library & the reporting dashboards. Vue 3 Nuxt Laravel PHP MySQL case study →" [ref=e274] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e275]:
+            - generic [ref=e276]: BPM
+            - generic [ref=e277]: 2022 — 2024
+          - generic [ref=e278]: full-stack · shipped
+          - generic [ref=e280]: B·
+          - generic [ref=e281]: Workflow Engine + Dashboards
+          - generic [ref=e282]: Role-based document routing for an in-house BPM platform. Cut average approval time from days to hours. Owned the Vue 3 component library & the reporting dashboards.
+          - generic [ref=e283]:
+            - generic [ref=e284]: Vue 3
+            - generic [ref=e285]: Nuxt
+            - generic [ref=e286]: Laravel
+            - generic [ref=e287]: PHP
+            - generic [ref=e288]: MySQL
+          - generic [ref=e289]: case study →
+        - link "freelance 2020 — 2022 solo build R· Reporting Dashboard Suite Custom analytics dashboards for several agency clients. Real-time data viz with charts, drilldowns, exportable reports. Delivered solo on short timelines. React Express D3 Bootstrap case study →" [ref=e290] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e291]:
+            - generic [ref=e292]: freelance
+            - generic [ref=e293]: 2020 — 2022
+          - generic [ref=e294]: solo build
+          - generic [ref=e296]: R·
+          - generic [ref=e297]: Reporting Dashboard Suite
+          - generic [ref=e298]: Custom analytics dashboards for several agency clients. Real-time data viz with charts, drilldowns, exportable reports. Delivered solo on short timelines.
+          - generic [ref=e299]:
+            - generic [ref=e300]: React
+            - generic [ref=e301]: Express
+            - generic [ref=e302]: D3
+            - generic [ref=e303]: Bootstrap
+          - generic [ref=e304]: case study →
+    - generic [ref=e307]:
+      - generic [ref=e308]:
+        - generic [ref=e309]: 03 / work
+        - generic [ref=e310]: $ git log --oneline ./career
+      - heading "Five years of tickets closed & features shipped." [level=2] [ref=e311]:
+        - text: Five years of tickets closed
+        - text: "& features shipped."
+      - generic [ref=e312]:
+        - generic [ref=e313]:
+          - generic [ref=e315]: 2024 — now
+          - generic [ref=e317]:
+            - generic [ref=e318]: Full-stack engineer
+            - generic [ref=e319]: Enterprise baan · Bangkok
+            - generic [ref=e320]: Lead front-end on a digital signature platform serving thousands of documents monthly. Drive the migration to Next 15 + RSC, owning JS for a 6-engineer team.
+            - generic [ref=e321]:
+              - generic [ref=e322]: Next.js
+              - generic [ref=e323]: TypeScript
+              - generic [ref=e324]: React
+              - generic [ref=e325]: Node.js
+              - generic [ref=e326]: PostgreSQL
+        - generic [ref=e327]:
+          - generic [ref=e329]: 2022 — 2024
+          - generic [ref=e331]:
+            - generic [ref=e332]: Web developer
+            - generic [ref=e333]: Business process · Bangkok
+            - generic [ref=e334]: Built BPM workflow engine and dashboard suite. Implemented role-based document routing, cut average approval time from days to hours.
+            - generic [ref=e335]:
+              - generic [ref=e336]: Vue 3
+              - generic [ref=e337]: Nuxt
+              - generic [ref=e338]: Laravel
+              - generic [ref=e339]: PHP
+              - generic [ref=e340]: MySQL
+        - generic [ref=e341]:
+          - generic [ref=e343]: 2020 — 2022
+          - generic [ref=e345]:
+            - generic [ref=e346]: Junior developer
+            - generic [ref=e347]: Agency + Freelance · Bangkok
+            - generic [ref=e348]: Shipped reporting dashboards, e-commerce front-ends, WordPress customisations. Learned the difference between code that works and code that ships.
+            - generic [ref=e349]:
+              - generic [ref=e350]: React
+              - generic [ref=e351]: Express
+              - generic [ref=e352]: Bootstrap
+              - generic [ref=e353]: PHP
+        - generic [ref=e354]:
+          - generic [ref=e356]: "2019"
+          - generic [ref=e358]:
+            - generic [ref=e359]: First repo, first deploy
+            - generic [ref=e360]: Intern · Bangkok
+            - generic [ref=e361]: CS internship — wrote the first commit that went to production. Hooked.
+            - generic [ref=e362]:
+              - generic [ref=e363]: HTML
+              - generic [ref=e364]: CSS
+              - generic [ref=e365]: JavaScript
+              - generic [ref=e366]: PHP
+    - generic [ref=e369]:
+      - generic [ref=e370]:
+        - generic [ref=e371]: 04 / ping
+        - generic [ref=e372]: ติดต่อ
+      - generic [ref=e373]:
+        - generic [ref=e374]:
+          - generic [ref=e375]:
+            - text: let's
+            - text: build somethi
+            - text: ng
+            - generic [ref=e376]: _
+          - paragraph [ref=e377]: อิทธิชัย บุญยะรักษ์ทันยา · ส่งอีเมลหรือจะโทรหาก็ได้นะ
+        - generic [ref=e378]:
+          - link "// email i.boonyarakthunya@gmail.com" [ref=e379] [cursor=pointer]:
+            - /url: mailto:i.boonyarakthunya@gmail.com
+            - generic [ref=e380]: // email
+            - generic [ref=e381]: i.boonyarakthunya@gmail.com
+          - link "// phone +66 97 247 1491" [ref=e382] [cursor=pointer]:
+            - /url: tel:+66972471491
+            - generic [ref=e383]: // phone
+            - generic [ref=e384]: +66 97 247 1491
+          - link "// github github.com/S09Z" [ref=e385] [cursor=pointer]:
+            - /url: https://github.com/S09Z
+            - generic [ref=e386]: // github
+            - generic [ref=e387]: github.com/S09Z
+          - link "// linkedin /in/ittichaib" [ref=e388] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/ittichaib/
+            - generic [ref=e389]: // linkedin
+            - generic [ref=e390]: /in/ittichaib
+          - link "// resume resume.pdf — 2026" [ref=e391] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e392]: // resume
+            - generic [ref=e393]: resume.pdf — 2026
+    - generic [ref=e394]:
+      - generic [ref=e395]: © 2026 · ittichai b. · built with care in bangkok
+      - generic [ref=e396]: "[ s09z::end_of_transmission ]"
+  - link "Back to top" [ref=e397] [cursor=pointer]:
+    - /url: "#"
+    - generic [ref=e398]: ↑
+    - generic [ref=e399]: top

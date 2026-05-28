@@ -1,164 +1,463 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HackedTextTitle from '../components/HackedTextTitle.astro';
-import StarField from '../components/StarField.astro';
 
-const technologyList = [
-  { name: 'NextJS',      icon: 'devicon-nextjs-original' },
-  { name: 'VueJS',       icon: 'devicon-vuejs-plain' },
-  { name: 'NuxtJS',      icon: 'devicon-nuxtjs-plain' },
-  { name: 'ReactJS',     icon: 'devicon-react-original' },
-  { name: 'Express',     icon: 'devicon-express-original' },
-  { name: 'NodeJS',      icon: 'devicon-nodejs-plain' },
-  { name: 'CSS',         icon: 'devicon-css3-plain' },
-  { name: 'HTML',        icon: 'devicon-html5-plain' },
-  { name: 'Javascript',  icon: 'devicon-javascript-plain' },
-  { name: 'Typescript',  icon: 'devicon-typescript-plain' },
-  { name: 'TailwindCSS', icon: 'devicon-tailwindcss-plain' },
-  { name: 'Bootstrap',   icon: 'devicon-bootstrap-plain' },
-  { name: 'PHP',         icon: 'devicon-php-plain' },
-  { name: 'Laravel',     icon: 'devicon-laravel-plain' },
-  { name: 'Docker',      icon: 'devicon-docker-plain' },
-  { name: 'Git',         icon: 'devicon-git-plain' },
-  { name: 'Elixir',      icon: 'devicon-elixir-plain' },
-  { name: 'Go',          icon: 'devicon-go-original-wordmark' },
-  { name: 'MySQL',       icon: 'devicon-mysql-plain' },
-  { name: 'PostgreSQL',  icon: 'devicon-postgresql-plain' },
-  { name: 'Jest',        icon: 'devicon-jest-plain' },
+const techStack = [
+  'TypeScript', 'JavaScript', 'PHP', 'Go', 'Elixir', 'Python',
+  'React', 'Next.js', 'Vue.js', 'Nuxt', 'Tailwind', 'Bootstrap',
+  'HTML5', 'CSS3', 'Node.js', 'Express', 'Laravel', 'NestJS',
+  'PostgreSQL', 'MySQL', 'Docker', 'Git', 'Jest', 'Linux',
 ];
 
-const bio = `Sawad-dee I'm Oat. I'm a Mid-Level Full Stack Developer. You can find me hacking away with React, NextJS, TypeScript, TailwindCSS or anything related on the front-end & back-end. I have a good eye for UX & UI and web design. I am currently learning Golang and Python, and researching on Flutter and Elixir. Also looking further to improve my DevOps, Cloud Engineer and Data Engineer skills in the future.`;
+const projects = [
+  {
+    tag: 'enterprise',
+    period: '2024 — now',
+    role: 'lead front-end · ongoing',
+    letter: 'S·',
+    accent: '#a78bfa',
+    title: 'Digital Signature Platform',
+    desc: 'End-to-end document signing for thousands of corporate users. Led the Next 15 + RSC migration, modernised the canvas-based signing flow, owned the design-system rewrite.',
+    stack: ['Next.js', 'TS', 'Tailwind', 'Node', 'PostgreSQL'],
+  },
+  {
+    tag: 'BPM',
+    period: '2022 — 2024',
+    role: 'full-stack · shipped',
+    letter: 'B·',
+    accent: '#60a5fa',
+    title: 'Workflow Engine + Dashboards',
+    desc: 'Role-based document routing for an in-house BPM platform. Cut average approval time from days to hours. Owned the Vue 3 component library & the reporting dashboards.',
+    stack: ['Vue 3', 'Nuxt', 'Laravel', 'PHP', 'MySQL'],
+  },
+  {
+    tag: 'freelance',
+    period: '2020 — 2022',
+    role: 'solo build',
+    letter: 'R·',
+    accent: '#f97316',
+    title: 'Reporting Dashboard Suite',
+    desc: 'Custom analytics dashboards for several agency clients. Real-time data viz with charts, drilldowns, exportable reports. Delivered solo on short timelines.',
+    stack: ['React', 'Express', 'D3', 'Bootstrap'],
+  },
+];
 
-const overview = `I have been working in web development for over 5 years, proficient in both JS and PHP. I also have experience developing and deploying enterprise-level web projects like document digital signature management, business process management, and report dashboards. I like to always improve my work — a self-motivated creative thinker with a high passion for designing, adaptation and learning new things.`;
+const workHistory = [
+  {
+    period: '2024 — now',
+    active: true,
+    role: 'Full-stack engineer',
+    company: 'Enterprise baan · Bangkok',
+    desc: 'Lead front-end on a digital signature platform serving thousands of documents monthly. Drive the migration to Next 15 + RSC, owning JS for a 6-engineer team.',
+    stack: ['Next.js', 'TypeScript', 'React', 'Node.js', 'PostgreSQL'],
+  },
+  {
+    period: '2022 — 2024',
+    active: false,
+    role: 'Web developer',
+    company: 'Business process · Bangkok',
+    desc: 'Built BPM workflow engine and dashboard suite. Implemented role-based document routing, cut average approval time from days to hours.',
+    stack: ['Vue 3', 'Nuxt', 'Laravel', 'PHP', 'MySQL'],
+  },
+  {
+    period: '2020 — 2022',
+    active: false,
+    role: 'Junior developer',
+    company: 'Agency + Freelance · Bangkok',
+    desc: 'Shipped reporting dashboards, e-commerce front-ends, WordPress customisations. Learned the difference between code that works and code that ships.',
+    stack: ['React', 'Express', 'Bootstrap', 'PHP'],
+  },
+  {
+    period: '2019',
+    active: false,
+    role: 'First repo, first deploy',
+    company: 'Intern · Bangkok',
+    desc: 'CS internship — wrote the first commit that went to production. Hooked.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+  },
+];
 ---
 
-<Layout>
-  <!-- Page wrapper — StarField targets this -->
-  <main class="page relative flex flex-col min-h-screen overflow-hidden">
+<Layout title="Ittichai Boonyarakthunya · Software Engineer · Bangkok">
 
-    <!-- Faint neon background image -->
-    <div class="bgNeonGithub absolute w-full pointer-events-none"></div>
+  <!-- ── Nav ───────────────────────────────────────── -->
+  <nav class="t-nav">
+    <a href="#" class="t-nav-logo">S09Z::oat</a>
+    <div class="t-nav-links">
+      <a href="#about">/about</a>
+      <a href="#projects">/projects</a>
+      <a href="#work">/work</a>
+      <a href="#contact">/contact</a>
+    </div>
+    <div class="t-nav-meta">
+      <span><span style="color:#4ade80">●</span> online · BKK</span>
+      <span id="clock">--:--:-- ICT</span>
+    </div>
+  </nav>
 
-    <!-- Centred content column -->
-    <div class="relative z-10 max-w-5xl w-full mx-auto px-4 py-28">
+  <main>
 
-      <!-- Neon card -->
-      <div class="neon p-8 md:p-16 flex flex-col gap-8">
+    <!-- ── Hero ────────────────────────────────────── -->
+    <div class="hero-grid">
 
-        <!-- ── Header ─────────────────────────────────── -->
-        <div class="flex flex-col items-center gap-3">
-          <p class="text-sm text-gray-400 tracking-widest uppercase">Full Stack Developer</p>
+      <div>
+        <div class="hero-cmd">
+          <span class="prompt">$ </span>cat ./identity.md
+        </div>
 
-          <HackedTextTitle />
+        <h1 class="t-h1" data-liq>
+          I t t i c h a i<br />
+          B o o n y a r a k<span class="accent"> · </span>t h u n y a
+        </h1>
 
-          <!-- Contact row -->
-          <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mt-1">
+        <p class="hero-subtitle">
+          อิทธิชัย บุญยะรักษ์ทันยา · เรียกผม โอ๊ต ก็พอ<br />
+          Software Engineer based in Bangkok · 5+ years shipping production web.
+        </p>
+      </div>
 
-            <a href="tel:+66972471491" class="contact-link">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              (+66) 97-247-1491
-            </a>
-
-            <span class="contact-divider"></span>
-
-            <a href="mailto:i.boonyarakthunya@gmail.com" class="contact-link">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              i.boonyarakthunya@gmail.com
-            </a>
-
-            <span class="contact-divider"></span>
-
-            <a
-              href="https://www.google.com/maps/place/Bangkok"
-              target="_blank" rel="noopener noreferrer"
-              class="contact-link"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              Bangkok / Thailand
-            </a>
-
-            <span class="contact-divider"></span>
-
-            <a href="https://github.com/S09Z" target="_blank" rel="noopener noreferrer" class="contact-link">
-              <i class="devicon-github-original text-base"></i>
-              S09Z
-            </a>
-
-            <span class="contact-divider"></span>
-
-            <a href="https://www.linkedin.com/in/ittichaib/" target="_blank" rel="noopener noreferrer" class="contact-link">
-              <i class="devicon-linkedin-plain text-base"></i>
-              ittichaib
-            </a>
-
+      <div>
+        <div class="hero-stats">
+          <div class="hero-stat-cell">
+            <div class="val">Software Engineer</div>
+            Full stack
+          </div>
+          <div class="hero-stat-cell">
+            <div class="val">Bangkok</div>
+            07/01
+          </div>
+          <div class="hero-stat-cell">
+            <div class="val">5+ years</div>
+            shipping production web
+          </div>
+          <div class="hero-stat-cell">
+            <div class="val">Open</div>
+            to opportunities
           </div>
         </div>
 
-        <!-- ── Tech chips ──────────────────────────────── -->
-        <div class="flex flex-wrap gap-2">
-          {technologyList.map((tag) => (
-            <span class="tech-chip">
-              <i class={`${tag.icon} text-base leading-none`}></i>
-              {tag.name}
-            </span>
+        <div class="hero-avatar">
+          <div class="hero-avatar-label">[ oat.jpg ]<br />not found</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Tech Ticker ──────────────────────────────── -->
+    <div class="ticker-wrap">
+      <!-- Row 1 → left -->
+      <div class="ticker-row">
+        <div class="ticker-inner">
+          {[...techStack, ...techStack].map((t) => (
+            <a href="#" class="ticker-item">
+              {t} <span class="dot">◆</span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <!-- Row 2 → right -->
+      <div class="ticker-row">
+        <div class="ticker-inner reverse">
+          {[...techStack, ...techStack].map((t) => (
+            <a href="#" class="ticker-item">
+              {t} <span class="dot">◆</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ── About ────────────────────────────────────── -->
+    <section id="about">
+      <div class="t-section">
+
+        <div class="t-section-head">
+          <span class="t-section-num">01 / about</span>
+          <span class="t-section-cmd"><span class="prompt">$ </span>cat ./about.md</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:start;">
+
+          <div>
+            <h2 class="t-h2" style="margin-bottom:2rem;">
+              Mid-level full-stack<br />
+              engineer, with a <span class="accent">designer's</span><br />
+              eye for what ships.
+            </h2>
+
+            <div style="display:flex; flex-direction:column; gap:1rem; max-width:58ch;">
+              <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+                Sawad-dee — I'm Oat. I spend my days building web products with React, Next.js,
+                TypeScript and TailwindCSS on the front, and Node, Express, Laravel and PHP on the back.
+                I have a good eye for UX & UI and web design.
+              </p>
+              <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+                I've shipped enterprise-grade tools: digital signature platforms, BPM systems,
+                internal dashboards. The kind of work where a user is a colleague and uptime matters.
+              </p>
+              <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+                I'm currently learning Golang and Python; looking ahead I want to grow in DevOps,
+                Cloud and Data Engineering. Also on the side: Elixir and Flutter.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:2rem; padding-top:0.5rem;">
+            <div class="stat-block">
+              <div class="stat-num">05</div>
+              <div class="stat-label">years</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num" style="color:var(--accent);">JS</div>
+              <div class="stat-label">primary lang</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">BKK</div>
+              <div class="stat-label">location</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <div class="t-divider"></div>
+
+    <!-- ── Projects ─────────────────────────────────── -->
+    <section id="projects">
+      <div class="t-section">
+
+        <div class="t-section-head">
+          <span class="t-section-num">02 / projects</span>
+          <span class="t-section-cmd"><span class="prompt">$ </span>ls ./case-studies</span>
+        </div>
+
+        <h2 class="t-h2" style="margin-bottom:0.5rem;">
+          Selected case studies.
+        </h2>
+        <p style="font-size:0.62rem; color:var(--muted); margin-bottom:2.5rem; letter-spacing:0.1em;">
+          // SUPPLY REAL SCREENSHOTS + LINKS
+        </p>
+
+        <div class="project-cards">
+          {projects.map((p) => (
+            <a href="#" class="project-card">
+              <div class="project-card-meta">
+                <span>{p.tag}</span>
+                <span>{p.period}</span>
+              </div>
+              <div style="font-size:0.6rem; color:var(--muted); margin-top:-0.5rem;">{p.role}</div>
+
+              <div class="project-letter-wrap">
+                <span class="project-letter" style={`color:${p.accent}`}>{p.letter}</span>
+              </div>
+
+              <div class="project-card-title">{p.title}</div>
+              <div class="project-card-desc">{p.desc}</div>
+
+              <div class="project-card-stack">
+                {p.stack.map((s) => <span>{s}</span>)}
+              </div>
+
+              <div class="project-card-cta">case study →</div>
+            </a>
           ))}
         </div>
 
-        <!-- ── Bio ────────────────────────────────────── -->
-        <div class="section-row">
-          <div class="section-bar-wrap">
-            <div class="section-bar"></div>
-            <span class="section-label">Hi !</span>
+      </div>
+    </section>
+
+    <div class="t-divider"></div>
+
+    <!-- ── Work ─────────────────────────────────────── -->
+    <section id="work">
+      <div class="t-section">
+
+        <div class="t-section-head">
+          <span class="t-section-num">03 / work</span>
+          <span class="t-section-cmd"><span class="prompt">$ </span>git log --oneline ./career</span>
+        </div>
+
+        <h2 class="t-h2" style="margin-bottom:3rem;">
+          Five years of tickets closed<br />
+          &amp; features shipped.
+        </h2>
+
+        <div class="work-list">
+          {workHistory.map((w) => (
+            <div class="work-entry">
+              <div class="work-meta">
+                <span class="work-period">{w.period}</span>
+                <div class={`work-dot${w.active ? ' active' : ''}`}></div>
+              </div>
+              <div class="work-content">
+                <div class="work-role">{w.role}</div>
+                <div class="work-company">{w.company}</div>
+                <div class="work-desc">{w.desc}</div>
+                <div class="work-stack">
+                  {w.stack.map((s) => <span>{s}</span>)}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <div class="t-divider"></div>
+
+    <!-- ── Contact ───────────────────────────────────── -->
+    <section id="contact">
+      <div class="t-section">
+
+        <div class="t-section-head">
+          <span class="t-section-num">04 / ping</span>
+          <span class="t-section-cmd">ติดต่อ</span>
+        </div>
+
+        <div class="contact-grid">
+
+          <div>
+            <div class="contact-cta">
+              let's<br />
+              build <span class="accent">somethi</span><br />
+              ng<span class="cursor">_</span>
+            </div>
+            <p class="contact-thai">
+              อิทธิชัย บุญยะรักษ์ทันยา · ส่งอีเมลหรือจะโทรหาก็ได้นะ
+            </p>
           </div>
-          <p class="flex-1 text-sm leading-relaxed">{bio}</p>
-        </div>
 
-        <!-- ── Overview ───────────────────────────────── -->
-        <div class="section-row">
-          <div class="section-bar-wrap">
-            <div class="section-bar"></div>
-            <span class="section-label">Overview</span>
+          <div class="contact-items">
+            <a href="mailto:i.boonyarakthunya@gmail.com" class="contact-item">
+              <span class="contact-item-label">// email</span>
+              <span class="contact-item-val">i.boonyarakthunya@gmail.com</span>
+            </a>
+            <a href="tel:+66972471491" class="contact-item">
+              <span class="contact-item-label">// phone</span>
+              <span class="contact-item-val">+66 97 247 1491</span>
+            </a>
+            <a href="https://github.com/S09Z" target="_blank" rel="noopener" class="contact-item">
+              <span class="contact-item-label">// github</span>
+              <span class="contact-item-val">github.com/S09Z</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ittichaib/" target="_blank" rel="noopener" class="contact-item">
+              <span class="contact-item-label">// linkedin</span>
+              <span class="contact-item-val">/in/ittichaib</span>
+            </a>
+            <a href="#" class="contact-item">
+              <span class="contact-item-label">// resume</span>
+              <span class="contact-item-val">resume.pdf — 2026</span>
+            </a>
           </div>
-          <p class="flex-1 text-sm leading-relaxed">{overview}</p>
+
         </div>
 
-        <!-- ── Signature ──────────────────────────────── -->
-        <div class="relative w-full h-36 mt-2">
-          <img
-            src="/images/neon-signature.png"
-            alt="Ittichai Boonyarakthunya signature"
-            class="absolute inset-0 w-full h-full object-contain"
-          />
-        </div>
+      </div>
+    </section>
 
-      </div><!-- /neon card -->
-    </div><!-- /container -->
-
-    <!-- Animated star field -->
-    <StarField />
+    <!-- ── Footer ────────────────────────────────────── -->
+    <footer class="t-footer">
+      <span>© 2026 · ittichai b. · built with care in bangkok</span>
+      <span style="color:var(--border);">[ s09z::end_of_transmission ]</span>
+    </footer>
 
   </main>
 
-  <!-- Cursor flashlight -->
+  <!-- Custom cursor -->
+  <div class="cursor-ring" id="cring"></div>
+  <div class="cursor-dot"  id="cdot"></div>
+
+  <!-- Back to top -->
+  <a href="#" class="back-to-top" aria-label="Back to top">
+    <span>↑</span>
+    <span style="font-size:0.5rem; margin-top:1px;">top</span>
+  </a>
+
   <script>
-    const update = (x: number, y: number) => {
-      document.documentElement.style.setProperty('--cursorX', `${x}px`);
-      document.documentElement.style.setProperty('--cursorY', `${y}px`);
-    };
-    document.addEventListener('mousemove', (e) => update(e.clientX, e.clientY));
-    document.addEventListener('touchmove', (e) =>
-      update(e.touches[0]!.clientX, e.touches[0]!.clientY),
-    );
+    /* Live clock */
+    const clockEl = document.getElementById('clock');
+    setInterval(() => {
+      if (!clockEl) return;
+      const d = new Date();
+      const opts: Intl.DateTimeFormatOptions = {
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false, timeZone: 'Asia/Bangkok',
+      };
+      clockEl.textContent = d.toLocaleTimeString('en-GB', opts) + ' ICT';
+    }, 1000);
+
+    /* Custom cursor: ring (spring) + dot (instant) */
+    const ring = document.getElementById('cring')!;
+    const dot  = document.getElementById('cdot')!;
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let rx = mx, ry = my;
+
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    });
+
+    /* Grow ring on interactive elements */
+    document.querySelectorAll('a, button').forEach((el) => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+
+    /* Liquid text distortion on [data-liq] elements */
+    document.querySelectorAll('[data-liq]').forEach((el) => {
+      const walk = (node: Node) => {
+        if (node.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const c of [...(node.textContent ?? '')]) {
+            const s = document.createElement('span');
+            s.className = 'ch';
+            s.textContent = c === ' ' ? ' ' : c;
+            frag.appendChild(s);
+          }
+          node.parentNode!.replaceChild(frag, node);
+        } else if (node.nodeType === 1) {
+          [...node.childNodes].forEach(walk);
+        }
+      };
+      walk(el);
+    });
+
+    const chars = document.querySelectorAll<HTMLElement>('.ch');
+
+    function liquify() {
+      const R = 140;
+      chars.forEach((c) => {
+        const r = c.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top  + r.height / 2;
+        const dx = cx - mx, dy = cy - my;
+        const d = Math.hypot(dx, dy);
+        if (d < R) {
+          const f   = 1 - d / R;
+          const ang = Math.atan2(dy, dx);
+          const ox  = Math.cos(ang) * 18 * f;
+          const oy  = Math.sin(ang) * 18 * f;
+          const sc  = 1 + f * 0.5;
+          const rot = (dx / R) * 8 * f;
+          c.style.transform = `translate(${ox}px,${oy}px) scale(${sc}) rotate(${rot}deg)`;
+          c.style.color = `oklch(${0.74 + f * 0.1} 0.18 295)`;
+        } else if (c.style.transform) {
+          c.style.transform = '';
+          c.style.color = '';
+        }
+      });
+    }
+
+    function loop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+      liquify();
+      requestAnimationFrame(loop);
+    }
+    loop();
   </script>
+
 </Layout>
