@@ -222,7 +222,7 @@ const workHistory = [
           <span class="t-section-cmd"><span class="prompt">$ </span>cat ./about.md</span>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:start;">
+        <div class="about-grid">
 
           <div>
             <h2 class="t-h2" data-liq style="margin-bottom:2rem;">
@@ -231,18 +231,18 @@ const workHistory = [
               eye for what ships.
             </h2>
 
-            <div style="display:flex; flex-direction:column; gap:1rem; max-width:58ch;">
-              <p data-liq style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+            <div class="about-body">
+              <p data-liq>
                 Sawad-dee — I'm Oat. Senior full-stack developer based in Bangkok with 8+ years
                 building production web applications. Currently at WHA Group working across cloud
                 and container environments — Docker, Kubernetes, Huawei Cloud.
               </p>
-              <p data-liq style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+              <p data-liq>
                 My work spans document management, BPM, graph & reporting dashboards, and backoffice
                 web apps — systems where reliability and UX both matter. I've led front-end architecture
                 and owned full-stack delivery across every level of seniority.
               </p>
-              <p data-liq style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+              <p data-liq>
                 I hold a Master's in AI for Business Analytics from KMITL and a B.Sc. in Computer
                 Science from RMUTT. My focus is shifting toward Machine Learning, LLM applications,
                 and AI Engineering — building intelligent systems on top of solid engineering foundations.
@@ -250,13 +250,13 @@ const workHistory = [
             </div>
           </div>
 
-          <div style="display:flex; flex-direction:column; gap:2rem; padding-top:0.5rem;">
+          <div class="about-stats">
             <div class="stat-block">
               <div class="stat-num">08</div>
               <div class="stat-label">years</div>
             </div>
             <div class="stat-block">
-              <div class="stat-num" style="color:var(--accent);">JS</div>
+              <div class="stat-num accent">JS</div>
               <div class="stat-label">primary lang</div>
             </div>
             <div class="stat-block">
@@ -295,7 +295,7 @@ const workHistory = [
                 <span>{p.tag}</span>
                 <span>{p.period}</span>
               </div>
-              <div style="font-size:0.6rem; color:var(--muted); margin-top:-0.5rem;">{p.role}</div>
+              <div class="project-card-role">{p.role}</div>
 
               <div class="project-letter-wrap">
                 <span class="project-letter" style={`color:${p.accent}`}>{p.letter}</span>
