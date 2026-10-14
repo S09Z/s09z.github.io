@@ -22,21 +22,31 @@ const {
 
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
 
-    <!-- Roboto Mono font -->
+    <!-- Roboto Mono font — only the weights globals.css uses (400/600/700) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Devicons -->
+    <!-- Devicons — loaded without blocking first render (ticker only) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+      />
+    </noscript>
   </head>
-  <body>
+  <body id="top">
+    <a href="#main" class="skip-link">Skip to content</a>
     <slot />
   </body>
 </html>

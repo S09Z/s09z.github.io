@@ -115,7 +115,7 @@ const workHistory = [
 
   <!-- ── Nav ───────────────────────────────────────── -->
   <nav class="t-nav">
-    <a href="#" class="t-nav-logo">S09Z::oat</a>
+    <a href="#top" class="t-nav-logo">S09Z::oat</a>
     <div class="t-nav-links">
       <a href="#about">/about</a>
       <a href="#projects">/projects</a>
@@ -128,7 +128,7 @@ const workHistory = [
     </div>
   </nav>
 
-  <main>
+  <main id="main">
 
     <!-- ── Hero ────────────────────────────────────── -->
     <div class="hero-grid">
@@ -177,40 +177,26 @@ const workHistory = [
     </div>
 
     <!-- ── Tech Ticker ──────────────────────────────── -->
-    <div class="ticker-wrap">
-      <!-- Row 1 → left -->
-      <div class="ticker-row">
-        <div class="ticker-inner">
-          {[...techRows[0], ...techRows[0], ...techRows[0], ...techRows[0]].map((t) => (
-            <span class="ticker-item">
-              <i class={`${t.icon} ticker-icon`} title={t.name}></i>
-              <span class="dot">◆</span>
-            </span>
-          ))}
+    <!-- Screen readers get the plain list; the animated rows are decorative -->
+    <h2 class="sr-only">Tech stack</h2>
+    <ul class="sr-only">
+      {techRows.flat().map((t) => <li>{t.name}</li>)}
+    </ul>
+
+    <div class="ticker-wrap" aria-hidden="true">
+      <!-- Rows alternate direction; each row is repeated 4× for a seamless loop -->
+      {techRows.map((row, i) => (
+        <div class="ticker-row">
+          <div class={`ticker-inner${i % 2 ? ' reverse' : ''}`}>
+            {[...row, ...row, ...row, ...row].map((t) => (
+              <span class="ticker-item">
+                <i class={`${t.icon} ticker-icon`} title={t.name}></i>
+                <span class="dot">◆</span>
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
-      <!-- Row 2 → right -->
-      <div class="ticker-row">
-        <div class="ticker-inner reverse">
-          {[...techRows[1], ...techRows[1], ...techRows[1], ...techRows[1]].map((t) => (
-            <span class="ticker-item">
-              <i class={`${t.icon} ticker-icon`} title={t.name}></i>
-              <span class="dot">◆</span>
-            </span>
-          ))}
-        </div>
-      </div>
-      <!-- Row 3 → left -->
-      <div class="ticker-row">
-        <div class="ticker-inner">
-          {[...techRows[2], ...techRows[2], ...techRows[2], ...techRows[2]].map((t) => (
-            <span class="ticker-item">
-              <i class={`${t.icon} ticker-icon`} title={t.name}></i>
-              <span class="dot">◆</span>
-            </span>
-          ))}
-        </div>
-      </div>
+      ))}
     </div>
 
     <!-- ── About ────────────────────────────────────── -->
@@ -419,7 +405,7 @@ const workHistory = [
   <div class="cursor-dot"  id="cdot"></div>
 
   <!-- Back to top -->
-  <a href="#" class="back-to-top" aria-label="Back to top">
+  <a href="#top" class="back-to-top" aria-label="Back to top">
     <span>↑</span>
     <span style="font-size:0.5rem; margin-top:1px;">top</span>
   </a>
@@ -437,16 +423,18 @@ const workHistory = [
       clockEl.textContent = d.toLocaleTimeString('en-GB', opts) + ' ICT';
     }, 1000);
 
+    /* Custom cursor + liquid text run only with a fine pointer on wide
+       screens, and never under prefers-reduced-motion. Keep this query in
+       sync with the `.cursor-ring, .cursor-dot` media query in globals.css. */
+    const fancyMQ = window.matchMedia(
+      '(hover: hover) and (pointer: fine) and (min-width: 901px) and (prefers-reduced-motion: no-preference)'
+    );
+
     /* Custom cursor: ring (spring) + dot (instant) */
     const ring = document.getElementById('cring')!;
     const dot  = document.getElementById('cdot')!;
     let mx = window.innerWidth / 2, my = window.innerHeight / 2;
     let rx = mx, ry = my;
-
-    window.addEventListener('mousemove', (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-    });
 
     /* Grow ring on interactive elements */
     document.querySelectorAll('a, button').forEach((el) => {
@@ -454,8 +442,16 @@ const workHistory = [
       el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
     });
 
-    /* Liquid text distortion on [data-liq] elements */
-    document.querySelectorAll('[data-liq]').forEach((el) => {
+    /* Liquid text distortion on [data-liq] elements.
+       Each text run is split into per-char spans inside an aria-hidden
+       wrapper, next to an sr-only copy, so screen readers read words
+       instead of spelling them out letter by letter. */
+    type Ch = { el: HTMLElement; x: number; y: number; on: boolean };
+    let chars: Ch[] = [];
+    let split = false;
+
+    function splitChars() {
+      const out: Ch[] = [];
       const walk = (node: Node) => {
         if (node.nodeType === 3) {
           /* Collapse HTML indentation whitespace (newlines + multi-space)
@@ -464,35 +460,59 @@ const workHistory = [
             .replace(/[\n\r\t]+/g, ' ')
             .replace(/ {2,}/g, ' ');
           if (!text.trim()) return;
-          const frag = document.createDocumentFragment();
+          const sr = document.createElement('span');
+          sr.className = 'sr-only';
+          sr.textContent = text;
+          const visual = document.createElement('span');
+          visual.setAttribute('aria-hidden', 'true');
           for (const c of [...text]) {
             if (c === ' ') {
-              frag.appendChild(document.createTextNode(' '));
+              visual.appendChild(document.createTextNode(' '));
             } else {
               const s = document.createElement('span');
               s.className = 'ch';
               s.textContent = c;
-              frag.appendChild(s);
+              visual.appendChild(s);
+              out.push({ el: s, x: 0, y: 0, on: false });
             }
           }
+          const frag = document.createDocumentFragment();
+          frag.append(sr, visual);
           node.parentNode!.replaceChild(frag, node);
         } else if (node.nodeType === 1) {
           [...node.childNodes].forEach(walk);
         }
       };
-      walk(el);
-    });
+      document.querySelectorAll('[data-liq]').forEach(walk);
+      return out;
+    }
 
-    const chars = document.querySelectorAll<HTMLElement>('.ch');
+    function resetChars() {
+      for (const c of chars) {
+        if (!c.on) continue;
+        c.el.style.transform = '';
+        c.el.style.color = '';
+        c.on = false;
+      }
+    }
+
+    /* Cache each char's page-space centre so the per-frame work is pure
+       math — no getBoundingClientRect (forced layout) inside the loop. */
+    function measure() {
+      resetChars();
+      for (const c of chars) {
+        const r = c.el.getBoundingClientRect();
+        c.x = r.left + r.width / 2 + window.scrollX;
+        c.y = r.top + r.height / 2 + window.scrollY;
+      }
+    }
 
     function liquify() {
       const R = 140;
-      chars.forEach((c) => {
-        const r = c.getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const cy = r.top  + r.height / 2;
-        const dx = cx - mx, dy = cy - my;
-        const d = Math.hypot(dx, dy);
+      const px = mx + window.scrollX, py = my + window.scrollY;
+      for (const c of chars) {
+        const dx = c.x - px, dy = c.y - py;
+        const d = Math.abs(dx) < R && Math.abs(dy) < R ? Math.hypot(dx, dy) : R;
         if (d < R) {
           const f   = 1 - d / R;
           const ang = Math.atan2(dy, dx);
@@ -500,23 +520,67 @@ const workHistory = [
           const oy  = Math.sin(ang) * 18 * f;
           const sc  = 1 + f * 0.5;
           const rot = (dx / R) * 8 * f;
-          c.style.transform = `translate(${ox}px,${oy}px) scale(${sc}) rotate(${rot}deg)`;
-          c.style.color = `oklch(${0.74 + f * 0.1} 0.18 295)`;
-        } else if (c.style.transform) {
-          c.style.transform = '';
-          c.style.color = '';
+          c.el.style.transform = `translate(${ox}px,${oy}px) scale(${sc}) rotate(${rot}deg)`;
+          c.el.style.color = `oklch(${0.74 + f * 0.1} 0.18 295)`;
+          c.on = true;
+        } else if (c.on) {
+          c.el.style.transform = '';
+          c.el.style.color = '';
+          c.on = false;
         }
-      });
+      }
     }
 
-    function loop() {
+    /* Frames run only while something changed: the pointer moved, the page
+       scrolled or resized, or the ring is still catching up. */
+    let enabled = false;
+    let raf = 0;
+    let dirty = true;
+    let needsMeasure = true;
+
+    function frame() {
+      raf = 0;
+      if (needsMeasure) { measure(); needsMeasure = false; dirty = true; }
       rx += (mx - rx) * 0.18;
       ry += (my - ry) * 0.18;
       ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-      liquify();
-      requestAnimationFrame(loop);
+      if (dirty) { liquify(); dirty = false; }
+      if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) schedule();
     }
-    loop();
+
+    function schedule() {
+      if (enabled && !raf) raf = requestAnimationFrame(frame);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      if (!enabled) return;
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+      dirty = true;
+      schedule();
+    });
+
+    window.addEventListener('scroll', () => { dirty = true; schedule(); }, { passive: true });
+
+    /* Re-measure whenever layout can have moved the text (resize, late
+       font / icon loads changing the page height). */
+    const remeasure = () => { needsMeasure = true; schedule(); };
+    new ResizeObserver(remeasure).observe(document.body);
+    document.fonts?.ready.then(remeasure);
+
+    function applyMode() {
+      enabled = fancyMQ.matches;
+      if (enabled) {
+        if (!split) { chars = splitChars(); split = true; }
+        remeasure();
+      } else {
+        if (raf) cancelAnimationFrame(raf);
+        raf = 0;
+        resetChars();
+      }
+    }
+    fancyMQ.addEventListener('change', applyMode);
+    applyMode();
   </script>
 
 </Layout>
