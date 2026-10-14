@@ -28,7 +28,8 @@ The `Makefile` targets (`make dev`, `make build`…) just call these scripts.
 - **Visual style:** a dark terminal / CLI look. Use monospace type, `$ command` prompts, `// labels`, `NN / section` numbering and a violet accent (`--accent: #a78bfa`). New sections should follow the same `t-section` → `t-section-head` → `t-h2` structure.
 - **Styling:** use the custom classes in `globals.css` and the CSS variables. Tailwind is installed but barely used, and its theme isn't extended. Don't add hard-coded colours; add a token instead. Prefer classes over new inline `style=""` attributes, because media queries can't override inline styles.
 - **Content:** edit the frontmatter arrays rather than duplicating markup. The site mixes English with some Thai lines on purpose.
-- **Animations:** any new motion must respect `prefers-reduced-motion` and must not run on touch-only devices.
+- **Animations:** any new motion must respect `prefers-reduced-motion` and must not run on touch-only devices. Gate pointer-driven effects behind `fancyMQ` in `index.astro`, and keep that query identical to the `.cursor-ring, .cursor-dot` media query in `globals.css`. CSS animations need an override in the "Reduced motion" block at the end of `globals.css`.
+- **Accessibility:** decorative or duplicated content gets `aria-hidden="true"` plus a `sr-only` equivalent. Keep the `:focus-visible` outline and the skip link working.
 - **Verifying UI changes:** read the `.astro`/`.css` source and run `bun run build`. Don't take browser screenshots unless asked, because they leave PNG clutter in the repo.
 
 ## Dependencies and CI

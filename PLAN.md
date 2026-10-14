@@ -38,19 +38,19 @@ Legend: 🔴 visitors can see it / it's broken · 🟡 quality or performance ·
 
 ## Phase 3: Performance and accessibility 🟡
 
-- [ ] **Liquid text effect** (`liquify()` in the `index.astro` script) calls `getBoundingClientRect()` on every `.ch` span every frame, even when the mouse is still.
-  - Run it only after a `mousemove`, and stop the loop once the ring has settled.
-  - Cache each element's rect; recompute on resize and scroll.
-  - Skip elements that are off screen (`IntersectionObserver`).
-- [ ] **Reduced motion:** add `@media (prefers-reduced-motion: reduce)` support. Stop the ticker scroll, the liquid effect and the cursor spring, and turn off `scroll-behavior: smooth`.
-- [ ] **Touch devices:** load the custom cursor and liquid effect only when `matchMedia('(hover: hover) and (pointer: fine)')` matches. The CSS already hides the cursor this way, but the JS still runs.
-- [ ] **Ticker accessibility:** each row is repeated four times. Add `aria-hidden="true"` to the copies and give each icon a text label (screen-reader-only is fine). `title` alone isn't enough.
-- [ ] **Character splitting:** the `data-liq` split turns headings into one `<span>` per letter. Add `aria-label` with the full text to each `[data-liq]` element so screen readers don't spell words out.
-- [ ] **About layout on phones:** now in the `.about-grid` class (Phase 5). It still needs a single-column `@media` rule for phones.
-- [ ] **Fonts:** load only the Roboto Mono weights in use instead of all of 100–700, or self-host with `@fontsource/roboto-mono`.
-- [ ] **Devicon:** the full devicon CSS from jsDelivr blocks the first render. Consider inline SVGs for the 24 icons, or load the stylesheet without blocking.
-- [ ] **Focus states:** check that `a:focus-visible` is clearly visible, since the custom cursor hides the default pointer.
-- [ ] **Back to top:** the link is `href="#"`. Point it at `#top`, or skip-link to `<main>`.
+- [x] **Liquid text effect:** it no longer calls `getBoundingClientRect()` every frame.
+  - Each character's position is measured once and cached. It is measured again when the page changes size (a `ResizeObserver` on `<body>`) and after fonts load.
+  - Animation frames run only after the mouse moves or the page scrolls, and stop once the ring has settled.
+  - An `IntersectionObserver` turned out to be unnecessary: with cached positions, checking about 600 characters is just arithmetic, and styles are only written to characters near the pointer.
+- [x] **Reduced motion:** the ticker scroll, blinking cursor, icon zoom and smooth scrolling stop under `prefers-reduced-motion: reduce`, and the custom cursor and liquid effect switch off entirely.
+- [x] **Touch devices:** one media query (`fancyMQ` in JS, matched in `globals.css`) controls the custom cursor and liquid effect: `(hover: hover) and (pointer: fine) and (min-width: 901px) and (prefers-reduced-motion: no-preference)`. It also handles the setting changing while the page is open. Phones keep the plain text.
+- [x] **Ticker accessibility:** the animated ticker is hidden from screen readers (`aria-hidden`). A screen-reader-only list ("Tech stack") replaces it. The three repeated row blocks are now one loop.
+- [x] **Character splitting:** each text run becomes a screen-reader-only copy plus a hidden `<span>` holding the per-letter spans. This was used instead of `aria-label`, which screen readers often ignore on `<p>` and `<h2>`.
+- [x] **About layout on phones:** under 768px `.about-grid` becomes one column and the stats sit in a row.
+- [x] **Fonts:** Roboto Mono now loads only weights 400, 600 and 700.
+- [x] **Devicon:** the stylesheet loads without blocking the first render (`media="print"` swapped on load, with a `<noscript>` fallback). `.ticker-icon` reserves its height so the page doesn't jump when icons arrive.
+- [x] **Focus states:** added a global `:focus-visible` outline in the accent colour, plus a "Skip to content" link that appears on keyboard focus.
+- [x] **Back to top:** the nav logo and the back-to-top button link to `#top` (on `<body>`). `<main>` has `id="main"` as the skip-link target.
 
 ## Phase 4: Link previews and search 🟡
 
