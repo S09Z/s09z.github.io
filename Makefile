@@ -1,10 +1,13 @@
-.PHONY: dev build preview
+.PHONY: install dev build preview
+
+install:
+	bun install
 
 dev:
-	npx astro dev
+	bun run dev
 
 build:
-	npx astro build
+	bun run build
 
 preview:
-	npx astro preview
+	bun run preview
