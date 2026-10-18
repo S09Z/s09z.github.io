@@ -33,10 +33,35 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
+/* ── Focus & skip link ─────────────────────────────── */
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 10001;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.7rem;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; }
+
 /* ── Custom cursor ─────────────────────────────────── */
-@media (hover: hover) {
-  html, body { cursor: none; }
-  a, button { cursor: none; }
+/* Only with a fine pointer on wide screens, and not under reduced motion.
+   Keep in sync with `fancyMQ` in src/pages/index.astro. */
+.cursor-ring, .cursor-dot { display: none; }
+
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  html, body, a, button { cursor: none; }
+  .cursor-ring, .cursor-dot { display: block; }
 }
 
 .cursor-ring {
@@ -65,12 +90,6 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-}
-
-@media (max-width: 900px) {
-  html, body { cursor: auto; }
-  a, button { cursor: pointer; }
-  .cursor-ring, .cursor-dot { display: none; }
 }
 
 /* ── Liquid text chars ─────────────────────────────── */
@@ -229,6 +248,7 @@ section[id] { scroll-margin-top: 3rem; }
 .ticker-icon {
   font-size: 2rem;
   line-height: 1;
+  height: 1em; /* reserve the row height before the async devicon CSS loads */
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 .ticker-item:hover .ticker-icon {
@@ -264,6 +284,10 @@ section[id] { scroll-margin-top: 3rem; }
   flex-direction: column;
   gap: 2rem;
   padding-top: 0.5rem;
+}
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-stats { flex-direction: row; justify-content: space-between; padding-top: 0; }
 }
 
 /* ── Stats ─────────────────────────────────────────── */
@@ -621,3 +645,12 @@ section[id] { scroll-margin-top: 3rem; }
   line-height: 1;
 }
 .back-to-top:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Reduced motion ────────────────────────────────── */
+/* Cursor + liquid text are already off via their own media query / fancyMQ. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ticker-inner, .ticker-inner.reverse { animation: none; }
+  .contact-cta .cursor { animation: none; }
+  .ticker-icon, .ticker-item:hover .ticker-icon { transition: none; transform: none; }
+}
